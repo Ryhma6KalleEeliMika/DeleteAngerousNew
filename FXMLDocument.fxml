@@ -192,7 +192,7 @@
          <children>
             <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Stars/Sol.png" />
+                  <Image url="@Images/Stars/Sol/Sol.png" />
                </image>
                <viewport>
                   <Rectangle2D />

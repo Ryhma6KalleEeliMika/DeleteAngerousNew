@@ -36,7 +36,7 @@ public class FXMLDocumentController implements Initializable {
     private Label jumpLabel, fuelLabel, shipNameLabel;
     
     @FXML   //Current star, current planet, galaxy map button 
-    private Button currentStarLabel, currentPlanetLabel, gMapButton;
+    private Button currentStarLabel, currentPlanetLabel, gMBapButton;
     
     @FXML   //Star buttons
     private Button n1, n2, n3, n4;
@@ -59,6 +59,7 @@ public class FXMLDocumentController implements Initializable {
         Star currentStar = myShip.getStar();
         setFuelAmmount();
         mainImage.setImage(main.myShip.getStar().getStarImage());
+        shipNameLabel.setText(myShip.getNAME());
         currentStarLabel.setText(currentStar.getName());
         n1.setText(currentStar.getN1());
         n2.setText(currentStar.getN2());
@@ -211,10 +212,9 @@ public class FXMLDocumentController implements Initializable {
     private void p1Button(ActionEvent event) {
         try {
             Ship myShip = main.getMyShip(); //Get my ship from the main
-            Star currentStar = myShip.getStar(); //Get current star
-            Planet toPlanet = currentStar.getPlanet1(); //Get the planet to travel
-            String planetName = toPlanet.getName(); //Planet's name to travel
-            String travelResult = planetTravel(myShip, planetName, toPlanet); //Returns the resulting string if the travel was possible or not.
+            Planet destinationPlanet = myShip.getStar().getPlanet1(); //Get the destination planet.
+            String planetName = destinationPlanet.getName(); //Destination planet's name.
+            String travelResult = planetTravel(myShip, planetName, destinationPlanet); //Returns the resulting string if the travel was possible or not.
             setJumpLabel(travelResult); //Sets the jump label after trip E.G. "Orbiting Terra"
         }
         catch (Exception e) {
@@ -226,10 +226,9 @@ public class FXMLDocumentController implements Initializable {
     private void p2Button(ActionEvent event) {
         try {
             Ship myShip = main.getMyShip();
-            Star currentStar = myShip.getStar();
-            Planet toPlanet = currentStar.getPlanet2();
-            String planetName = toPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, toPlanet);
+            Planet destinationPlanet = myShip.getStar().getPlanet2();
+            String planetName = destinationPlanet.getName();
+            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
             setJumpLabel(travelResult);
         }
         catch (Exception e) {
@@ -241,10 +240,9 @@ public class FXMLDocumentController implements Initializable {
     private void p3Button(ActionEvent event) {
         try {
             Ship myShip = main.getMyShip();
-            Star currentStar = myShip.getStar();
-            Planet toPlanet = currentStar.getPlanet3();
-            String planetName = toPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, toPlanet);
+            Planet destinationPlanet = myShip.getStar().getPlanet3();
+            String planetName = destinationPlanet.getName();
+            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
             setJumpLabel(travelResult);
         }
         catch (Exception e) {
@@ -256,10 +254,9 @@ public class FXMLDocumentController implements Initializable {
     private void p4Button(ActionEvent event) {
         try {
             Ship myShip = main.getMyShip();
-            Star currentStar = myShip.getStar();
-            Planet toPlanet = currentStar.getPlanet4();
-            String planetName = toPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, toPlanet);
+            Planet destinationPlanet = myShip.getStar().getPlanet4();
+            String planetName = destinationPlanet.getName();
+            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
             setJumpLabel(travelResult);
         }
         catch (Exception e) {
@@ -268,17 +265,17 @@ public class FXMLDocumentController implements Initializable {
     }
     
     //Method for traveling between planet. Warns the player if fuel is low or 0.
-    private String planetTravel(Ship myShip, String planetName, Planet toTravel) {
+    private String planetTravel(Ship myShip, String planetName, Planet destinationPlanet) {
         if(myShip.getPlanetName().equals(planetName)){  //Checks if the ship is already orbiting that planet
             return "Error! Invalid selection!\nAlready orbiting " + planetName;   
         }
-        else if (myShip.getFuel() > 1 && toTravel != null) { //Checks if there is enough fuel and the target exists
+        else if (myShip.getFuel() > 0 && destinationPlanet != null) { //Checks if there is enough fuel and the target exists
             if (planetName != null) { //If planet exists.
                 myShip.fuelLoss(1); //Fuel depletes by one.
                 currentPlanetLabel.setText(planetName); //Sets the "Current planet" label as the name of the planet the ship is currently at.
-                myShip.setPlanet(toTravel); //Sets ships current planet as the new planet.
+                myShip.setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
                 myShip.setPlanetName(planetName); //Sets ships current planet name as the new planet.
-                mainImage.setImage(toTravel.getPlanetImage()); //Changes the main image to orbit that planet.
+                mainImage.setImage(destinationPlanet.getPlanetImage()); //Changes the main image to orbit that planet.
                 setStarButtonNames();
                 if (myShip.getFuel() == 0) { //If fuel is at zero after the travel
                     return "Orbiting " + planetName +" Critical warning!\nFuel cells depleted!";
@@ -299,9 +296,9 @@ public class FXMLDocumentController implements Initializable {
     //Code that runs first when the GUI starts. Updates the ships name label and the N1-N4 button labels to view neihgbouring stars.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setStarButtonNames();
-        setJumpLabel("");
-        shipNameLabel.setText(main.myShip.getNAME());
+        setStarButtonNames();  //GUI refresh
+        setJumpLabel("");   //Empty jump label "Jump successful"
+
 
     }
 }
