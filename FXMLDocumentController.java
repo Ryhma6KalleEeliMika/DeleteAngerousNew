@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -36,7 +39,7 @@ public class FXMLDocumentController implements Initializable {
     private Label jumpLabel, fuelLabel, shipNameLabel;
     
     @FXML   //Current star, current planet, galaxy map button 
-    private Button currentStarLabel, currentPlanetLabel, gMBapButton;
+    private Button currentStarButton, currentPlanetButton, gMBapButton;
     
     @FXML   //Star buttons
     private Button n1, n2, n3, n4;
@@ -53,6 +56,8 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+
+    
     @FXML //Setting the starButtons to display the neighbouring stars and other gui things default after star jump. GUI refresh basically.
     private void setStarButtonNames() {
         Ship myShip = main.getMyShip();
@@ -60,12 +65,12 @@ public class FXMLDocumentController implements Initializable {
         setFuelAmmount();
         mainImage.setImage(main.myShip.getStar().getStarImage());
         shipNameLabel.setText(myShip.getNAME());
-        currentStarLabel.setText(currentStar.getName());
+        currentStarButton.setText(currentStar.getName());
         n1.setText(currentStar.getN1());
         n2.setText(currentStar.getN2());
         n3.setText(currentStar.getN3());
         n4.setText(currentStar.getN4());
-        currentPlanetLabel.setText(myShip.getPlanetName());
+        currentPlanetButton.setText(myShip.getPlanetName());
         p1.setText(currentStar.getPlanet1().getName());
         p2.setText(currentStar.getPlanet2().getName());
         p3.setText(currentStar.getPlanet3().getName());
@@ -272,7 +277,7 @@ public class FXMLDocumentController implements Initializable {
         else if (myShip.getFuel() > 0 && destinationPlanet != null) { //Checks if there is enough fuel and the target exists
             if (planetName != null) { //If planet exists.
                 myShip.fuelLoss(1); //Fuel depletes by one.
-                currentPlanetLabel.setText(planetName); //Sets the "Current planet" label as the name of the planet the ship is currently at.
+                currentPlanetButton.setText(planetName); //Sets the "Current planet" label as the name of the planet the ship is currently at.
                 myShip.setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
                 myShip.setPlanetName(planetName); //Sets ships current planet name as the new planet.
                 mainImage.setImage(destinationPlanet.getPlanetImage()); //Changes the main image to orbit that planet.
@@ -293,12 +298,28 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    @FXML  //Opens the planet pop up window.
+    private void planetButton(ActionEvent event) {
+        if (main.getMyShip().getPlanet() != null) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanetPopUp.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Second window");
+                stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } 
+            catch (Exception e) {               
+            }
+        }
+    }
+
     //Code that runs first when the GUI starts. Updates the ships name label and the N1-N4 button labels to view neihgbouring stars.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setStarButtonNames();  //GUI refresh
         setJumpLabel("");   //Empty jump label "Jump successful"
-
-
     }
 }

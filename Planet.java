@@ -13,18 +13,18 @@ import javafx.scene.image.Image;
  */
 public class Planet {
     
-    private String name;
+    private String name, type;
     
     private Star parentStar;
     
     private Image planetImage;
     
-    //Constructor
-    Planet(Star parent, String name, Image planetImage) {
+    //Constructor  
+    Planet(Star parent, String name, String type,Image planetImage) {
         setName(name);
         setParentStar(parent);
         setPlanetImage(planetImage);
-        
+        setType(type);
     }
     
     //Getters and setters........................................................
@@ -50,5 +50,13 @@ public class Planet {
 
     public Image getPlanetImage() {
         return planetImage;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

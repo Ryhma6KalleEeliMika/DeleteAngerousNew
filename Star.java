@@ -31,42 +31,34 @@ public class Star {
 
     //Star's default constructor creates the star's image object.
     Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPath) {
-
+        
+        //Setting up images for stars/planets/galaxy map
         Image newStarImage = new Image(imgPath + starImg);
         setStarImage(newStarImage);
+        Image newGalaxyMapImage = new Image(galPath);
+        setGalaxyMapImage(newGalaxyMapImage);
         try {
             Image newStarImage1 = new Image(imgPath + starImg1);
-            System.out.println(imgPath+starImg1);
             setStarImage1(newStarImage1);
-        }catch (Exception e) {
-            
-        }
+        }catch (Exception e) {}
         try {
             Image newStarImage2 = new Image(imgPath + starImg2);
             setStarImage2(newStarImage2);
-        }catch (Exception e) {
-            
-        }
+        }catch (Exception e) {}
         try {
             Image newStarImage3 = new Image(imgPath + starImg3);
             setStarImage3(newStarImage3);
-        }catch (Exception e) {
-            
-        }
+        }catch (Exception e) {}
         try {
             Image newStarImage4 = new Image(imgPath + starImg4);
             setStarImage4(newStarImage4);
-        }catch (Exception e) {
-            
-
-        Image newGalaxyMapImage = new Image(galPath);
-        setGalaxyMapImage(newGalaxyMapImage);
-        }
+        }catch (Exception e) {}
     }
 
     //Star's detail setter
     public void setStarDetails(int id, String name, String n1, String n2, String n3, String n4, Star star1, Star star2, Star star3, Star star4, 
-            Star parent, String planetName1, String planetName2, String planetName3, String planetName4) {
+            Star parent, String planetName1, String planetType1, String planetName2, String planetType2, 
+            String planetName3, String planetType3, String planetName4, String planetType4) {
         this.id = id;
         this.name = name;
         this.n1 = n1;
@@ -78,16 +70,16 @@ public class Star {
         this.star3 = star3;
         this.star4 = star4;
         
-        Planet newPlanet1 = new Planet(parent, planetName1, getStarImage1());
+        Planet newPlanet1 = new Planet(parent, planetName1, planetType1, getStarImage1());
         this.planet1 = newPlanet1;
         
-        Planet newPlanet2 = new Planet(parent, planetName2, getStarImage2());
+        Planet newPlanet2 = new Planet(parent, planetName2, planetType2, getStarImage2());
         this.planet2 = newPlanet2;
         
-        Planet newPlanet3 = new Planet(parent, planetName3, getStarImage3());
+        Planet newPlanet3 = new Planet(parent, planetName3, planetType3, getStarImage3());
         this.planet3 = newPlanet3;
         
-        Planet newPlanet4 = new Planet(parent, planetName4, getStarImage4());
+        Planet newPlanet4 = new Planet(parent, planetName4, planetType4, getStarImage4());
         this.planet4 = newPlanet4;
     }
     

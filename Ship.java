@@ -17,7 +17,7 @@ public class Ship {
     private Star star;
     private String planetName = "";
     private Planet planet;
-    private int fuel = 100;
+    private int fuel = 10000;
     private int oxygen = 100;
     private int hull = 100;
 
