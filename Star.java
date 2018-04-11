@@ -33,10 +33,21 @@ public class Star {
     Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPath) {
         
         //Setting up images for stars/planets/galaxy map
-        Image newStarImage = new Image(imgPath + starImg);
-        setStarImage(newStarImage);
-        Image newGalaxyMapImage = new Image(galPath);
-        setGalaxyMapImage(newGalaxyMapImage);
+        try {
+            Image newStarImage = new Image(imgPath + starImg);
+            setStarImage(newStarImage);
+        }
+        catch (Exception e) {
+            System.out.println("Eka star ei toimi " + imgPath + starImg);
+        }
+        try {
+
+            Image newGalaxyMapImage = new Image(galPath);
+            setGalaxyMapImage(newGalaxyMapImage);
+        }
+        catch (Exception e) {
+                System.out.println("Galaxy ei toimi " + galPath);
+                }
         try {
             Image newStarImage1 = new Image(imgPath + starImg1);
             setStarImage1(newStarImage1);
