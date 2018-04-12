@@ -13,10 +13,10 @@
 public class Ship {
     //Ship's info
     private final String NAME = "Python mkII";
-    private String location;
-    private Star star;
-    private String planetName = "";
-    private Planet planet;
+    private String currentStarName;
+    private Star currentStar;
+    private String currentPlanetName = "";
+    private Planet currentPlanet;
     private int fuel = 10000;
     private int oxygen = 100;
     private int hull = 100;
@@ -37,7 +37,7 @@ public class Ship {
         setFuel(fuel + fuelGain);
     }
 
-    //Prints the name of the current star system.
+    //Prints the name of the current currentStar system.
     public String currentStarName() {
         Star currentStar = getStar();
         return currentStar.getName();
@@ -49,19 +49,19 @@ public class Ship {
     }
 
     public void setStar(Star star) {
-        this.star = star;
+        this.currentStar = star;
     }
 
     public Star getStar() {
-        return star;
+        return currentStar;
     }
 
     public String getLocation() {
-        return location;
+        return currentStarName;
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        this.currentStarName = location;
     }
 
     public int getFuel() {
@@ -89,18 +89,18 @@ public class Ship {
     }
 
     public void setPlanet(Planet planet) {
-        this.planet = planet;
+        this.currentPlanet = planet;
     }
 
     public Planet getPlanet() {
-        return planet;
+        return currentPlanet;
     }
 
     public void setPlanetName(String planetName) {
-        this.planetName = planetName;
+        this.currentPlanetName = planetName;
     }
 
     public String getPlanetName() {
-        return planetName;
+        return currentPlanetName;
     }
 }

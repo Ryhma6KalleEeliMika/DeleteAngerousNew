@@ -13,10 +13,13 @@ import javafx.scene.image.Image;
  */
 public class Planet {
     
+    //Name of the planet and the type: rock, lava, ring, gas, terran(earth like), water or ice.
     private String name, type;
     
+    //Planet's parent star.
     private Star parentStar;
     
+    //Planetäs "Orbiting reticle" image.
     private Image planetImage;
     
     //Constructor  

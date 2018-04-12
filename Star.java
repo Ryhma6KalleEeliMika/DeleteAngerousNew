@@ -13,24 +13,26 @@ import javafx.scene.image.Image;
  */
 public class Star {
     
-    //Star's details
+    //Star's id (not used as for know).
     private int id;
+    
+    //Satr's name.
     private String name;
 
-    //Star's neighbours names in string
+    //Star's neighbours names.
     private String n1, n2, n3, n4;
 
-    //Star's neighbours as objects
+    //Star's neighbours.
     private Star star1, star2, star3, star4;
     
-    //Star Image
+    //Star system images and the galaxy map image
     private Image starImage, starImage1, starImage2, starImage3, starImage4, galaxyMapImage;
     
-    //Star's planets:
+    //Star's child planets.
     private Planet planet1, planet2, planet3, planet4;
 
     //Star's default constructor creates the star's image object.
-    Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPath) {
+    Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPathAndImg) {
         
         //Setting up images for stars/planets/galaxy map
         try {
@@ -38,35 +40,42 @@ public class Star {
             setStarImage(newStarImage);
         }
         catch (Exception e) {
-            System.out.println("Eka star ei toimi " + imgPath + starImg);
         }
         try {
 
-            Image newGalaxyMapImage = new Image(galPath);
+            Image newGalaxyMapImage = new Image(galPathAndImg);
             setGalaxyMapImage(newGalaxyMapImage);
         }
         catch (Exception e) {
-                System.out.println("Galaxy ei toimi " + galPath);
-                }
+        }
         try {
             Image newStarImage1 = new Image(imgPath + starImg1);
             setStarImage1(newStarImage1);
-        }catch (Exception e) {}
+        }
+        catch (Exception e) {
+        }
         try {
             Image newStarImage2 = new Image(imgPath + starImg2);
             setStarImage2(newStarImage2);
-        }catch (Exception e) {}
+        }
+        catch (Exception e) {
+        }
         try {
             Image newStarImage3 = new Image(imgPath + starImg3);
             setStarImage3(newStarImage3);
-        }catch (Exception e) {}
+        }
+        catch (Exception e) {
+        }
         try {
             Image newStarImage4 = new Image(imgPath + starImg4);
             setStarImage4(newStarImage4);
-        }catch (Exception e) {}
+        }
+        catch (Exception e) {
+        }
     }
 
     //Star's detail setter
+    //id number, Star's name, Neighbouring stars 1-4 as String names and as objects, Parent star(this star) and it's child planet's names and types.(if any). 
     public void setStarDetails(int id, String name, String n1, String n2, String n3, String n4, Star star1, Star star2, Star star3, Star star4, 
             Star parent, String planetName1, String planetType1, String planetName2, String planetType2, 
             String planetName3, String planetType3, String planetName4, String planetType4) {
@@ -81,6 +90,8 @@ public class Star {
         this.star3 = star3;
         this.star4 = star4;
         
+        //Creating the planets that orbit this star(star's children).
+        //Star parent, String planet's name, String planet's type.
         Planet newPlanet1 = new Planet(parent, planetName1, planetType1, getStarImage1());
         this.planet1 = newPlanet1;
         
