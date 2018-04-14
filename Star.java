@@ -30,6 +30,55 @@ public class Star {
     
     //Star's child planets.
     private Planet planet1, planet2, planet3, planet4;
+    
+    //image paths
+    private String imgFolder = "Images/Stars/";
+    
+    private String gMapFolder = "Images/GalaxyMap/";
+    
+    //Star's default constructor creates the star's image object.
+    Star(int starId, String starName) {
+        this.id = starId;
+        this.name = starName;
+        //Setting up images for stars/planets/galaxy map
+        try {
+            Image newStarImage = new Image(imgFolder + starName + "/" + starName + ".png");
+            setStarImage(newStarImage);
+        }
+        catch (Exception e) {
+        }
+        try {
+            Image newGalaxyMapImage = new Image(gMapFolder + starName + "Map.png");
+            setGalaxyMapImage(newGalaxyMapImage);
+        }
+        catch (Exception e) {
+        }
+        try {
+            Image newStarImage1 = new Image(imgFolder + starName + "/" + starName  +"1.png");
+            setStarImage1(newStarImage1);
+        }
+        catch (Exception e) {
+        }
+        try {
+            Image newStarImage2 = new Image(imgFolder + starName + "/" + starName  +"2.png");
+            setStarImage2(newStarImage2);
+        }
+        catch (Exception e) {
+        }
+        try {
+            Image newStarImage3 = new Image(imgFolder + starName + "/" + starName  +"3.png");
+            setStarImage3(newStarImage3);
+        }
+        catch (Exception e) {
+        }
+        try {
+            Image newStarImage4 = new Image(imgFolder + starName + "/" + starName  +"4.png");
+            setStarImage4(newStarImage4);
+        }
+        catch (Exception e) {
+        }
+    }
+    
 
     //Star's default constructor creates the star's image object.
     Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPathAndImg) {
@@ -76,11 +125,9 @@ public class Star {
 
     //Star's detail setter
     //id number, Star's name, Neighbouring stars 1-4 as String names and as objects, Parent star(this star) and it's child planet's names and types.(if any). 
-    public void setStarDetails(int id, String name, String n1, String n2, String n3, String n4, Star star1, Star star2, Star star3, Star star4, 
+    public void setStarDetails( String n1, String n2, String n3, String n4, Star star1, Star star2, Star star3, Star star4, 
             Star parent, String planetName1, String planetType1, String planetName2, String planetType2, 
             String planetName3, String planetType3, String planetName4, String planetType4) {
-        this.id = id;
-        this.name = name;
         this.n1 = n1;
         this.n2 = n2;
         this.n3 = n3;
