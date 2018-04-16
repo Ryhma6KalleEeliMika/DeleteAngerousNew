@@ -20,6 +20,8 @@ public class Ship {
     private int fuel = 10000;
     private int oxygen = 100;
     private int hull = 100;
+    private int starsScanned = 0;
+    private int planetsScanned = 0;
 
     //Ship's constructor
     Ship(String location, Star star) {
@@ -102,5 +104,21 @@ public class Ship {
 
     public String getPlanetName() {
         return currentPlanetName;
+    }
+
+    public void setStarsScanned(int starsScanned) {
+        this.starsScanned = starsScanned;
+    }
+
+    public int getStarsScanned() {
+        return starsScanned;
+    }
+
+    public void setPlanetsScanned(int planetsScanned) {
+        this.planetsScanned = planetsScanned;
+    }
+
+    public int getPlanetsScanned() {
+        return planetsScanned;
     }
 }

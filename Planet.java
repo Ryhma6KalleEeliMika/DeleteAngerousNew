@@ -24,6 +24,7 @@ public class Planet {
     
     //Constructor  
     Planet(Star parent, String name, String type,Image planetImage) {
+        main.planetsScanned.put(name,false);
         setName(name);
         setParentStar(parent);
         setPlanetImage(planetImage);

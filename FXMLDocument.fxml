@@ -45,12 +45,12 @@
             </Button>
             <VBox alignment="CENTER" spacing="8.0" style="-fx-border-color: darkorange;">
                <children>
-                  <Label alignment="TOP_CENTER" text="CURRENT STAR" textAlignment="CENTER" textFill="DARKORANGE">
+                  <Label alignment="TOP_CENTER" text="Current Star" textAlignment="CENTER" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="currentStarButton" mnemonicParsing="false" style="-fx-background-color: darkorange;" text="Sol">
+                  <Button fx:id="currentStarButton" mnemonicParsing="false" onAction="#starButton" style="-fx-background-color: darkorange;" text="Sol">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
@@ -112,7 +112,7 @@
                   </Button>
                   <VBox alignment="CENTER" spacing="8.0" style="-fx-border-color: darkorange;">
                      <children>
-                        <Label alignment="TOP_CENTER" text="CURRENT PLANET" textAlignment="CENTER" textFill="DARKORANGE">
+                        <Label alignment="TOP_CENTER" text="Current Planet" textAlignment="CENTER" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="12.0" />
                            </font>
@@ -149,38 +149,81 @@
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER" spacing="10.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" spacing="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="FUEL:" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="fuelLabel" layoutX="10.0" layoutY="10.0" text="100" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="OXYGEN:" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="10.0" text="100" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="91.0" layoutY="10.0" text="HULL:" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="137.0" layoutY="10.0" text="100" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER_LEFT" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="FUEL" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label fx:id="fuelLabel" text="100" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Label text="Scanned" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="10.0" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label text="Stars:" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="starsScannedAmmount" text="0/32" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+                  <HBox spacing="10.0" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label text="Planets:" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="planetsScannedAmmount" text="0/78" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </HBox>
          </children>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

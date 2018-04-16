@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import java.util.HashMap;
+import java.util.Map;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +21,8 @@ public class main extends Application {
     //Global ship variable
     public static Ship myShip;
     
+    public static Map starsScanned, planetsScanned;
+    
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -31,6 +35,13 @@ public class main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //Location list.
+        Map<String, Boolean> starsScanned = new HashMap();
+        setStarsScanned(starsScanned);
+        
+        Map<String, Boolean> planetsScanned = new HashMap();
+        setPlanetsScanned(planetsScanned);
         
         //Star generation Id number and name.
         Star Sol = new Star(1, "Sol");
@@ -67,7 +78,7 @@ public class main extends Application {
         Star Xaar = new Star(32, "Xaar");
         
         //Once the stars are generated, details are added later. Neighbouring stars and planets.
-                        //N1name, N2name, N3name, N4name, ParentStar, planet1, p1Type, planet2, p2Type, planet3, p3Type, planet4, p4Type.
+        //N1name, N2name, N3name, N4name, ParentStar, planet1, p1Type, planet2, p2Type, planet3, p3Type, planet4, p4Type.
         Sol.setStarDetails("Maxima", "Ales", null, null, Maxima, Ales, null, null, Sol, "Kronos","rock", "Terra", "terran", "Smagua", "gas",null, null);
         Maxima.setStarDetails("Sol", "Ales", "Atok", null, Sol, Ales, Atok, null, Maxima, "Veibos", "rock", "Clao", "rock", null, null, null, null);
         Ales.setStarDetails("Sol", "Maxima", "Kriy", null, Sol, Maxima, Kriy, null, Ales, "Utreon", "gas", null, null, null, null, null, null);
@@ -77,7 +88,7 @@ public class main extends Application {
         Tramois.setStarDetails("Atok", "Veprio", "Lah", "Stripruar", Atok, Veprio, Lah, Stripruar, Tramois, null, null, null, null, null, null, null, null);
         Veprio.setStarDetails("Giol", "Tramois", "Strope", "Azon", Giol, Tramois, Strope, Azon, Veprio, "Proxia", "rock", "Skilia", "water", "Sloria", "ring", null, null);
         Evrae.setStarDetails("Giol", "Azon", null, null, Giol, Azon, null, null, Evrae, "Steelar", "rock", "Crio", "terran", null, null, null, null);
-        Azon.setStarDetails("Evrae", "Veprio", "Strope", "Koh", Evrae, Veprio, Strope, Koh, Azon, "Black hole", "black hole", "Giunope", "gas", "Duitera", "ring", "Spor", "rock");
+        Azon.setStarDetails("Evrae", "Veprio", "Strope", "Koh", Evrae, Veprio, Strope, Koh, Azon, "Boothill", "black hole", "Giunope", "gas", "Duitera", "ring", "Spor", "rock");
         Lah.setStarDetails("Tramois", "Stripruar", "Adeotre", "Kuel", Tramois, Stripruar, Adeotre, Kuel, Lah, "Beophus", "rock", "Glogua", "rock", "Stasie", "ice", null, null);
         Kuel.setStarDetails("Lah", "Ruan", null, null, Lah, Ruan, null, null, Kuel, "Praanus", "water", "Clapus", "rock", "Pelara", "gas", null, null);
         Ruan.setStarDetails("Kuel", null, null, null, Kuel, null, null, null, Ruan, "Foerus", "rock", "Blore", "rock", "Ailara", "ice", null, null);
@@ -115,5 +126,21 @@ public class main extends Application {
 
     public static Ship getMyShip() {
         return myShip;
+    }
+
+    public static void setStarsScanned(Map starsScanned) {
+        main.starsScanned = starsScanned;
+    }
+
+    public static Map getStarsScanned() {
+        return starsScanned;
+    }
+
+    public static void setPlanetsScanned(Map planetsScanned) {
+        main.planetsScanned = planetsScanned;
+    }
+
+    public static Map getPlanetsScanned() {
+        return planetsScanned;
     }
 }

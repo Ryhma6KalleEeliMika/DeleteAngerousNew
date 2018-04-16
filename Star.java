@@ -40,6 +40,8 @@ public class Star {
     Star(int starId, String starName) {
         this.id = starId;
         this.name = starName;
+        main.starsScanned.put(starName,false);
+        
         //Setting up images for stars/planets/galaxy map
         try {
             Image newStarImage = new Image(imgFolder + starName + "/" + starName + ".png");
@@ -79,50 +81,6 @@ public class Star {
         }
     }
     
-
-    //Star's default constructor creates the star's image object.
-    Star(String imgPath, String starImg, String starImg1, String starImg2, String starImg3, String starImg4, String galPathAndImg) {
-        
-        //Setting up images for stars/planets/galaxy map
-        try {
-            Image newStarImage = new Image(imgPath + starImg);
-            setStarImage(newStarImage);
-        }
-        catch (Exception e) {
-        }
-        try {
-
-            Image newGalaxyMapImage = new Image(galPathAndImg);
-            setGalaxyMapImage(newGalaxyMapImage);
-        }
-        catch (Exception e) {
-        }
-        try {
-            Image newStarImage1 = new Image(imgPath + starImg1);
-            setStarImage1(newStarImage1);
-        }
-        catch (Exception e) {
-        }
-        try {
-            Image newStarImage2 = new Image(imgPath + starImg2);
-            setStarImage2(newStarImage2);
-        }
-        catch (Exception e) {
-        }
-        try {
-            Image newStarImage3 = new Image(imgPath + starImg3);
-            setStarImage3(newStarImage3);
-        }
-        catch (Exception e) {
-        }
-        try {
-            Image newStarImage4 = new Image(imgPath + starImg4);
-            setStarImage4(newStarImage4);
-        }
-        catch (Exception e) {
-        }
-    }
-
     //Star's detail setter
     //id number, Star's name, Neighbouring stars 1-4 as String names and as objects, Parent star(this star) and it's child planet's names and types.(if any). 
     public void setStarDetails( String n1, String n2, String n3, String n4, Star star1, Star star2, Star star3, Star star4, 

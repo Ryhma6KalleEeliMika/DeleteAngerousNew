@@ -6,10 +6,11 @@
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,11 +33,14 @@ import javafx.util.Duration;
  */
 public class FXMLDocumentController implements Initializable {
     
+    //The ammount of stars and planets.
+    private final int MAXSTARS = 32, MAXPLANETS = 78;
+    
     @FXML   //Center screen image.
     private ImageView mainImage;
     
     @FXML   //BLue "jump successful" label, fuel ammount, ship name.
-    private Label jumpLabel, fuelLabel, shipNameLabel;
+    private Label jumpLabel, fuelLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel;
     
     @FXML   //Current star, current planet, galaxy map button 
     private Button currentStarButton, currentPlanetButton, gMBapButton;
@@ -56,15 +60,16 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
-
-    
     @FXML //Setting the starButtons to display the neighbouring stars and other gui things default after star jump. GUI refresh basically.
     private void setStarButtonNames() {
+        
         Ship myShip = main.getMyShip();
         Star currentStar = myShip.getStar();
         setFuelAmmount();
         mainImage.setImage(main.myShip.getStar().getStarImage());
         shipNameLabel.setText(myShip.getNAME());
+        
+        //Updates the text int the star and planet buttons.
         currentStarButton.setText(currentStar.getName());
         n1.setText(currentStar.getN1());
         n2.setText(currentStar.getN2());
@@ -75,6 +80,8 @@ public class FXMLDocumentController implements Initializable {
         p2.setText(currentStar.getPlanet2().getName());
         p3.setText(currentStar.getPlanet3().getName());
         p4.setText(currentStar.getPlanet4().getName());
+        
+
         
         //Sets planet button colors orange/blue and changes the image to correct orbiting planet.
         if (myShip.getPlanet() == currentStar.getPlanet1()) {
@@ -298,10 +305,44 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    @FXML  //Opens the star pop up window.
+    private void starButton(ActionEvent event) {
+        if (main.getMyShip().getStar() != null) {
+            try {
+                //Scanned stars counter goes up, if new star is scanned.
+                Map starsScanned = main.getStarsScanned();
+                Ship myShip = main.getMyShip();
+                if(starsScanned.get(myShip.currentStarName()).equals(false)){ //Checks if the star has been scanned.
+                    starsScanned.put(myShip.currentStarName(), true); //Changes the star to scanned.
+                    myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.
+                    starsScannedAmmount.setText(Integer.toString(myShip.getStarsScanned()) + "/" + MAXSTARS); //Updates the gui counter.
+                }
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StarPopUp.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setTitle("Second window");
+                //stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } 
+            catch (Exception e) {               
+            }
+        }
+    }
+    
     @FXML  //Opens the planet pop up window.
     private void planetButton(ActionEvent event) {
         if (main.getMyShip().getPlanet() != null) {
             try {
+                //Scanned planets counter goes up, if new planet is scanned.
+                Map planetsScanned = main.getPlanetsScanned();
+                Ship myShip = main.getMyShip();
+                if (planetsScanned.get(myShip.getPlanetName()).equals(false)) { //Checks if the star has been scanned.
+                    planetsScanned.put(myShip.getPlanetName(),true); //Changes the star to scanned.
+                    myShip.setPlanetsScanned(myShip.getPlanetsScanned() + 1); //Stars scanned countger goes up by one.
+                    planetsScannedAmmount.setText(Integer.toString(myShip.getPlanetsScanned()) + "/" + MAXPLANETS); //Updates the gui counter.
+                }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -311,7 +352,7 @@ public class FXMLDocumentController implements Initializable {
                 stage.setScene(new Scene(root1));
                 stage.show();
             } 
-            catch (Exception e) {               
+            catch (Exception e) {
             }
         }
     }

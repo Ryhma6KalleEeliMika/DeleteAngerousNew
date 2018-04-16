@@ -27,10 +27,7 @@ public class PlanetPopUpController implements Initializable {
     
     @FXML
     private void backButtonAction(){
-        // get a handle to the stage
         Stage stage = (Stage) backButton.getScene().getWindow();
-        // do what you have to do
-        System.out.println("jee");
         stage.close();
     }
     
