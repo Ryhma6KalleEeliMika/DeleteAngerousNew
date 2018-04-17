@@ -11,13 +11,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLShipPopUpController">
-   <right>
-      <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@Images/Ships/EagleMKII.png" />
-         </image>
-      </ImageView>
-   </right>
    <bottom>
       <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="556.0" BorderPane.alignment="CENTER_LEFT">
          <children>
@@ -156,4 +149,18 @@
          </children>
       </HBox>
    </top>
+   <right>
+      <HBox alignment="CENTER" style="-fx-border-color: darkorange;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/Ships/Eagle%20MkII.png" />
+               </image>
+            </ImageView>
+         </children>
+         <BorderPane.margin>
+            <Insets right="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </right>
 </BorderPane>

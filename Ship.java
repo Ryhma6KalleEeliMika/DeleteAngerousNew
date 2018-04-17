@@ -1,4 +1,7 @@
 
+import javafx.scene.image.Image;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,12 +29,14 @@ public class Ship {
     //Ship's constructor
     Ship(String location, Star star, String newName) {
         setName(newName);
-        setLocation(location);
+        setCurrentStarName(location);
         setStar(star);
+        Image shipsImage = new Image("Images/Ships/" + newName + ".png");
+        main.setShipImage(shipsImage);
         
         //Ship module creation based on the chosen ship's name.
         switch(newName){
-            case "eaglemkII":
+            case "Eagle MkII":
                 FuelCell newFuelCell = new FuelCell(100, "Small");
                 Hull newHull = new Hull(100, "Lightweight");
                 Engine newEngine = new Engine(10, 1, "Advanced");
@@ -40,7 +45,7 @@ public class Ship {
                 setShipHull(newHull);
                 break;
                 
-            case "hauler":
+            case "Hauler":
                 FuelCell newFuelCell2 = new FuelCell(100, "Small");
                 Hull newHull2 = new Hull(200, "Reinforced");
                 Engine newEngine2 = new Engine(15, 2, "Basic");
@@ -49,7 +54,7 @@ public class Ship {
                 setShipHull(newHull2);
                 break;
                 
-            case "adder":
+            case "Adder":
                 FuelCell newFuelCell3 = new FuelCell(150, "Medium");
                 Hull newHull3 = new Hull(100, "Lightweight");
                 Engine newEngine3 = new Engine(15, 2, "Basic");
@@ -83,11 +88,11 @@ public class Ship {
         return currentStar;
     }
 
-    public String getLocation() {
+    public String getCurrentStarName() {
         return currentStarName;
     }
 
-    public void setLocation(String location) {
+    public void setCurrentStarName(String location) {
         this.currentStarName = location;
     }
 

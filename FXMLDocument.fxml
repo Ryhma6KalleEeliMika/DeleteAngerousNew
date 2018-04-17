@@ -82,6 +82,11 @@
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
             </Label>
+            <HBox style="-fx-border-color: darkorange;">
+               <children>
+                  <ImageView fx:id="shipImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
             <Region nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS" />
             <Label text="INSTALLED MODULES" textFill="DARKORANGE">
                <font>
@@ -206,7 +211,7 @@
             </VBox>
          </children>
          <padding>
-            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+            <Insets bottom="8.0" left="20.0" right="8.0" top="8.0" />
          </padding></VBox>
    </right>
    <top>

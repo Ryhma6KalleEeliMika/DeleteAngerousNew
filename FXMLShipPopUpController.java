@@ -40,19 +40,19 @@ public class FXMLShipPopUpController implements Initializable {
     
     @FXML //Button when the Eagle MkII ship is selected.
     private void eaglemk2ButtonAction(ActionEvent event) throws IOException {
-        main.setChosenShipName("eaglemkII");
+        main.setChosenShipName("Eagle MkII");
         startGame();
     }
     
     @FXML //Button when the Hauler ship is selected.
     private void haulerButtonAction(ActionEvent event) throws IOException {
-        main.setChosenShipName("hauler");
+        main.setChosenShipName("Hauler");
         startGame();
     }
     
     @FXML //Button when the Adder ship is selected.
     private void adderButtonAction(ActionEvent event) throws IOException {
-        main.setChosenShipName("adder");
+        main.setChosenShipName("Adder");
         startGame();
     }
     

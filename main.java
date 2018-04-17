@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +22,7 @@ public class main extends Application {
     //Global variables
     //Main ship
     public static Ship myShip;
+    public static Image shipImage;
     
     //Stars scanned list
     public static Map starsScanned, planetsScanned;
@@ -179,5 +181,13 @@ public class main extends Application {
 
     public static Scene getMainMenu() {
         return mainMenu;
+    }
+
+    public static Image getShipImage() {
+        return shipImage;
+    }
+
+    public static void setShipImage(Image shipImage) {
+        main.shipImage = shipImage;
     }
 }

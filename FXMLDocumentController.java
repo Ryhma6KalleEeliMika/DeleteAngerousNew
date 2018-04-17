@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -37,8 +38,8 @@ public class FXMLDocumentController implements Initializable {
     //The ammount of stars and planets.
     private final int MAXSTARS = 32, MAXPLANETS = 78;
     
-    @FXML   //Center screen image.
-    private ImageView mainImage;
+    @FXML   //Center screen image and shipImage
+    private ImageView mainImage, shipImage;
     
     @FXML   //BLue "jump successful" label, fuel ammount, ship name.
     private Label jumpLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel,
@@ -86,7 +87,10 @@ public class FXMLDocumentController implements Initializable {
         Star currentStar = myShip.getStar();
         setFuelAmmount();
         setHullAmmount();
+        
+        //Images and ship name.
         mainImage.setImage(currentStar.getStarImage());
+        shipImage.setImage(main.getShipImage());
         shipNameLabel.setText(myShip.getName());
         
         //Scanner update
@@ -226,6 +230,7 @@ public class FXMLDocumentController implements Initializable {
         }
         else if (myShip.getShipFuelCell().getFuel() >= myShip.getShipEngine().getFuelUsageJump()) { //If fuel is above 10
             myShip.setStar(starTo); //Ship's star is set to the new star.
+            myShip.setCurrentStarName(starTo.getName());
             myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageJump());    //Ship loses fuel after the jump
             myShip.setPlanet(null); //Ship is not orbiting any planet after jump.
             myShip.setPlanetName("");
@@ -336,7 +341,8 @@ public class FXMLDocumentController implements Initializable {
                 Ship myShip = main.getMyShip();
                 if(starsScanned.get(myShip.currentStarName()).equals(false)){ //Checks if the star has been scanned.
                     starsScanned.put(myShip.currentStarName(), true); //Changes the star to scanned.
-                    myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.          
+                    myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.
+                    setJumpLabel(myShip.getCurrentStarName() + " scanned"); //Prints the current star name scanned message.
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StarPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -362,6 +368,7 @@ public class FXMLDocumentController implements Initializable {
                 if (planetsScanned.get(myShip.getPlanetName()).equals(false)) { //Checks if the star has been scanned.
                     planetsScanned.put(myShip.getPlanetName(),true); //Changes the star to scanned.
                     myShip.setPlanetsScanned(myShip.getPlanetsScanned() + 1); //Stars scanned countger goes up by one.
+                    setJumpLabel(myShip.getPlanetName() + " scanned"); //Prints the current planet name scanned message.
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
