@@ -16,6 +16,9 @@ public class Planet {
     //Name of the planet and the type: rock, lava, ring, gas, terran(earth like), water or ice.
     private String name, type;
     
+    //Planet's surface
+    private Surface planetSurface;
+    
     //Planet's parent star.
     private Star parentStar;
     
@@ -26,6 +29,8 @@ public class Planet {
     Planet(Star parent, String name, String type,Image planetImage) {
         main.planetsScanned.put(name,false);
         setName(name);
+        Surface newSurface = new Surface(name);
+        setPlanetSurface(newSurface);
         setParentStar(parent);
         setPlanetImage(planetImage);
         setType(type);
@@ -63,4 +68,13 @@ public class Planet {
     public void setType(String type) {
         this.type = type;
     }
+
+    public void setPlanetSurface(Surface planetSurface) {
+        this.planetSurface = planetSurface;
+    }
+
+    public Surface getPlanetSurface() {
+        return planetSurface;
+    }
+    
 }

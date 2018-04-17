@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -17,9 +19,42 @@ import javafx.stage.Stage;
  * @author Kalle
  */
 public class StarPopUpController implements Initializable {
+    @FXML    
+    private Button fuelScoopButton, exitButton;
     
+    @FXML
+    private Label starNameLabel;
+    
+    @FXML
+    private ImageView starImage;
+    
+    @FXML
+    private void exitButtonAction(){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
+    }
+    
+    @FXML
+    private void fuelScoopButtonAction(){
+        if(main.myShip.getStar().getScoopTimes() == 2){
+            main.myShip.fuelGain(25);
+            main.myShip.getStar().setScoopTimes(1);
+        }
+        else if(main.myShip.getStar().getScoopTimes() == 1){
+            main.myShip.fuelGain(25);
+            main.myShip.hullLoss(20);
+            main.myShip.getStar().setScoopTimes(0);
+            fuelScoopButton.setDisable(true);
+            main.myShip.getStar().setScoop(false);
+            System.out.println(main.myShip.getHull());
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        starNameLabel.setText(main.myShip.currentStarName());
+        starImage.setImage(main.myShip.getStar().getStarsSurface().getSurfaceImage());
+        if (!main.myShip.getStar().getScoop()){
+            fuelScoopButton.setDisable(true);
+        }
     }
 }

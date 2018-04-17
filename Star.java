@@ -16,8 +16,17 @@ public class Star {
     //Star's id (not used as for know).
     private int id;
     
-    //Satr's name.
+    //Star's name.
     private String name;
+    
+    //Star's Surface
+    private Surface starsSurface;
+    
+    //Is star scoopable
+    private boolean scoop;
+    
+    //Scoop attempts times
+    private int scoopTimes = 0;
 
     //Star's neighbours names.
     private String n1, n2, n3, n4;
@@ -37,10 +46,17 @@ public class Star {
     private String gMapFolder = "Images/GalaxyMap/";
     
     //Star's default constructor creates the star's image object.
-    Star(int starId, String starName) {
+    Star(int starId, String starName, boolean scoopable) {
         this.id = starId;
         this.name = starName;
+        this.scoop = scoopable;
+        if (scoopable){
+            this.scoopTimes = 2;
+        }
         main.starsScanned.put(starName,false);
+        Surface starsSurface = new Surface(starName);
+        setStarsSurface(starsSurface);
+        
         
         //Setting up images for stars/planets/galaxy map
         try {
@@ -226,4 +242,28 @@ public class Star {
     public void setPlanet4(Planet planet4) {
         this.planet4 = planet4;
     }
+
+    public void setStarsSurface(Surface starsSurface) {
+        this.starsSurface = starsSurface;
+    }
+
+    public Surface getStarsSurface() {
+        return starsSurface;
+    }
+
+    public void setScoop(boolean scoop) {
+        this.scoop = scoop;
+    }
+    public boolean getScoop() {
+        return scoop;
+    }
+
+    public void setScoopTimes(int scoopTimes) {
+        this.scoopTimes = scoopTimes;
+    }
+
+    public int getScoopTimes() {
+        return scoopTimes;
+    }
+    
 }

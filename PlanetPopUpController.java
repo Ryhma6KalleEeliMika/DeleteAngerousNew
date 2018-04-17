@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -20,14 +21,17 @@ import javafx.stage.Stage;
 public class PlanetPopUpController implements Initializable {
     
     @FXML    
-    private Button backButton;
+    private Button exitButton, actionButton;
     
     @FXML
-    private Label planetName;
+    private Label planetNameLabel, planetTypeLabel;
     
     @FXML
-    private void backButtonAction(){
-        Stage stage = (Stage) backButton.getScene().getWindow();
+    private ImageView planetImage;
+    
+    @FXML
+    private void exitButtonAction(){
+        Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
     
@@ -37,6 +41,9 @@ public class PlanetPopUpController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        planetName.setText(main.myShip.getPlanetName()); //Sets the planets to the screen.
+        planetNameLabel.setText(main.myShip.getPlanetName()); //Sets the planets to the screen.
+        planetTypeLabel.setText(main.myShip.getPlanet().getType());
+        planetImage.setImage(main.myShip.getPlanet().getPlanetSurface().getSurfaceImage());
+        
     }
 }

@@ -44,7 +44,17 @@ public class Ship {
         Star currentStar = getStar();
         return currentStar.getName();
     }
-
+    
+    //Hull loss method
+    public void hullLoss(int hullLoss){
+        setHull(hull - hullLoss);
+    }
+    
+    //Hull gain method
+    public void hullGain(int hullGain){
+        setHull(hull + hullGain);
+    }
+    
     //Getters and setters.........................................................
     public String getNAME() {
         return NAME;
