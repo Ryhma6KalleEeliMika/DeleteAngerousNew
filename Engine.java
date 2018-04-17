@@ -11,7 +11,7 @@
 public class Engine {
     private int fuelUsageJump;
     private int fuelUsageTravel;
-    private String name;
+    private String name;    //Basic, Advanced, Elite
     
     Engine(int newFuelUsageJump, int newFuelUsageTravel, String newName){
         setFuelUsageJump(newFuelUsageJump);
@@ -19,6 +19,7 @@ public class Engine {
         setName(newName);
     }
 
+    //Setters and getters.................................
     public int getFuelUsageJump() {
         return fuelUsageJump;
     }
@@ -42,6 +43,4 @@ public class Engine {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
 }

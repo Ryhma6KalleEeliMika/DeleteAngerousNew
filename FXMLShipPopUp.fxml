@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLShipPopUpController">
    <right>
       <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
@@ -19,7 +19,7 @@
       </ImageView>
    </right>
    <bottom>
-      <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="556.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="556.0" BorderPane.alignment="CENTER_LEFT">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="150.0">
                <children>
@@ -31,7 +31,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="startFuelLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="125" textFill="DARKORANGE">
+                  <Label fx:id="startFuelLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -69,12 +69,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="240.0">
                <children>
-                  <Label text="GARGO" textFill="DARKORANGE">
+                  <Label text="ENG" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="startGargoLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="10T" textFill="DARKORANGE">
+                  <Label fx:id="startEngineLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="ADVANCED" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -98,7 +98,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="eaglemk2" mnemonicParsing="false" onAction="#eaglemk2Button" onMouseEntered="#eagleHower" style="-fx-background-color: darkorange;" text="EAGLE MK II">
+                  <Button fx:id="eaglemk2Button" mnemonicParsing="false" onAction="#eaglemk2ButtonAction" style="-fx-background-color: darkorange;" text="EAGLE MKII">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -107,7 +107,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="hauler" mnemonicParsing="false" onAction="#haulerButton" onMouseEntered="#haulerHower" style="-fx-background-color: darkorange;" text="HAULER">
+                  <Button fx:id="haulerButton" mnemonicParsing="false" onAction="#haulerButtonAction" style="-fx-background-color: darkorange;" text="HAULER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -116,7 +116,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="adder" mnemonicParsing="false" onAction="#adderButton" onMouseEntered="#addeower" style="-fx-background-color: darkorange;" text="ADDER">
+                  <Button fx:id="adderButton" mnemonicParsing="false" onAction="#adderButtonAction" style="-fx-background-color: darkorange;" text="ADDER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -134,7 +134,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="492.0">
                <children>
-                  <Label text="CHOOSE YOU'R SHIP" textFill="DARKORANGE">
+                  <Label text="CHOOSE YOUR SHIP" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -146,7 +146,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="407.0">
                <children>
-                  <Label fx:id="shipNameLabel" text="EAGLE MK II" textFill="DARKORANGE">
+                  <Label fx:id="shipNameLabel" text="EAGLE MKII" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>

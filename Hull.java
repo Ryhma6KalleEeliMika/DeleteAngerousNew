@@ -11,9 +11,9 @@
 public class Hull {
     private int hull;
     private int maxHull;
-    private String name;
+    private String name;    //Lightweight, Reinforced, Military
     
-    
+    //Constructor
     Hull(int newMaxHull, String newName){
         setHull(newMaxHull);
         setMaxHull(newMaxHull);
@@ -32,10 +32,10 @@ public class Hull {
         }
         else{
             setHull(getHull() + hullGain);
-        }
-        
+        }    
     }
-
+    
+    //Setters and getters................................
     public int getHull() {
         return hull;
     }
@@ -59,6 +59,4 @@ public class Hull {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
 }

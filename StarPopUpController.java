@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,20 +37,21 @@ public class StarPopUpController implements Initializable {
     }
     
     @FXML
-    private void fuelScoopButtonAction(){
+    private void fuelScoopButtonAction() {
+        
         if(main.myShip.getStar().getScoopTimes() == 2){
-            main.myShip.fuelGain(25);
+            main.myShip.getShipFuelCell().fuelGain(25);
             main.myShip.getStar().setScoopTimes(1);
         }
         else if(main.myShip.getStar().getScoopTimes() == 1){
-            main.myShip.fuelGain(25);
-            main.myShip.hullLoss(20);
+            main.myShip.getShipFuelCell().fuelGain(25);
+            main.myShip.getShipHull().hullLoss(20);
             main.myShip.getStar().setScoopTimes(0);
             fuelScoopButton.setDisable(true);
             main.myShip.getStar().setScoop(false);
-            System.out.println(main.myShip.getHull());
         }
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         starNameLabel.setText(main.myShip.currentStarName());

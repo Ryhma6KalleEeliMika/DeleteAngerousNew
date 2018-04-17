@@ -16,7 +16,7 @@ public class Surface {
     private String Name;
     private String imgPath = "Images/Surface/";
     
-    
+    //Constructor
     Surface(String newName){
         setName(newName);
         try{
@@ -26,7 +26,8 @@ public class Surface {
         catch (Exception e){
         }
     }
-
+    
+    //Setters and getters..................................
     public String getName() {
         return Name;
     }
@@ -42,6 +43,4 @@ public class Surface {
     public void setSurfaceImage(Image surfaceImage) {
         this.surfaceImage = surfaceImage;
     }
-    
-    
 }

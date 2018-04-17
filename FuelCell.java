@@ -11,16 +11,14 @@
 public class FuelCell {
     private int fuel;
     private int maxFuel;
-    private String name;
-    
-    
+    private String name;    //Small, Medium, Large
     
     //Fuel loss method
     public void fuelLoss(int fuelLoss){
         setFuel(fuel - fuelLoss);
     }
     
-    //Fuel gain method "Not used yet."
+    //Fuel gain method
     public void fuelGain(int fuelGain){
         if(fuelGain + getFuel() >= getMaxFuel()){
             setFuel(getMaxFuel());
@@ -28,14 +26,16 @@ public class FuelCell {
         else{
             setFuel(getFuel() + fuelGain);
         }
-        
     }
+    
+    //Constructor
     FuelCell(int newMaxFuel, String newName){
         setMaxFuel(newMaxFuel);
         setFuel(newMaxFuel);
         setName(newName);
     }
-
+    
+    //Setters and getters................................
     public int getFuel() {
         return fuel;
     }
@@ -59,7 +59,4 @@ public class FuelCell {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
 }

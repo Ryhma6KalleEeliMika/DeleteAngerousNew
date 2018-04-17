@@ -18,15 +18,29 @@ import javafx.stage.Stage;
  */
 public class main extends Application {
     
-    //Global ship variable
+    //Global variables
+    //Main ship
     public static Ship myShip;
     
+    //Stars scanned list
     public static Map starsScanned, planetsScanned;
+    
+    //Chosen shipName
+    public static String chosenShipName;
+    
+    //Starting star
+    public static Star startingStar;
+    
+    public static Scene mainMenu;
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        Scene scene = new Scene(root);
+        
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent mainMenu = FXMLLoader.load(getClass().getResource("FXMLMainMenu.fxml"));
+        Scene scene = new Scene(mainMenu);
+        setMainMenu(scene);
+        //stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
         stage.setScene(scene);
         stage.show();
     }
@@ -112,14 +126,13 @@ public class main extends Application {
         Oxuatri.setStarDetails("Pheur", "Peode", "Xaar", null, Pheur, Peode, Xaar, null, Oxuatri, "Xanran", "ring", "Xemron", "gas", null, null, null, null);
         Xaar.setStarDetails("Oxuatri", null, null, null, Oxuatri, null, null, null, Xaar, "Ramor", "rock", null, null, null, null, null, null);
         
-        //Ship generation Starting star system name and star system object.
-        Ship newShip = new Ship("Sol", Sol);
-        setMyShip(newShip);
+        setStartingStar(Sol);
         
         //Gui starts here.
         launch(args);
     }
-
+    
+    //Setters and getters......................................................................
     public static void setMyShip(Ship newShip) {
         main.myShip = newShip;
     }
@@ -142,5 +155,29 @@ public class main extends Application {
 
     public static Map getPlanetsScanned() {
         return planetsScanned;
+    }
+
+    public static void setChosenShipName(String chosenShipName) {
+        main.chosenShipName = chosenShipName;
+    }
+
+    public static String getChosenShipName() {
+        return chosenShipName;
+    }
+
+    public static Star getStartingStar() {
+        return startingStar;
+    }
+
+    public static void setStartingStar(Star startingStar) {
+        main.startingStar = startingStar;
+    }
+
+    public static void setMainMenu(Scene mainMenu) {
+        main.mainMenu = mainMenu;
+    }
+
+    public static Scene getMainMenu() {
+        return mainMenu;
     }
 }

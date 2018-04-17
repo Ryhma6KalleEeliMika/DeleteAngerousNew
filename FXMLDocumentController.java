@@ -7,10 +7,11 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +41,11 @@ public class FXMLDocumentController implements Initializable {
     private ImageView mainImage;
     
     @FXML   //BLue "jump successful" label, fuel ammount, ship name.
-    private Label jumpLabel, fuelLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel;
+    private Label jumpLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel,
+            fuelCellTypeLabel, hullTypeLabel, engineTypeLabel;
+    
+    @FXML
+    public Label fuelLabel, hullLabel;
     
     @FXML   //Current star, current planet, galaxy map button 
     private Button currentStarButton, currentPlanetButton, gMBapButton;
@@ -54,21 +59,40 @@ public class FXMLDocumentController implements Initializable {
     @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
         Ship myShip = main.getMyShip();
-        fuelLabel.setText(Integer.toString(myShip.getFuel()));
-        if (myShip.getFuel() < 21){
+        fuelLabel.setText(Integer.toString(myShip.getShipFuelCell().getFuel()));
+        if (myShip.getShipFuelCell().getFuel() < 21){ //Color changes to red if fuel is low.
             fuelLabel.setTextFill(Color.web("red"));
+        }
+        else {
+            fuelLabel.setTextFill(Color.web("darkorange"));
         }
     }
     
-    @FXML //Setting the starButtons to display the neighbouring stars and other gui things default after star jump. GUI refresh basically.
-    private void setStarButtonNames() {
-        
+    @FXML   //Hull ammount
+    private void setHullAmmount() {
+        Ship myShip = main.getMyShip();
+        hullLabel.setText(Integer.toString(myShip.getShipHull().getHull()));
+        if (myShip.getShipHull().getHull() < 21){ //Color changes to red if hull is low.
+            hullLabel.setTextFill(Color.web("red"));
+        }
+        else {
+            hullLabel.setTextFill(Color.web("darkorange"));
+        }
+    }
+    
+    @FXML //GUI refresh. Happens every tenth of a second.
+    public void guiRefresh() {
         Ship myShip = main.getMyShip();
         Star currentStar = myShip.getStar();
         setFuelAmmount();
-        mainImage.setImage(main.myShip.getStar().getStarImage());
-        shipNameLabel.setText(myShip.getNAME());
+        setHullAmmount();
+        mainImage.setImage(currentStar.getStarImage());
+        shipNameLabel.setText(myShip.getName());
         
+        //Scanner update
+        starsScannedAmmount.setText(Integer.toString(myShip.getStarsScanned()) + "/" + MAXSTARS);
+        planetsScannedAmmount.setText(Integer.toString(myShip.getPlanetsScanned()) + "/" + MAXPLANETS); 
+
         //Updates the text int the star and planet buttons.
         currentStarButton.setText(currentStar.getName());
         n1.setText(currentStar.getN1());
@@ -81,7 +105,10 @@ public class FXMLDocumentController implements Initializable {
         p3.setText(currentStar.getPlanet3().getName());
         p4.setText(currentStar.getPlanet4().getName());
         
-
+        //Updates ship modules
+        fuelCellTypeLabel.setText(myShip.getShipFuelCell().getName());
+        hullTypeLabel.setText(myShip.getShipHull().getName());
+        engineTypeLabel.setText(myShip.getShipEngine().getName());
         
         //Sets planet button colors orange/blue and changes the image to correct orbiting planet.
         if (myShip.getPlanet() == currentStar.getPlanet1()) {
@@ -197,17 +224,15 @@ public class FXMLDocumentController implements Initializable {
         if (starTo == null) {   //If star doesn't exist
             return "Error! Invalid selection.";
         }
-        else if (myShip.getFuel() > 9) { //If fuel is above 10
+        else if (myShip.getShipFuelCell().getFuel() >= myShip.getShipEngine().getFuelUsageJump()) { //If fuel is above 10
             myShip.setStar(starTo); //Ship's star is set to the new star.
-            myShip.fuelLoss(10);    //Ship loses 10 fuel after the jump
+            myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageJump());    //Ship loses fuel after the jump
             myShip.setPlanet(null); //Ship is not orbiting any planet after jump.
             myShip.setPlanetName("");
-            mainImage.setImage(starTo.getStarImage()); //Main image changes to the new star system.
-            setStarButtonNames();   //Gui refresh
-            if (myShip.getFuel() == 0) {    //If fuel is zero after the jump.
+            if (myShip.getShipFuelCell().getFuel() == 0) {    //If fuel is zero after the jump.
                 return "Jump succesful Critical warning!\nFuel cells depleted!";
             }
-            else if (myShip.getFuel() < 21) {   //If fuel is low after the jump.
+            else if (myShip.getShipFuelCell().getFuel() < 21) {   //If fuel is low after the jump.
                  return "Jump succesful Warning!\nFuel cells close to depletion.";
             }
             else {  //Normal procedures
@@ -281,18 +306,15 @@ public class FXMLDocumentController implements Initializable {
         if(myShip.getPlanetName().equals(planetName)){  //Checks if the ship is already orbiting that planet
             return "Error! Invalid selection!\nAlready orbiting " + planetName;   
         }
-        else if (myShip.getFuel() > 0 && destinationPlanet != null) { //Checks if there is enough fuel and the target exists
+        else if (myShip.getShipFuelCell().getFuel() >= myShip.getShipEngine().getFuelUsageTravel() && destinationPlanet != null) { //Checks if there is enough fuel and the target exists
             if (planetName != null) { //If planet exists.
-                myShip.fuelLoss(1); //Fuel depletes by one.
-                currentPlanetButton.setText(planetName); //Sets the "Current planet" label as the name of the planet the ship is currently at.
+                myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageTravel()); //Fuel depletes by one.
                 myShip.setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
                 myShip.setPlanetName(planetName); //Sets ships current planet name as the new planet.
-                mainImage.setImage(destinationPlanet.getPlanetImage()); //Changes the main image to orbit that planet.
-                setStarButtonNames();
-                if (myShip.getFuel() == 0) { //If fuel is at zero after the travel
+                if (myShip.getShipFuelCell().getFuel() == 0) { //If fuel is at zero after the travel
                     return "Orbiting " + planetName +" Critical warning!\nFuel cells depleted!";
                 }
-                else if (myShip.getFuel() < 21) { //If fuel is low after the travel
+                else if (myShip.getShipFuelCell().getFuel() < 21) { //If fuel is low after the travel
                      return "Orbiting " + planetName +" Warning!\nFuel cells close to depletion.";
                 }
                 else { //Normal procedures
@@ -314,8 +336,7 @@ public class FXMLDocumentController implements Initializable {
                 Ship myShip = main.getMyShip();
                 if(starsScanned.get(myShip.currentStarName()).equals(false)){ //Checks if the star has been scanned.
                     starsScanned.put(myShip.currentStarName(), true); //Changes the star to scanned.
-                    myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.
-                    starsScannedAmmount.setText(Integer.toString(myShip.getStarsScanned()) + "/" + MAXSTARS); //Updates the gui counter.
+                    myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.          
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StarPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -341,7 +362,6 @@ public class FXMLDocumentController implements Initializable {
                 if (planetsScanned.get(myShip.getPlanetName()).equals(false)) { //Checks if the star has been scanned.
                     planetsScanned.put(myShip.getPlanetName(),true); //Changes the star to scanned.
                     myShip.setPlanetsScanned(myShip.getPlanetsScanned() + 1); //Stars scanned countger goes up by one.
-                    planetsScannedAmmount.setText(Integer.toString(myShip.getPlanetsScanned()) + "/" + MAXPLANETS); //Updates the gui counter.
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -356,11 +376,26 @@ public class FXMLDocumentController implements Initializable {
             }
         }
     }
-
-    //Code that runs first when the GUI starts. Updates the ships name label and the N1-N4 button labels to view neihgbouring stars.
+    
+    //Code that runs first when the GUI starts.
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        setStarButtonNames();  //GUI refresh
+    public void initialize(URL url, ResourceBundle rb){
         setJumpLabel("");   //Empty jump label "Jump successful"
+        
+        //Automatically updates the GUI every tenth of a second.
+        Task task = new Task<Void>() {
+         @Override
+         public Void call() throws Exception {
+           int i = 0;
+            while (true) {
+                 final int finalI = i++;
+                 Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
+                 Thread.sleep (100);    //How often
+             }
+         }
+       };
+       Thread th = new Thread(task);
+       th.setDaemon(true);
+       th.start();
     }
 }
