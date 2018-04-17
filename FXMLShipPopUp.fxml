@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@Images/Ships/EagleMKII.png" />
+         </image>
+      </ImageView>
+   </right>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="556.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="150.0">
+               <children>
+                  <Label text="FUEL" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="startFuelLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="125" textFill="DARKORANGE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="150.0">
+               <children>
+                  <Label text="HULL" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="startHullLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="240.0">
+               <children>
+                  <Label text="GARGO" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="startGargoLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="10T" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox prefHeight="261.0" prefWidth="180.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="eaglemk2" mnemonicParsing="false" onAction="#eaglemk2Button" onMouseEntered="#eagleHower" style="-fx-background-color: darkorange;" text="EAGLE MK II">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="hauler" mnemonicParsing="false" onAction="#haulerButton" onMouseEntered="#haulerHower" style="-fx-background-color: darkorange;" text="HAULER">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="adder" mnemonicParsing="false" onAction="#adderButton" onMouseEntered="#addeower" style="-fx-background-color: darkorange;" text="ADDER">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="25.0" top="50.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <HBox prefHeight="49.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="492.0">
+               <children>
+                  <Label text="CHOOSE YOU'R SHIP" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="407.0">
+               <children>
+                  <Label fx:id="shipNameLabel" text="EAGLE MK II" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

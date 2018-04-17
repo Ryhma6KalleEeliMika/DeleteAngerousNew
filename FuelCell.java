@@ -1,0 +1,65 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Mika Vuorinen
+ */
+public class FuelCell {
+    private int fuel;
+    private int maxFuel;
+    private String name;
+    
+    
+    
+    //Fuel loss method
+    public void fuelLoss(int fuelLoss){
+        setFuel(fuel - fuelLoss);
+    }
+    
+    //Fuel gain method "Not used yet."
+    public void fuelGain(int fuelGain){
+        if(fuelGain + getFuel() >= getMaxFuel()){
+            setFuel(getMaxFuel());
+        }
+        else{
+            setFuel(getFuel() + fuelGain);
+        }
+        
+    }
+    FuelCell(int newMaxFuel, String newName){
+        setMaxFuel(newMaxFuel);
+        setFuel(newMaxFuel);
+        setName(newName);
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(int fuel) {
+        this.fuel = fuel;
+    }
+
+    public int getMaxFuel() {
+        return maxFuel;
+    }
+
+    public void setMaxFuel(int maxFuel) {
+        this.maxFuel = maxFuel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
+    
+}
