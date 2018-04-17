@@ -81,7 +81,7 @@ public class FXMLShipPopUpController implements Initializable {
     @Override   //Mouse hover action.
     public void initialize(URL url, ResourceBundle rb) {
         eaglemk2Button.hoverProperty().addListener(l->{ //EagleMK2 button mouse hover.
-            Image image = new Image("Images/Ships/EagleMKII.png");
+            Image image = new Image("Images/Ships/Eagle MkII.png");
             shipImage.setImage(image);
             startFuelLabel.setText("100");
             startHullLabel.setText("100");
