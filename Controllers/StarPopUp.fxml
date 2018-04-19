@@ -28,7 +28,7 @@
          <children>
             <ImageView fx:id="starImage" fitHeight="238.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Surface/Sol.png" />
+                  <Image url="@../Images/Surface/Sol.png" />
                </image>
             </ImageView>
          </children>

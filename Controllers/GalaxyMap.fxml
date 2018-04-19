@@ -57,7 +57,7 @@
                <children>
                   <ImageView fx:id="galaxyImage" fitHeight="900.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/GalaxyMap/SolMap.png" />
+                        <Image url="@../Images/GalaxyMap/SolMap.png" />
                      </image>
                   </ImageView>
                </children>

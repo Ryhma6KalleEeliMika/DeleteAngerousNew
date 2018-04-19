@@ -28,7 +28,7 @@
          <children>
             <ImageView fx:id="planetImage" fitHeight="263.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Surface/Terra.png" />
+                  <Image url="@../Images/Surface/Terra.png" />
                </image>
             </ImageView>
          </children>

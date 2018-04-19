@@ -154,7 +154,7 @@
          <children>
             <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Ships/Eagle%20MkII.png" />
+                  <Image url="@../Images/Ships/Eagle%20MkII.png" />
                </image>
             </ImageView>
          </children>
