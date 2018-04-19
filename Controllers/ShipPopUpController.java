@@ -1,9 +1,13 @@
+package Controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Main.main;
+import Objects.Ship;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +32,7 @@ import javafx.stage.StageStyle;
  *
  * @author Mika Vuorinen
  */
-public class FXMLShipPopUpController implements Initializable {
+public class ShipPopUpController implements Initializable {
     
     @FXML   //Ship choose buttons.
     private Button eaglemk2Button, haulerButton, adderButton;
@@ -59,23 +64,20 @@ public class FXMLShipPopUpController implements Initializable {
     @FXML   //game starts when the ship is chosen
     private void startGame() throws IOException {
         
-        //Closes the mainmenu view.
+        //Closes the ship selection pop up.
         Stage popUpStage = (Stage) adderButton.getScene().getWindow();
         popUpStage.close();
-        Stage mainMenu = (Stage) main.getMainMenu().getWindow();
-        mainMenu.close();
+        
+        //Switches the main menu to the main view.
+        Parent normalView = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainView.fxml"));
+        Scene normalScene = new Scene(normalView);
+        Stage window = (Stage)main.getMainMenu().getWindow();
+        window.setScene(normalScene);
+        window.show();
         
         //Ship generation Starting star system name, star system object and the chosen ship name.
         Ship newShip = new Ship("Sol", main.getStartingStar(), main.getChosenShipName());
         main.setMyShip(newShip);
-        
-        //Main game view opens.
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        //stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
-        stage.setScene(new Scene(root1));
-        stage.show();
     }
     
     @Override   //Mouse hover action.

@@ -1,4 +1,9 @@
+package Objects;
 
+
+import Main.main;
+import Objects.Engine;
+import Objects.FuelCell;
 import javafx.scene.image.Image;
 
 
@@ -27,7 +32,7 @@ public class Ship {
     private Engine shipEngine;
 
     //Ship's constructor
-    Ship(String location, Star star, String newName) {
+    public Ship(String location, Star star, String newName) {
         setName(newName);
         setCurrentStarName(location);
         setStar(star);

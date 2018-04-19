@@ -1,3 +1,5 @@
+package Controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,14 +25,14 @@ import javafx.stage.StageStyle;
  *
  * @author Mika Vuorinen
  */
-public class FXMLMainMenuController implements Initializable {
+public class MainMenuController implements Initializable {
     
     @FXML   //Main menu buttons.
     private Button exitButton, startGameButton, optionButton;
     
     @FXML //Button that opens the ship pop up.
     private void startGameButtonAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLShipPopUp.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ShipPopUp.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Second window");

@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black; -fx-border-color: DarkOrange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StarPopUpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black; -fx-border-color: DarkOrange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PlanetPopUpController">
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="starNameLabel" text="Star name" textFill="DARKORANGE">
+            <Label fx:id="planetNameLabel" text="Planet Name" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>
@@ -27,9 +26,9 @@
    <right>
       <VBox prefHeight="225.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="starImage" fitHeight="238.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="planetImage" fitHeight="263.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Surface/Sol.png" />
+                  <Image url="@Images/Surface/Terra.png" />
                </image>
             </ImageView>
          </children>
@@ -40,7 +39,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="fuelScoopButton" mnemonicParsing="false" onAction="#fuelScoopButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Fuel Scoop" textAlignment="CENTER">
+                  <Button fx:id="actionButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Action" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -62,12 +61,36 @@
    <left>
       <VBox prefHeight="296.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Star description" textFill="DARKORANGE">
+            <Label prefHeight="23.0" prefWidth="292.0" text="Planet description" textFill="DARKORANGE">
                <font>
-                  <Font name="Xirod-Regular" size="18.0" />
+                  <Font name="Xirod-Regular" size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="starDescription" prefHeight="228.0" prefWidth="284.0" style="-fx-background-color: Black;" />
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Type" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label fx:id="planetTypeLabel" text="Type" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <TextField fx:id="planetDescription" editable="false" prefHeight="228.0" prefWidth="284.0" style="-fx-background-color: Black;" />
          </children>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

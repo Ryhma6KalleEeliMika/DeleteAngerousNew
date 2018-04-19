@@ -1,9 +1,11 @@
+package Main;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import Objects.*;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
@@ -39,7 +41,7 @@ public class main extends Application {
     public void start(Stage stage) throws Exception {
         
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent mainMenu = FXMLLoader.load(getClass().getResource("FXMLMainMenu.fxml"));
+        Parent mainMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainMenu.fxml"));
         Scene scene = new Scene(mainMenu);
         setMainMenu(scene);
         //stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.

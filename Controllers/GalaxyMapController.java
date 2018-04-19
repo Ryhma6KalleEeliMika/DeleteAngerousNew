@@ -1,9 +1,13 @@
+package Controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Objects.Star;
+import Main.main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +37,7 @@ public class GalaxyMapController implements Initializable {
     
     @FXML //Button that takes you back to the main view.
     private void backButton(ActionEvent event) throws IOException {
-        Parent normalView = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent normalView = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainView.fxml"));
         Scene normalScene = new Scene(normalView);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(normalScene);

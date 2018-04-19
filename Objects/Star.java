@@ -1,5 +1,8 @@
+package Objects;
+
 
 import javafx.scene.image.Image;
+import Main.main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -46,7 +49,7 @@ public class Star {
     private String gMapFolder = "Images/GalaxyMap/";
     
     //Star's default constructor creates the star's image object.
-    Star(int starId, String starName, boolean scoopable) {
+    public Star(int starId, String starName, boolean scoopable) {
         this.id = starId;
         this.name = starName;
         this.scoop = scoopable;

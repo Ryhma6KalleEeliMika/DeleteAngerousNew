@@ -1,9 +1,15 @@
+package Controllers;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import Main.main;
+import Objects.Star;
+import Objects.Ship;
+import Objects.Planet;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
@@ -21,7 +27,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -33,7 +38,7 @@ import javafx.util.Duration;
  *
  * @author Kalle
  */
-public class FXMLDocumentController implements Initializable {
+public class MainViewController implements Initializable {
     
     //The ammount of stars and planets.
     private final int MAXSTARS = 32, MAXPLANETS = 78;
@@ -167,7 +172,7 @@ public class FXMLDocumentController implements Initializable {
     //Switches to the galaxy map view.
     @FXML
     private void gMapButton(ActionEvent event) throws IOException {
-        Parent gMap = FXMLLoader.load(getClass().getResource("GalaxyMap.fxml"));
+        Parent gMap = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/GalaxyMap.fxml"));
         Scene gMapScene = new Scene(gMap);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(gMapScene);
@@ -344,7 +349,7 @@ public class FXMLDocumentController implements Initializable {
                     myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.
                     setJumpLabel(myShip.getCurrentStarName() + " scanned"); //Prints the current star name scanned message.
                 }
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StarPopUp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/StarPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setTitle("Second window");
@@ -370,7 +375,7 @@ public class FXMLDocumentController implements Initializable {
                     myShip.setPlanetsScanned(myShip.getPlanetsScanned() + 1); //Stars scanned countger goes up by one.
                     setJumpLabel(myShip.getPlanetName() + " scanned"); //Prints the current planet name scanned message.
                 }
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PlanetPopUp.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setTitle("Second window");

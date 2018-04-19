@@ -1,5 +1,8 @@
+package Objects;
+
 
 import javafx.scene.image.Image;
+import Main.main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,7 +29,7 @@ public class Planet {
     private Image planetImage;
     
     //Constructor  
-    Planet(Star parent, String name, String type,Image planetImage) {
+    public Planet(Star parent, String name, String type,Image planetImage) {
         main.planetsScanned.put(name,false);
         setName(name);
         Surface newSurface = new Surface(name);
@@ -76,5 +79,4 @@ public class Planet {
     public Surface getPlanetSurface() {
         return planetSurface;
     }
-    
 }
