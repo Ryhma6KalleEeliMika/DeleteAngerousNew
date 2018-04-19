@@ -30,6 +30,7 @@ public class Ship {
     private FuelCell shipFuelCell;
     private Hull shipHull;
     private Engine shipEngine;
+    private int Credits = 100;
 
     //Ship's constructor
     public Ship(String location, Star star, String newName) {
@@ -156,4 +157,12 @@ public class Ship {
     public void setShipHull(Hull shipHull) {
         this.shipHull = shipHull;
     }    
+
+    public void setCredits(int Credits) {
+        this.Credits = Credits;
+    }
+
+    public int getCredits() {
+        return Credits;
+    }
 }

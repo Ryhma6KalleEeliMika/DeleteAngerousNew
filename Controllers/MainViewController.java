@@ -51,7 +51,7 @@ public class MainViewController implements Initializable {
             fuelCellTypeLabel, hullTypeLabel, engineTypeLabel;
     
     @FXML
-    public Label fuelLabel, hullLabel;
+    public Label fuelLabel, hullLabel, creditsLabel;
     
     @FXML   //Current star, current planet, galaxy map button 
     private Button currentStarButton, currentPlanetButton, gMBapButton;
@@ -118,6 +118,9 @@ public class MainViewController implements Initializable {
         fuelCellTypeLabel.setText(myShip.getShipFuelCell().getName());
         hullTypeLabel.setText(myShip.getShipHull().getName());
         engineTypeLabel.setText(myShip.getShipEngine().getName());
+        
+        //Ship money.
+        creditsLabel.setText(Integer.toString(myShip.getCredits()));
         
         //Sets planet button colors orange/blue and changes the image to correct orbiting planet.
         if (myShip.getPlanet() == currentStar.getPlanet1()) {
