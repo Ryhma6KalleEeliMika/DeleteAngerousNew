@@ -39,7 +39,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="actionButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Action" textAlignment="CENTER">
+                  <Button fx:id="actionButton" mnemonicParsing="false" onAction="#actionButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Action" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
       </HBox>
    </bottom>
    <left>
-      <VBox prefHeight="296.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="296.0" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label prefHeight="23.0" prefWidth="292.0" text="Planet description" textFill="DARKORANGE">
                <font>
@@ -90,7 +90,60 @@
                   </HBox>
                </children>
             </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="40.0" spacing="10.0">
+               <children>
+                  <Label text="Pop" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label fx:id="planetPopLabel" text="100.000.000.000" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox fx:id="resHbox" alignment="CENTER_LEFT" layoutX="18.0" layoutY="93.0" spacing="10.0">
+               <children>
+                  <Label text="Resources" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label fx:id="resGradeLabel" text="High" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
             <TextField fx:id="planetDescription" editable="false" prefHeight="228.0" prefWidth="284.0" style="-fx-background-color: Black;" />
+            <Label fx:id="actionLabel" alignment="CENTER" text="Label" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="Xirod-Regular" size="18.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

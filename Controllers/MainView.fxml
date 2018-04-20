@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1366.0" style="-fx-background-color: gray; -fx-border-color: darkorange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-background-color: gray; -fx-border-color: darkorange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainViewController">
    <left>
       <VBox alignment="TOP_CENTER" spacing="30.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
          <children>
@@ -82,9 +82,12 @@
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
             </Label>
-            <HBox style="-fx-border-color: darkorange;">
+            <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
                <children>
-                  <ImageView fx:id="shipImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="shipImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Ships/Eagle%20MkII.png" />
+                     </image></ImageView>
                </children>
             </HBox>
             <Region nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS" />
@@ -93,11 +96,11 @@
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
             </Label>
-            <VBox alignment="CENTER" spacing="10.0" style="-fx-border-color: darkorange;">
+            <VBox fx:id="moduleBox" alignment="CENTER" spacing="10.0" style="-fx-border-color: darkorange;">
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                      <children>
-                        <Label text="Fuelcell" textFill="DARKORANGE">
+                        <Label text="Fuel cell" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
@@ -152,6 +155,11 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Label fx:id="fuelScoopLabel" disable="true" text="Fuel scoop" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="15.0" />
+                     </font>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets />
@@ -226,7 +234,7 @@
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER" spacing="100.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" spacing="50.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
@@ -268,6 +276,30 @@
                   <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
                      <children>
                         <Label fx:id="hullLabel" text="100" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="18.0" spacing="10.0">
+               <children>
+                  <Label text="Credits" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+                     <children>
+                        <Label fx:id="creditsLabel" text="100" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -336,7 +368,7 @@
          <children>
             <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/Stars/Sol/Sol.png" />
+                  <Image url="@../Images/Stars/Sol/Sol.png" />
                </image>
                <viewport>
                   <Rectangle2D />
@@ -347,9 +379,14 @@
             </ImageView>
             <VBox alignment="CENTER">
                <children>
-                  <Label fx:id="jumpLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="756.0" text="jump" textAlignment="CENTER" textFill="DEEPSKYBLUE">
+                  <Label fx:id="jumpLabel" alignment="CENTER" contentDisplay="CENTER" text="jump" textAlignment="CENTER" textFill="DEEPSKYBLUE">
                      <font>
                         <Font name="Xirod-Regular" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="warningLabel" alignment="CENTER" text="Warning!" textFill="RED">
+                     <font>
+                        <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Label>
                </children>

@@ -1,5 +1,7 @@
 package Objects;
 
+import javafx.scene.image.Image;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,12 +16,35 @@ public class Hull {
     private int hull;
     private int maxHull;
     private String name;    //Lightweight, Reinforced, Military
+    private Image hullImage;
+    
+    private final int lightweightArmor = 100;
+    
+    private final int reinforcedArmor = 200;
+    
+    private final int militaryArmor = 300;
     
     //Constructor
-    Hull(int newMaxHull, String newName){
-        setHull(newMaxHull);
-        setMaxHull(newMaxHull);
-        setName(newName);
+    public Hull(String moduleName){
+        setName(moduleName);
+        Image newHullImage = new Image("Images/Modules/" + moduleName + ".png");
+        setHullImage(newHullImage);
+        switch(moduleName) {
+            case "Lightweight":
+                setMaxHull(lightweightArmor);
+                setHull(getMaxHull());
+                break;
+                
+                case "Reinforced":
+                setMaxHull(reinforcedArmor);
+                setHull(getMaxHull());
+                break;
+                
+                case "Military":
+                setMaxHull(militaryArmor);
+                setHull(getMaxHull());
+                break;
+        }
     }
     
     //Hull loss method
@@ -60,5 +85,25 @@ public class Hull {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setHullImage(Image hullImage) {
+        this.hullImage = hullImage;
+    }
+
+    public Image getHullImage() {
+        return hullImage;
+    }
+
+    public int getLightweightArmor() {
+        return lightweightArmor;
+    }
+
+    public int getReinforcedArmor() {
+        return reinforcedArmor;
+    }
+
+    public int getMilitaryArmor() {
+        return militaryArmor;
     }
 }

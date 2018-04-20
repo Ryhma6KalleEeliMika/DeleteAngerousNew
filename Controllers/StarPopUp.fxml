@@ -39,7 +39,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="fuelScoopButton" mnemonicParsing="false" onAction="#fuelScoopButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Fuel Scoop" textAlignment="CENTER">
+                  <Button fx:id="fuelScoopButton" disable="true" mnemonicParsing="false" onAction="#fuelScoopButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Fuel Scoop" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
       </HBox>
    </bottom>
    <left>
-      <VBox prefHeight="296.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="296.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Star description" textFill="DARKORANGE">
                <font>
@@ -67,6 +67,16 @@
                </font>
             </Label>
             <TextField fx:id="starDescription" prefHeight="228.0" prefWidth="284.0" style="-fx-background-color: Black;" />
+            <Label fx:id="actionLabel" alignment="CENTER" text="Label" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="Xirod-Regular" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="warningLabel" text="Warning" textFill="RED">
+               <font>
+                  <Font name="Xirod-Regular" size="15.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

@@ -20,7 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Planet {
     
     //Name of the planet and the type: rock, lava, ring, gas, terran(earth like), water or ice.
-    private String name, type;
+    private String name, type, resGrade;
     
     //Planet's surface
     private Surface planetSurface;
@@ -31,8 +31,8 @@ public class Planet {
     //Planetäs "Orbiting reticle" image.
     private Image planetImage;
     
-    //Resources
-    private int resources;
+    //Resources and tax for terran planets
+    private int resources, tax;
     
     private String population = "0";
     
@@ -47,52 +47,74 @@ public class Planet {
         setType(type);
         
         try{
-                    
             if (type.equals("rock") || type.equals("lava")) {
                 resourceGeneration(type);
             }
-
             else if(type.equals("terran")) {
                 terranGeneration();
             }
         }
         catch (Exception e) {
-            
         }
-
     }
     
-    //
+    //Generating resources and population for lava and rock planets
     private void resourceGeneration(String planetType){
             switch (planetType) {
                 case "rock":
-                    int lowMed = ThreadLocalRandom.current().nextInt(1, 2 + 1);
-                    if (lowMed == 1) {  //Low resources 1 - 20
-                        setResources(ThreadLocalRandom.current().nextInt(1, 20 + 1));
+                    if (coinFlip() == 1) {  //Low resources 1 - 20
+                        setResources(lowRes());
+                        setResGrade("Low");
                     }
                     else {  //Medium resources 20 - 40
-                        setResources(ThreadLocalRandom.current().nextInt(20, 40 + 1));
+                        setResources(medRes());
+                        setResGrade("Medium");
                     }
                     //Small population for rock planets 100 - 1000;
                     setPopulation(Integer.toString(ThreadLocalRandom.current().nextInt(100, 1000 + 1)));
                     break;
                     
                 case "lava":
-                    int medHigh = ThreadLocalRandom.current().nextInt(1, 2 + 1);
-                    if (medHigh == 1) {  //Medium resources 20 - 40
-                        setResources(ThreadLocalRandom.current().nextInt(1, 40 + 1));
+                    if (coinFlip() == 1) {  //Medium resources 20 - 40
+                        setResources(medRes());
+                        setResGrade("Medium");
                     }
                     else {  //High resources 40 - 80
-                        setResources(ThreadLocalRandom.current().nextInt(40, 80 + 1));
+                        setResources(highRes());
+                        setResGrade("High");
                     }
                     break;
         }
     }
     
+    //Setting population for terran planets.
     private void terranGeneration() {   //Population for earth-like planets 5.000.000.000 - 50.000.000.000
-        setPopulation(Integer.toString(ThreadLocalRandom.current().nextInt(5, 50 + 1)) + ".000.000.000");
+        setPopulation(Integer.toString(ThreadLocalRandom.current().nextInt(1, 50 + 1)) + ".000.000.000");
+        
+        //Add price variation to different shops
+        setTax(ThreadLocalRandom.current().nextInt(-50, 50));
     }
     
+    
+    // 50/50 rng
+    private int coinFlip() {
+        return ThreadLocalRandom.current().nextInt(1, 2 + 1);
+    }
+    
+    // Low resource rng
+    private int lowRes() {
+        return ThreadLocalRandom.current().nextInt(1, 20 + 1);    
+    }
+    
+    // Medium resource rng
+    private int medRes() {
+        return ThreadLocalRandom.current().nextInt(20, 40 + 1);
+    }
+    
+    // High resource rng
+    private int highRes() {
+        return ThreadLocalRandom.current().nextInt(40, 80 + 1);
+    }
     
     //Getters and setters........................................................
     public String getName() {
@@ -150,4 +172,20 @@ public class Planet {
     public void setPopulation(String population) {
         this.population = population;
     }
+
+    public String getResGrade() {
+        return resGrade;
+    }
+
+    public void setResGrade(String resGrade) {
+        this.resGrade = resGrade;
+    }
+
+    public int getTax() {
+        return tax;
+    }
+
+    public void setTax(int tax) {
+        this.tax = tax;
+    }  
 }

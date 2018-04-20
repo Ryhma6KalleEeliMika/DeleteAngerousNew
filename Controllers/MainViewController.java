@@ -27,7 +27,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -47,8 +49,8 @@ public class MainViewController implements Initializable {
     private ImageView mainImage, shipImage;
     
     @FXML   //BLue "jump successful" label, fuel ammount, ship name.
-    private Label jumpLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel,
-            fuelCellTypeLabel, hullTypeLabel, engineTypeLabel;
+    private Label jumpLabel, warningLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel,
+            fuelCellTypeLabel, hullTypeLabel, engineTypeLabel, fuelScoopLabel;
     
     @FXML
     public Label fuelLabel, hullLabel, creditsLabel;
@@ -61,6 +63,12 @@ public class MainViewController implements Initializable {
 
     @FXML   //Planet buttons
     private Button p1, p2, p3, p4;
+    
+    @FXML
+    private VBox moduleBox;
+    
+    //Is ship image updated?
+    private boolean update = true;
 
     @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
@@ -95,7 +103,10 @@ public class MainViewController implements Initializable {
         
         //Images and ship name.
         mainImage.setImage(currentStar.getStarImage());
-        shipImage.setImage(main.getShipImage());
+        
+        if (update) {
+            shipImage.setImage(main.getShipImage());
+        }
         shipNameLabel.setText(myShip.getName());
         
         //Scanner update
@@ -118,6 +129,9 @@ public class MainViewController implements Initializable {
         fuelCellTypeLabel.setText(myShip.getShipFuelCell().getName());
         hullTypeLabel.setText(myShip.getShipHull().getName());
         engineTypeLabel.setText(myShip.getShipEngine().getName());
+        if(myShip.getFuelScoopInstalled()){
+            fuelScoopLabel.setDisable(false);
+        }
         
         //Ship money.
         creditsLabel.setText(Integer.toString(myShip.getCredits()));
@@ -157,6 +171,21 @@ public class MainViewController implements Initializable {
     private void setJumpLabel(String jumpResult){
         jumpLabel.setText(jumpResult);
         
+        if (main.myShip.getShipFuelCell().getFuel() == 0) {
+            warningLabel.setText("Warning! Fuel depleted.");
+            FadeTransition fader = createFader(warningLabel);
+            SequentialTransition blinkThenFade = new SequentialTransition(fader);
+            blinkThenFade.play();
+            createFader(warningLabel);
+        }
+        else if (main.myShip.getShipFuelCell().getFuel() < 21) {
+            warningLabel.setText("Warning! Fuel low.");
+            FadeTransition fader = createFader(warningLabel);
+            SequentialTransition blinkThenFade = new SequentialTransition(fader);
+            blinkThenFade.play();
+            createFader(warningLabel);
+        }
+
         //Code for the text to fade.
         FadeTransition fader = createFader(jumpLabel);
         SequentialTransition blinkThenFade = new SequentialTransition(fader);
@@ -242,21 +271,15 @@ public class MainViewController implements Initializable {
             myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageJump());    //Ship loses fuel after the jump
             myShip.setPlanet(null); //Ship is not orbiting any planet after jump.
             myShip.setPlanetName("");
-            if (myShip.getShipFuelCell().getFuel() == 0) {    //If fuel is zero after the jump.
-                return "Jump succesful Critical warning!\nFuel cells depleted!";
-            }
-            else if (myShip.getShipFuelCell().getFuel() < 21) {   //If fuel is low after the jump.
-                 return "Jump succesful Warning!\nFuel cells close to depletion.";
-            }
-            else {  //Normal procedures
-                return "Jump succesful";
-            }
+            return "Jump succesful";
+            
         }
         else {  //If not enough fuel for the jump.
             return "Not enough fuel for jump!";
         }
     }
-    
+        
+
     //Planet buttons P1 - P4.
     @FXML
     private void p1Button(ActionEvent event) {
@@ -324,15 +347,7 @@ public class MainViewController implements Initializable {
                 myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageTravel()); //Fuel depletes by one.
                 myShip.setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
                 myShip.setPlanetName(planetName); //Sets ships current planet name as the new planet.
-                if (myShip.getShipFuelCell().getFuel() == 0) { //If fuel is at zero after the travel
-                    return "Orbiting " + planetName +" Critical warning!\nFuel cells depleted!";
-                }
-                else if (myShip.getShipFuelCell().getFuel() < 21) { //If fuel is low after the travel
-                     return "Orbiting " + planetName +" Warning!\nFuel cells close to depletion.";
-                }
-                else { //Normal procedures
-                    return "Orbiting " + planetName;
-                }
+                return "Orbiting " + planetName;
             }return "Invalid selection";    //If null button was pressed.
         }
         else { //If no enough fuel.
@@ -350,7 +365,8 @@ public class MainViewController implements Initializable {
                 if(starsScanned.get(myShip.currentStarName()).equals(false)){ //Checks if the star has been scanned.
                     starsScanned.put(myShip.currentStarName(), true); //Changes the star to scanned.
                     myShip.setStarsScanned(myShip.getStarsScanned()+1); //Stars scanned countger goes up by one.
-                    setJumpLabel(myShip.getCurrentStarName() + " scanned"); //Prints the current star name scanned message.
+                    setJumpLabel(myShip.getCurrentStarName() + " scanned + 5cr"); //Prints the current star name scanned message.
+                    myShip.gainCredits(5);
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/StarPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -376,7 +392,8 @@ public class MainViewController implements Initializable {
                 if (planetsScanned.get(myShip.getPlanetName()).equals(false)) { //Checks if the star has been scanned.
                     planetsScanned.put(myShip.getPlanetName(),true); //Changes the star to scanned.
                     myShip.setPlanetsScanned(myShip.getPlanetsScanned() + 1); //Stars scanned countger goes up by one.
-                    setJumpLabel(myShip.getPlanetName() + " scanned"); //Prints the current planet name scanned message.
+                    setJumpLabel(myShip.getPlanetName() + " scanned + 1cr"); //Prints the current planet name scanned message.
+                    myShip.gainCredits(1);
                 }
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -395,22 +412,52 @@ public class MainViewController implements Initializable {
     //Code that runs first when the GUI starts.
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        setJumpLabel("");   //Empty jump label "Jump successful"
         
-        //Automatically updates the GUI every tenth of a second.
-        Task task = new Task<Void>() {
-         @Override
-         public Void call() throws Exception {
-           int i = 0;
-            while (true) {
-                 final int finalI = i++;
-                 Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
-                 Thread.sleep (100);    //How often
-             }
-         }
-       };
-       Thread th = new Thread(task);
-       th.setDaemon(true);
-       th.start();
+        
+        //setJumpLabel("");   //Empty jump label "Jump successful"
+        jumpLabel.setText("");
+        warningLabel.setText("");   //Empty warning label "Warning!"
+
+        moduleBox.hoverProperty().addListener(l->{ //Allows ship image to update.
+            this.update = true;
+        });
+        
+        fuelCellTypeLabel.hoverProperty().addListener(l->{ //Fuel cell image. Stops ship image..
+            shipImage.setImage(main.myShip.getShipFuelCell().getFuelImage());
+            this.update = false;
+        });
+        
+        hullTypeLabel.hoverProperty().addListener(l->{ //Hull image. Stops ship image.
+            shipImage.setImage(main.myShip.getShipHull().getHullImage());
+            this.update = false;
+        });
+        
+        engineTypeLabel.hoverProperty().addListener(l->{ //Engine image. Stops ship image.
+            shipImage.setImage(main.myShip.getShipEngine().getEngineImage());
+            this.update = false;
+        });
+        
+        fuelScoopLabel.hoverProperty().addListener(l->{ //Engine image. Stops ship image.
+            shipImage.setImage(main.myShip.getFuelScoopImage());
+            this.update = false;
+        });
+        
+                //Automatically updates the GUI every tenth of a second.
+                Task task = new Task<Void>() {
+                 @Override
+                 public Void call() throws Exception {
+                   int i = 0;
+                    while (true) {
+                         final int finalI = i++;
+                         Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
+                         Thread.sleep (100);    //How often
+                     }
+                 }
+               };
+               Thread th = new Thread(task);
+               th.setDaemon(true);
+               th.start();
+            }
+        
     }
-}
+

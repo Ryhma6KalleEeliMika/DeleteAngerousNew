@@ -14,8 +14,11 @@ import javafx.scene.image.Image;
  * @author Mika Vuorinen
  */
 public class Surface {
+    
     private Image surfaceImage;
+    
     private String Name;
+    
     private String imgPath = "Images/Surface/";
     
     //Constructor

@@ -29,6 +29,7 @@ import javafx.util.Duration;
  * @author Kalle
  */
 public class StarPopUpController implements Initializable {
+    
     @FXML    
     private Button fuelScoopButton, exitButton;
     
@@ -46,18 +47,23 @@ public class StarPopUpController implements Initializable {
     
     @FXML
     private void fuelScoopButtonAction() {
-        if(main.myShip.getStar().getScoopTimes() == 2){
-            main.myShip.getShipFuelCell().fuelGain(25);
-            main.myShip.getStar().setScoopTimes(1);
-            setActionLabel(25 + " fuel scooped.", false);
+        if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()) {
+            setActionLabel("Fuel at maximum.", false);
         }
-        else if(main.myShip.getStar().getScoopTimes() == 1){
-            main.myShip.getShipFuelCell().fuelGain(25);
-            main.myShip.getShipHull().hullLoss(20);
-            main.myShip.getStar().setScoopTimes(0);
-            fuelScoopButton.setDisable(true);
-            main.myShip.getStar().setScoop(false);
-            setActionLabel(25 + " fuel scooped", true);
+        else {
+            if(main.myShip.getStar().getScoopTimes() == 2){
+                main.myShip.getShipFuelCell().fuelGain(25);
+                main.myShip.getStar().setScoopTimes(1);
+                setActionLabel(25 + " fuel scooped.", false);
+            }
+            else if(main.myShip.getStar().getScoopTimes() == 1){
+                main.myShip.getShipFuelCell().fuelGain(25);
+                main.myShip.getShipHull().hullLoss(20);
+                main.myShip.getStar().setScoopTimes(0);
+                fuelScoopButton.setDisable(true);
+                main.myShip.getStar().setScoop(false);
+                setActionLabel(25 + " fuel scooped", true);
+            }
         }
     }
     
@@ -96,8 +102,8 @@ public class StarPopUpController implements Initializable {
         starImage.setImage(main.myShip.getStar().getStarsSurface().getSurfaceImage());
         actionLabel.setText("");
         warningLabel.setText("");
-        if (!main.myShip.getStar().getScoop()){
-            fuelScoopButton.setDisable(true);
+        if (main.myShip.getStar().getScoop() && main.myShip.getFuelScoopInstalled()){
+            fuelScoopButton.setDisable(false);
         }
     }
 }

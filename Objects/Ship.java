@@ -30,7 +30,10 @@ public class Ship {
     private FuelCell shipFuelCell;
     private Hull shipHull;
     private Engine shipEngine;
-    private int Credits = 100;
+    private boolean fuelScoopInstalled = false;
+    private Image fuelScoopImage;
+    private int Credits = 0;
+    
 
     //Ship's constructor
     public Ship(String location, Star star, String newName) {
@@ -39,36 +42,48 @@ public class Ship {
         setStar(star);
         Image shipsImage = new Image("Images/Ships/" + newName + ".png");
         main.setShipImage(shipsImage);
+        Image scoopImage = new Image("Images/Modules/FuelScoop.png");
+        setFuelScoopImage(scoopImage);
         
         //Ship module creation based on the chosen ship's name.
         switch(newName){
-            case "Eagle MkII":
-                FuelCell newFuelCell = new FuelCell(100, "Small");
-                Hull newHull = new Hull(100, "Lightweight");
-                Engine newEngine = new Engine(10, 1, "Advanced");
+            case "Eagle MkII":  //Eagle MkII ship
+                FuelCell newFuelCell = new FuelCell("Small");
+                Hull newHull = new Hull("Lightweight");
+                Engine newEngine = new Engine("Advanced");
                 setShipEngine(newEngine);
                 setShipFuelCell(newFuelCell);
                 setShipHull(newHull);
                 break;
                 
-            case "Hauler":
-                FuelCell newFuelCell2 = new FuelCell(100, "Small");
-                Hull newHull2 = new Hull(200, "Reinforced");
-                Engine newEngine2 = new Engine(15, 2, "Basic");
+            case "Hauler":  //Hauler ship
+                FuelCell newFuelCell2 = new FuelCell("Small");
+                Hull newHull2 = new Hull("Reinforced");
+                Engine newEngine2 = new Engine("Basic");
                 setShipEngine(newEngine2);
                 setShipFuelCell(newFuelCell2);
                 setShipHull(newHull2);
                 break;
                 
-            case "Adder":
-                FuelCell newFuelCell3 = new FuelCell(150, "Medium");
-                Hull newHull3 = new Hull(100, "Lightweight");
-                Engine newEngine3 = new Engine(15, 2, "Basic");
+            case "Adder":   //Adder ship
+                FuelCell newFuelCell3 = new FuelCell("Medium");
+                Hull newHull3 = new Hull("Lightweight");
+                Engine newEngine3 = new Engine("Basic");
                 setShipEngine(newEngine3);
                 setShipFuelCell(newFuelCell3);
                 setShipHull(newHull3);
                 break;
         }
+    }
+    
+    //Gain credits method
+    public void gainCredits(int ammount) {
+        setCredits(getCredits() + ammount);
+    }
+    
+    //Lose credits method
+    public void loseCredits(int ammount) {
+        setCredits(getCredits() - ammount);
     }
     
     //Prints the name of the current currentStar system.
@@ -164,5 +179,21 @@ public class Ship {
 
     public int getCredits() {
         return Credits;
+    }
+
+    public void setFuelScoopInstalled(boolean fuelScoopInstalled) {
+        this.fuelScoopInstalled = fuelScoopInstalled;
+    }
+    
+    public boolean getFuelScoopInstalled() {
+        return fuelScoopInstalled;
+    }
+
+    public void setFuelScoopImage(Image fuelScoopImage) {
+        this.fuelScoopImage = fuelScoopImage;
+    }
+
+    public Image getFuelScoopImage() {
+        return fuelScoopImage;
     }
 }
