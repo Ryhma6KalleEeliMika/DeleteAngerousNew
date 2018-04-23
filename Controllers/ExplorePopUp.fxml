@@ -23,13 +23,26 @@
       </HBox>
    </top>
    <right>
-      <VBox prefHeight="225.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="198.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="eventImage" fitHeight="238.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Story/stranded.png" />
                </image>
             </ImageView>
+            <Label fx:id="gainLabel" alignment="CENTER" text="You gained 50 credits" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="Xirod-Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lossLabel" alignment="CENTER" layoutX="25.0" layoutY="182.0" text="You lost 10 fuel" textFill="RED">
+               <font>
+                  <Font name="Xirod-Regular" size="15.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
          </children>
       </VBox>
    </right>

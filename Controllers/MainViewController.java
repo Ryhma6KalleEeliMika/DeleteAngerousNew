@@ -27,8 +27,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -69,6 +69,9 @@ public class MainViewController implements Initializable {
     
     //Is ship image updated?
     private boolean update = true;
+    
+    //Is game over?
+    private boolean gameOver = false;
 
     @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
@@ -113,7 +116,9 @@ public class MainViewController implements Initializable {
         starsScannedAmmount.setText(Integer.toString(myShip.getStarsScanned()) + "/" + MAXSTARS);
         planetsScannedAmmount.setText(Integer.toString(myShip.getPlanetsScanned()) + "/" + MAXPLANETS); 
 
-        //Updates the text int the star and planet buttons.
+        //Updates the text in the star and planet buttons and their visibility.
+        
+        //Star buttons.
         currentStarButton.setText(currentStar.getName());
         n1.setText(currentStar.getN1());
         n2.setText(currentStar.getN2());
@@ -145,11 +150,18 @@ public class MainViewController implements Initializable {
             currentPlanetButton.setVisible(false);
         }
         
+        //Planet buttons.
         currentPlanetButton.setText(myShip.getPlanetName());
         p1.setText(currentStar.getPlanet1().getName());
         p2.setText(currentStar.getPlanet2().getName());
         p3.setText(currentStar.getPlanet3().getName());
         p4.setText(currentStar.getPlanet4().getName());
+        if(currentStar.getPlanet1().getName()!= null){
+            p1.setVisible(true);
+        }
+        else {
+            p1.setVisible(false);
+        }
         if(currentStar.getPlanet2().getName()!= null){
             p2.setVisible(true);
         }
@@ -208,6 +220,23 @@ public class MainViewController implements Initializable {
         }
         else {
             p4.setStyle("-fx-background-color:DarkOrange");
+        }
+        
+        if(!(isGameOver()) && main.myShip.getShipHull().getHull() < 1) {
+            setGameOver(true);
+                try {
+                    System.out.println("GameOver");
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/GameOver.fxml"));
+                    Parent root1 = (Parent) fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                    stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                    
+                } catch (Exception e) {
+                    
+            }
         }
     }
     
@@ -456,6 +485,7 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         
+        setGameOver(false);
         
         //setJumpLabel("");   //Empty jump label "Jump successful"
         jumpLabel.setText("");
@@ -485,22 +515,29 @@ public class MainViewController implements Initializable {
             this.update = false;
         });
         
-                //Automatically updates the GUI every tenth of a second.
-                Task task = new Task<Void>() {
-                 @Override
-                 public Void call() throws Exception {
-                   int i = 0;
-                    while (true) {
-                         final int finalI = i++;
-                         Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
-                         Thread.sleep (100);    //How often
-                     }
+            //Automatically updates the GUI every tenth of a second.
+            Task task = new Task<Void>() {
+             @Override
+             public Void call() throws Exception {
+               int i = 0;
+                while (true) {
+                     final int finalI = i++;
+                     Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
+                     Thread.sleep (100);    //How often
                  }
-               };
-               Thread th = new Thread(task);
-               th.setDaemon(true);
-               th.start();
-            }
-        
+             }
+           };
+           Thread th = new Thread(task);
+           th.setDaemon(true);
+           th.start();
+        }
+
+        public void setGameOver(boolean gameOver) {
+            this.gameOver = gameOver;
+        }
+
+        public boolean isGameOver() {
+            return gameOver;
+        }
     }
 

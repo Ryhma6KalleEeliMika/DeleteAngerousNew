@@ -52,8 +52,19 @@ public class main extends Application {
     /**
      * @param args the command line arguments
      */
+
+    
     public static void main(String[] args) {
         
+        //Creates stars, planets, etc.
+        worldGeneration();
+        
+        //Gui starts here.
+        launch(args);
+    }
+    
+    //The universe.............................................................
+    public static void worldGeneration() {
         //Location list.
         Map<String, Boolean> starsScanned = new HashMap();
         setStarsScanned(starsScanned);
@@ -131,9 +142,6 @@ public class main extends Application {
         Xaar.setStarDetails("Oxuatri", null, null, null, Oxuatri, null, null, null, Xaar, "Ramor", "rock", null, null, null, null, null, null);
         
         setStartingStar(Sol);
-        
-        //Gui starts here.
-        launch(args);
     }
     
     //Setters and getters......................................................................

@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -31,6 +32,9 @@ public class GalaxyMapController implements Initializable {
     
     @FXML
     private Button backButton;
+    
+    @FXML
+    private Label locationLabel;
     
     @FXML
     private ImageView galaxyImage;
@@ -54,5 +58,8 @@ public class GalaxyMapController implements Initializable {
         //Galaxy map image update.
         Star currentStar = main.myShip.getStar();
         galaxyImage.setImage(currentStar.getGalaxyMapImage());
+        
+        //Location label update.
+        locationLabel.setText(currentStar.getName());
     }
 }

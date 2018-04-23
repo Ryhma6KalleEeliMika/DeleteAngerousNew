@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -383,31 +384,35 @@
    <center>
       <VBox alignment="CENTER" minWidth="850.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../NetBeansProjects/Delete%20Angerous/src/Images/Stars/Sol/Sol.png" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ImageView>
-            <VBox alignment="CENTER">
+            <StackPane>
                <children>
-                  <Label fx:id="jumpLabel" alignment="CENTER" contentDisplay="CENTER" text="jump" textAlignment="CENTER" textFill="DEEPSKYBLUE">
-                     <font>
-                        <Font name="Xirod-Regular" size="25.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="warningLabel" alignment="CENTER" text="Warning!" textFill="RED">
-                     <font>
-                        <Font name="Xirod-Regular" size="15.0" />
-                     </font>
-                  </Label>
+                  <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/Stars/Sol/Sol.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="jumpLabel" alignment="CENTER" contentDisplay="CENTER" text="jump" textAlignment="CENTER" textFill="DEEPSKYBLUE">
+                           <font>
+                              <Font name="Xirod-Regular" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="warningLabel" alignment="CENTER" text="Warning!" textFill="RED">
+                           <font>
+                              <Font name="Xirod-Regular" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="500.0" />
+                     </padding>
+                  </VBox>
                </children>
-            </VBox>
+            </StackPane>
          </children>
          <BorderPane.margin>
             <Insets />

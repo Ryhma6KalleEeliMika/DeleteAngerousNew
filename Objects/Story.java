@@ -19,91 +19,127 @@ public class Story {
     
     private String conclusion1, conclusion2, option1, option2;
     
-    private String reward1, reward2;
-    
     private Image img;
     
     private final String imgPath = "Images/Story/";
     
     public Story(){
-        
-        switch (coinFlip()) {
+        switch (rng()) {
+                    
+            case 1:
+                //Premise of the event.
+                setStory("You see a stranded ship orbiting the planet. The ship hails you and asks you for a fuel.");
             
-            case 1: setStory("You see a stranded ship orbiting the planet. The ship hails you and asks you for a fuel.");
+                //First option button text.
+                setOption1("Give them 20 fuel");
+                
+                //Second option button text.
+                setOption2("Don\'t give fuel");
+                
+                //Conclusion of the first option.
+                setConclusion1("You gave them 20 fuel and they paid you 50cr.");
+
+                //Conclusion of the second option.
+                setConclusion2("You left them on their own.");
+                
+                //Image of the event
+                Image img1 = new Image(imgPath + "stranded.png");
+                setImg(img1);
+
+                break;
+                    
+            //Pirate chase.
+            case 2: 
+                setStory("A pirate is chasing you and starts firing at you.");
+
+                setOption1("Accelerate");
+
+                setOption2("Dodge");
+
+                setConclusion1("You escaped the pirate.");
+
+                setConclusion2("You took few hits, but you managed to escape.");
+
+                Image img2 = new Image(imgPath + "pirateAttack.png");
+
+                setImg(img2);
+
+                break;
             
-                    setOption1("Give them 20 fuel");
-                    
-                    setOption2("Don\'t give fuel");
+            //Ship debris
+            default: 
+                setStory("You see a space debris most likely from a destroyed ship.");
             
-                    setConclusion1("You gave them 20 fuel and they paid you 50cr.");
-                    
-                    setConclusion2("You left them on their own.");
-                    
-                    Image img1 = new Image(imgPath + "stranded.png");
-                    
-                    setImg(img1);
-                    
-                    break;
-                    
-            case 2: setStory("A pirate is chasing you and starts firing at you.");
-            
-                    setOption1("Accelerate");
-                    
-                    setOption2("Dodge");
-            
-                    setConclusion1("You escaped the pirates.");
-                    
-                    setConclusion2("You took few hits, but were able to escape.");
-                    
-                    Image img2 = new Image(imgPath + "pirateAttack.png");
-                    
-                    setImg(img2);
-                    
-                    break;
-                    
-            case 3: setStory("You see a space debris most likely from a destroyed ship.");
-            
-                    setOption1("Explore");
-                    
-                    setOption2("Don\'t explore");
-            
-                    setConclusion1("You found fuelcell with some fuel left.");
-                    
-                    setConclusion2("You leave the scene.");
-                    
-                    Image img3 = new Image(imgPath + "shipDebris.png");
-                    
-                    setImg(img3);
-                    
-                    break;
+                setOption1("Explore");
+
+                setOption2("Don\'t explore");
+
+                setConclusion2("You leave the scene.");
+
+                Image img3 = new Image(imgPath + "shipDebris.png");
+
+                setImg(img3);
+
+                break;
         }
-        
-        
     }
     
-    public void reward(String rewardName){
+    //Exploration rewards and label texts.
+    public String reward(String rewardName, Story story){
         Ship myShip = main.getMyShip();
         switch(rewardName){
+            
+            //Find a stranded ship.
             case "Give them 20 fuel":
                 myShip.getShipFuelCell().fuelLoss(20);
                 myShip.gainCredits(50);
-                break;
+                return "-20 fuel & +50cr";
+                
             case "Don\'t give fuel":
                 break;
+                
+            //Pirate attacks you.
             case "Accelerate":
                 myShip.getShipFuelCell().fuelLoss(10);
-                break;
+                return "-10 fuel";
+                
             case "Dodge":
                 myShip.getShipHull().hullLoss(20);
-                break;
+                return "Warning! Hull damage";
+                
+            //Ship debris exploration.
             case "Explore":
-                myShip.getShipFuelCell().fuelGain(50);
-                break;
+                switch (coinFlip()) {
+                    
+                    case 1: //Found a fuelcell in the debris.
+                    story.setConclusion1("You found a fuelcell with some fuel left in it.");
+                    myShip.getShipFuelCell().fuelGain(50);
+                    return "+50 fuel";
+                    
+                    case 2: //A pirate attacks you.
+                    story.setConclusion1("A pirate ambushes you, but you managed to escape.");
+                    Image pirateImg = new Image(imgPath + "pirateAttack.png");
+                    story.setImg(pirateImg);
+                    myShip.getShipHull().hullLoss(20);
+                    return "Warning! Hull damage";
+                    
+                    case 3: //Found some credits in the debris.
+                    story.setConclusion1("You found some credits in the debris.");
+                    myShip.gainCredits(20);
+                    return "+20cr";
+                }
+
             case "Don\'t explore":
                 break;
         }
+        return "";
     }
-    // 50/50 rng
+    //  rng for adventure creation
+    private int rng() {
+        return ThreadLocalRandom.current().nextInt(1, 5 + 1);
+    }
+    
+    // sub rng for other stuff
     private int coinFlip() {
         return ThreadLocalRandom.current().nextInt(1, 3 + 1);
     }
@@ -149,22 +185,6 @@ public class Story {
         return option2;
     }
 
-    public String getReward1() {
-        return reward1;
-    }
-
-    public void setReward1(String reward1) {
-        this.reward1 = reward1;
-    }
-
-    public String getReward2() {
-        return reward2;
-    }
-
-    public void setReward2(String reward2) {
-        this.reward2 = reward2;
-    }
-
     public Image getImg() {
         return img;
     }
@@ -172,7 +192,5 @@ public class Story {
     public void setImg(Image img) {
         this.img = img;
     }
-    
-    
     
 }

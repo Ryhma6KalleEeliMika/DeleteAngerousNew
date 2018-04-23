@@ -57,11 +57,12 @@ public class PlanetPopUpController implements Initializable {
         stage.close();
     }
     
-    @FXML
+    @FXML   //Action depends on what kind of planet you are on.
     private void actionButtonAction() throws IOException {    
         
         int planetResources = main.getMyShip().getPlanet().getResources();    
         
+        //In rock and lava planets you can mine.
         if (planetResources > 0 && actionButton.getText().equals("Mine")) {
             main.myShip.gainCredits(planetResources);
             main.getMyShip().getPlanet().setResources(0);
@@ -70,6 +71,7 @@ public class PlanetPopUpController implements Initializable {
             resGradeLabel.setText(main.myShip.getPlanet().getResGrade());
             actionButton.setDisable(true);
         }
+        //In terran planets there are shops.
         else if (actionButton.getText().equals("Shop")) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ShopPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -79,6 +81,7 @@ public class PlanetPopUpController implements Initializable {
                 stage.setScene(new Scene(root1));
                 stage.show();
         }
+        //In gas, ring, water, ice planets you can explore.
         else if (actionButton.getText().equals("Explore")) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ExplorePopUp.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
@@ -123,10 +126,13 @@ public class PlanetPopUpController implements Initializable {
         planetImage.setImage(main.myShip.getPlanet().getPlanetSurface().getSurfaceImage());
         actionLabel.setText("");
         
-        borderPane.hoverProperty().addListener(l->{ //action button mouse hover.
-            actionButton.setDisable(main.myShip.getPlanet().getExplored());
-            
+        //Disables action button if the planet has been explored.
+        borderPane.hoverProperty().addListener(l->{
+            if (actionButton.getText().equals("Explore")) {
+                actionButton.setDisable(main.myShip.getPlanet().getExplored());
+            }
         });
+        
         
         //Planet info based on the type.
         switch(main.myShip.getPlanet().getType()) {
@@ -147,7 +153,7 @@ public class PlanetPopUpController implements Initializable {
                 resHbox.setVisible(false);
                 break;
                 
-            //Rng planets.
+            //Exploration planets. gas, ring, ice, water
             default:
                 actionButton.setText("Explore");
                 resHbox.setVisible(false);

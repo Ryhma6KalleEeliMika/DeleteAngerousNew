@@ -65,7 +65,7 @@ public class ShipPopUpController implements Initializable {
     }
     
     
-    @FXML   //game starts when the ship is chosen
+     //game starts when the ship is chosen
     private void startGame() throws IOException {
         
         //Closes the ship selection pop up.
