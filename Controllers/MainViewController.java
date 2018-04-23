@@ -119,11 +119,55 @@ public class MainViewController implements Initializable {
         n2.setText(currentStar.getN2());
         n3.setText(currentStar.getN3());
         n4.setText(currentStar.getN4());
+        if(currentStar.getStar2()!= null){
+            n2.setVisible(true);
+        }
+        else {
+            n2.setVisible(false);
+        }
+        if(currentStar.getStar3()!= null){
+            n3.setVisible(true);
+        }
+        else {
+            n3.setVisible(false);
+        }
+        if(currentStar.getStar4()!= null){
+            n4.setVisible(true);
+        }
+        else {
+            n4.setVisible(false);
+        }
+        
+        if(myShip.getPlanet() != null){
+           currentPlanetButton.setVisible(true); 
+        }
+        else {
+            currentPlanetButton.setVisible(false);
+        }
+        
         currentPlanetButton.setText(myShip.getPlanetName());
         p1.setText(currentStar.getPlanet1().getName());
         p2.setText(currentStar.getPlanet2().getName());
         p3.setText(currentStar.getPlanet3().getName());
         p4.setText(currentStar.getPlanet4().getName());
+        if(currentStar.getPlanet2().getName()!= null){
+            p2.setVisible(true);
+        }
+        else {
+            p2.setVisible(false);
+        }
+        if(currentStar.getPlanet3().getName()!= null){
+            p3.setVisible(true);
+        }
+        else {
+            p3.setVisible(false);
+        }
+        if(currentStar.getPlanet4().getName()!= null){
+            p4.setVisible(true);
+        }
+        else {
+            p4.setVisible(false);
+        }
         
         //Updates ship modules
         fuelCellTypeLabel.setText(myShip.getShipFuelCell().getName());

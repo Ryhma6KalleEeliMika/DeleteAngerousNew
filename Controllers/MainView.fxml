@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -14,55 +15,55 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: gray; -fx-border-color: darkorange;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainViewController">
    <left>
-      <VBox alignment="TOP_CENTER" spacing="30.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" minWidth="240.0" spacing="30.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="TOP_LEFT">
          <children>
-            <Label text="Nearby stars" textFill="DARKORANGE">
-               <font>
-                  <Font name="Xirod-Regular" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="n1" mnemonicParsing="false" onAction="#n1Button" style="-fx-background-color: darkorange;" text="Maxima">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font></Button>
-            <Button fx:id="n2" layoutX="13.0" layoutY="13.0" mnemonicParsing="false" onAction="#n2Button" style="-fx-background-color: #ff8c00;" text="Ales">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font></Button>
-            <Button fx:id="n3" layoutX="13.0" layoutY="44.0" mnemonicParsing="false" onAction="#n3Button" style="-fx-background-color: #ff8c00;" text="Null">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font></Button>
-            <Button fx:id="n4" layoutX="13.0" layoutY="75.0" mnemonicParsing="false" onAction="#n4Button" style="-fx-background-color: #ff8c00;" text="Null">
-               <font>
-                  <Font name="Xirod-Regular" size="20.0" />
-               </font></Button>
-            <Region VBox.vgrow="ALWAYS" />
-            <Button fx:id="gMapButton" mnemonicParsing="false" onAction="#gMapButton" style="-fx-background-color: darkorange;" text="GALAXY MAP">
-               <font>
-                  <Font name="Xirod-Regular" size="15.0" />
-               </font>
-            </Button>
-            <VBox alignment="CENTER" spacing="8.0" style="-fx-border-color: darkorange;">
+            <AnchorPane prefHeight="604.0" prefWidth="234.0">
                <children>
-                  <Label alignment="TOP_CENTER" text="Current Star" textAlignment="CENTER" textFill="DARKORANGE">
+                  <Label layoutX="30.0" layoutY="22.0" prefHeight="61.0" prefWidth="187.0" text="Nearby stars" textFill="DARKORANGE">
                      <font>
-                        <Font name="Xirod-Regular" size="15.0" />
+                        <Font name="Xirod-Regular" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="currentStarButton" mnemonicParsing="false" onAction="#starButton" style="-fx-background-color: darkorange;" text="Sol">
+                  <Button fx:id="n1" layoutX="29.0" layoutY="104.0" maxWidth="200.0" minWidth="180.0" mnemonicParsing="false" onAction="#n1Button" style="-fx-background-color: darkorange;" text="Maxima">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button fx:id="n2" layoutX="29.0" layoutY="175.0" maxWidth="200.0" minWidth="180.0" mnemonicParsing="false" onAction="#n2Button" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #ff8c00;" text="Ales">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="n3" layoutX="29.0" layoutY="246.0" maxWidth="200.0" minWidth="180.0" mnemonicParsing="false" onAction="#n3Button" style="-fx-background-color: #ff8c00;" text="Null">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="n4" layoutX="27.0" layoutY="317.0" maxWidth="200.0" minWidth="180.0" mnemonicParsing="false" onAction="#n4Button" style="-fx-background-color: #ff8c00;" text="Null">
+                     <font>
+                        <Font name="Xirod-Regular" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="TOP_CENTER" layoutX="21.0" layoutY="491.0" prefHeight="27.0" prefWidth="192.0" text="Current Star" textAlignment="CENTER" textFill="DARKORANGE">
+                     <font>
+                        <Font name="Xirod-Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="currentStarButton" layoutX="29.0" layoutY="538.0" maxWidth="200.0" minWidth="180.0" mnemonicParsing="false" onAction="#starButton" style="-fx-background-color: darkorange;" text="Sol">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
                   </Button>
                </children>
-               <padding>
-                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </VBox>
+            </AnchorPane>
+            <Button fx:id="gMapButton" maxWidth="200.0" mnemonicParsing="false" onAction="#gMapButton" style="-fx-background-color: darkorange;" text="GALAXY MAP">
+               <font>
+                  <Font name="Xirod-Regular" size="15.0" />
+               </font>
+            </Button>
          </children>
          <opaqueInsets>
             <Insets />
@@ -71,18 +72,18 @@
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+            <Insets bottom="8.0" top="8.0" />
          </padding></VBox>
    </left>
    <right>
-      <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minWidth="270.0" spacing="10.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="shipNameLabel" text="Ship Name" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
+            <HBox alignment="CENTER" maxHeight="115.0" maxWidth="245.0" minHeight="115.0" minWidth="245.0" style="-fx-border-color: darkorange;">
                <children>
                   <ImageView fx:id="shipImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -175,22 +176,22 @@
                         <Font name="Xirod-Regular" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="p1" mnemonicParsing="false" onAction="#p1Button" style="-fx-background-color: Darkorange;" text="Earth">
+                  <Button fx:id="p1" minWidth="150.0" mnemonicParsing="false" onAction="#p1Button" style="-fx-background-color: Darkorange;" text="Earth">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p2" layoutX="61.0" layoutY="45.0" mnemonicParsing="false" onAction="#p2Button" style="-fx-background-color: Darkorange;" text="Earth">
+                  <Button fx:id="p2" layoutX="61.0" layoutY="45.0" minWidth="150.0" mnemonicParsing="false" onAction="#p2Button" style="-fx-background-color: Darkorange;" text="Earth">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p3" layoutX="61.0" layoutY="84.0" mnemonicParsing="false" onAction="#p3Button" style="-fx-background-color: Darkorange;" text="Earth">
+                  <Button fx:id="p3" layoutX="61.0" layoutY="84.0" minWidth="150.0" mnemonicParsing="false" onAction="#p3Button" style="-fx-background-color: Darkorange;" text="Earth">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p4" layoutX="61.0" layoutY="123.0" mnemonicParsing="false" onAction="#p4Button" style="-fx-background-color: Darkorange;" text="Earth">
+                  <Button fx:id="p4" layoutX="61.0" layoutY="123.0" minWidth="150.0" mnemonicParsing="false" onAction="#p4Button" style="-fx-background-color: Darkorange;" text="Earth">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
@@ -202,7 +203,7 @@
                               <Font name="Xirod-Regular" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="currentPlanetButton" mnemonicParsing="false" onAction="#planetButton" style="-fx-background-color: darkorange;">
+                        <Button fx:id="currentPlanetButton" minWidth="150.0" mnemonicParsing="false" onAction="#planetButton" style="-fx-background-color: darkorange;">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
@@ -248,7 +249,7 @@
                   </Label>
                   <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
                      <children>
-                        <Label fx:id="fuelLabel" text="100" textFill="DARKORANGE">
+                        <Label fx:id="fuelLabel" alignment="CENTER" minWidth="60.0" text="100" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -275,7 +276,7 @@
                   </Label>
                   <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
                      <children>
-                        <Label fx:id="hullLabel" text="100" textFill="DARKORANGE">
+                        <Label fx:id="hullLabel" alignment="CENTER" minWidth="60.0" text="100" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -299,7 +300,7 @@
                   </Label>
                   <HBox alignment="CENTER" style="-fx-border-color: darkorange;">
                      <children>
-                        <Label fx:id="creditsLabel" text="100" textFill="DARKORANGE">
+                        <Label fx:id="creditsLabel" alignment="CENTER" minWidth="60.0" text="100" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -325,7 +326,7 @@
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="starsScannedAmmount" text="0/32" textFill="DARKORANGE">
+                        <Label fx:id="starsScannedAmmount" alignment="CENTER" text="0/32" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -342,7 +343,7 @@
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="planetsScannedAmmount" text="0/78" textFill="DARKORANGE">
+                        <Label fx:id="planetsScannedAmmount" alignment="CENTER" text="0/78" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -364,9 +365,9 @@
       </HBox>
    </bottom>
    <center>
-      <VBox alignment="CENTER" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" minWidth="850.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="mainImage" disable="true" fitHeight="1000.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/Stars/Sol/Sol.png" />
                </image>
@@ -392,6 +393,9 @@
                </children>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
 </BorderPane>

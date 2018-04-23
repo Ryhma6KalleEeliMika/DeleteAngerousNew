@@ -15,16 +15,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 /**
@@ -34,8 +31,8 @@ import javafx.stage.StageStyle;
  */
 public class ShipPopUpController implements Initializable {
     
-    @FXML   //Ship choose buttons.
-    private Button eaglemk2Button, haulerButton, adderButton;
+    @FXML   //Ship choose and exit buttons.
+    private Button eaglemk2Button, haulerButton, adderButton, shipExitButton;
     
     @FXML   //Ship name and information labels.
     private Label startFuelLabel, startHullLabel, startEngineLabel, shipNameLabel;
@@ -60,6 +57,13 @@ public class ShipPopUpController implements Initializable {
         main.setChosenShipName("Adder");
         startGame();
     }
+    
+    @FXML
+    private void shipExitButtonAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) shipExitButton.getScene().getWindow();
+        stage.close();
+    }
+    
     
     @FXML   //game starts when the ship is chosen
     private void startGame() throws IOException {

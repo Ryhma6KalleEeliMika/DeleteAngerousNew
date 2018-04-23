@@ -24,7 +24,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="startFuelLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
+                  <Label fx:id="startFuelLabel" alignment="CENTER" minWidth="65.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -44,7 +44,7 @@
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="startHullLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
+                  <Label fx:id="startHullLabel" alignment="CENTER" minWidth="65.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="100" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="startEngineLabel" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="ADVANCED" textFill="DARKORANGE">
+                  <Label fx:id="startEngineLabel" alignment="CENTER" minWidth="170.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="ADVANCED" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -91,7 +91,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="eaglemk2Button" mnemonicParsing="false" onAction="#eaglemk2ButtonAction" style="-fx-background-color: darkorange;" text="EAGLE MKII">
+                  <Button fx:id="eaglemk2Button" minWidth="180.0" mnemonicParsing="false" onAction="#eaglemk2ButtonAction" style="-fx-background-color: darkorange;" text="EAGLE MKII">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -100,7 +100,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="haulerButton" mnemonicParsing="false" onAction="#haulerButtonAction" style="-fx-background-color: darkorange;" text="HAULER">
+                  <Button fx:id="haulerButton" minWidth="180.0" mnemonicParsing="false" onAction="#haulerButtonAction" style="-fx-background-color: darkorange;" text="HAULER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -109,7 +109,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="adderButton" mnemonicParsing="false" onAction="#adderButtonAction" style="-fx-background-color: darkorange;" text="ADDER">
+                  <Button fx:id="adderButton" minWidth="180.0" mnemonicParsing="false" onAction="#adderButtonAction" style="-fx-background-color: darkorange;" text="ADDER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -125,7 +125,7 @@
    <top>
       <HBox prefHeight="49.0" prefWidth="590.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="492.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="307.0">
                <children>
                   <Label text="CHOOSE YOUR SHIP" textFill="DARKORANGE">
                      <font>
@@ -137,20 +137,32 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="407.0">
+            <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label fx:id="shipNameLabel" text="EAGLE MKII" textFill="DARKORANGE">
+                  <Label fx:id="shipNameLabel" prefHeight="23.0" prefWidth="171.0" text="EAGLE MKII" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="88.0">
+               <children>
+                  <Button fx:id="shipExitButton" alignment="TOP_LEFT" minWidth="70.0" mnemonicParsing="false" onAction="#shipExitButtonAction" style="-fx-background-color: darkorange;" text="Exit">
+                     <font>
+                        <Font name="Xirod-Regular" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </HBox>
    </top>
    <right>
-      <HBox alignment="CENTER" style="-fx-border-color: darkorange;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" style="-fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="shipImage" fitHeight="469.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -159,8 +171,11 @@
             </ImageView>
          </children>
          <BorderPane.margin>
-            <Insets right="5.0" />
+            <Insets right="-3.0" />
          </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </HBox>
    </right>
 </BorderPane>
