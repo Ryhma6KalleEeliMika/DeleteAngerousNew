@@ -48,7 +48,7 @@ public class Engine {
                 
             case "Advanced":
                 setFuelUsageJump(advancedEngJump);
-                setFuelUsageTravel(advancedEngJump);
+                setFuelUsageTravel(advancedEngTravel);
                 break;
                                 
             case "Elite":
