@@ -337,6 +337,24 @@ public class ShopPopUpController implements Initializable {
             hideSpecs1();
             hideSpecs2();
         });
+        fuel1Button.hoverProperty().addListener(l->{ //Fuel 1 button mouse hover.
+            showPriceLabel();
+            moduleNameLabel.setText("Fuel + 1");
+            Image image = new Image("Images/Modules/fuel1.png");
+            moduleImage.setImage(image);
+            priceLabel.setText(Integer.toString(fuelPrice));
+            hideSpecs1();
+            hideSpecs2();
+        });
+        fuel10Button.hoverProperty().addListener(l->{ //Fuel 10 button mouse hover.
+            showPriceLabel();
+            moduleNameLabel.setText("Fuel + 10");
+            Image image = new Image("Images/Modules/fuel10.png");
+            moduleImage.setImage(image);
+            priceLabel.setText(Integer.toString(fuelPrice * 10));
+            hideSpecs1();
+            hideSpecs2();
+        });
     }
     
     //Sets the price label to be visible

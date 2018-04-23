@@ -36,6 +36,12 @@ public class Planet {
     
     private String population = "0";
     
+    //Planets rng story
+    private Story story;
+    
+    //Checks if the planet has been explored
+    private boolean explored;
+    
     //Constructor  
     public Planet(Star parent, String name, String type,Image planetImage) {
         main.planetsScanned.put(name,false);
@@ -53,9 +59,24 @@ public class Planet {
             else if(type.equals("terran")) {
                 terranGeneration();
             }
+            
+            else if (type.equals("black hole")) {
+                
+            }
+            
+            else {
+                storyGeneration();
+            }
         }
         catch (Exception e) {
         }
+    }
+    
+    //Story generation
+    private void storyGeneration() {
+        Story story = new Story();
+        setStory(story);
+        setExplored(false);
     }
     
     //Generating resources and population for lava and rock planets
@@ -84,7 +105,7 @@ public class Planet {
                         setResGrade("High");
                     }
                     break;
-        }
+            }
     }
     
     //Setting population for terran planets.
@@ -188,4 +209,21 @@ public class Planet {
     public void setTax(int tax) {
         this.tax = tax;
     }  
+
+    public Story getStory() {
+        return story;
+    }
+
+    public void setStory(Story story) {
+        this.story = story;
+    }
+
+    public void setExplored(boolean explored) {
+        this.explored = explored;
+    }
+    
+    public boolean getExplored() {
+        return explored;
+    }
+    
 }

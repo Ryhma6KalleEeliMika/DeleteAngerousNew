@@ -20,7 +20,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -47,6 +49,9 @@ public class PlanetPopUpController implements Initializable {
     private HBox resHbox;
     
     @FXML
+    private BorderPane borderPane;
+    
+    @FXML
     private void exitButtonAction(){
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
@@ -69,10 +74,18 @@ public class PlanetPopUpController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ShopPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
-                stage.setTitle("Second window");
                 stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
                 stage.setScene(new Scene(root1));
+                stage.show();
+        }
+        else if (actionButton.getText().equals("Explore")) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ExplorePopUp.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                stage.setScene(new Scene(root));
                 stage.show();
         }
     }
@@ -110,6 +123,11 @@ public class PlanetPopUpController implements Initializable {
         planetImage.setImage(main.myShip.getPlanet().getPlanetSurface().getSurfaceImage());
         actionLabel.setText("");
         
+        borderPane.hoverProperty().addListener(l->{ //action button mouse hover.
+            actionButton.setDisable(main.myShip.getPlanet().getExplored());
+            
+        });
+        
         //Planet info based on the type.
         switch(main.myShip.getPlanet().getType()) {
             
@@ -133,6 +151,7 @@ public class PlanetPopUpController implements Initializable {
             default:
                 actionButton.setText("Explore");
                 resHbox.setVisible(false);
+                actionButton.setDisable(main.myShip.getPlanet().getExplored());
                  break;
         }
     }
