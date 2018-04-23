@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainMenuController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainMenuController">
    <children>
-      <Pane prefHeight="900.0" prefWidth="1600.0">
+      <Pane prefHeight="768.0" prefWidth="1366.0">
          <children>
-            <ImageView fitHeight="900.0" fitWidth="1600.0" pickOnBounds="true">
+            <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true">
                <image>
                   <Image url="@../Images/mainmenu.jpg" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" style="-fx-border-color: darkorange; -fx-border-width: 10;">
+      <BorderPane prefHeight="768.0" prefWidth="1366.0" style="-fx-border-color: darkorange; -fx-border-width: 10;">
          <top>
             <Label text="DELETE ANGEROUS" textFill="DARKORANGE" BorderPane.alignment="CENTER">
                <font>

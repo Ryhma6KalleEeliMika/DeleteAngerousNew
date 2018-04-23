@@ -271,8 +271,7 @@ public class MainViewController implements Initializable {
             myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageJump());    //Ship loses fuel after the jump
             myShip.setPlanet(null); //Ship is not orbiting any planet after jump.
             myShip.setPlanetName("");
-            return "Jump succesful";
-            
+            return "Jump succesful";        
         }
         else {  //If not enough fuel for the jump.
             return "Not enough fuel for jump!";
