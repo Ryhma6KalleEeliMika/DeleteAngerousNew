@@ -35,7 +35,6 @@ public class MainMenuController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ShipPopUp.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Second window");
         stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
         stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
         stage.setScene(new Scene(root1));

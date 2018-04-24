@@ -91,9 +91,15 @@ public class Story {
             
             //Find a stranded ship.
             case "Give them 20 fuel":
-                myShip.getShipFuelCell().fuelLoss(20);
-                myShip.gainCredits(50);
-                return "-20 fuel & +50cr";
+                if (myShip.getShipFuelCell().getFuel() >= 20) {
+                    myShip.getShipFuelCell().fuelLoss(20);
+                    myShip.gainCredits(50);
+                    return "-20 fuel & +50cr";
+                }
+                else {
+                    story.setConclusion1("You don't have enough fuel to give.");
+                    return "";
+                }
                 
             case "Don\'t give fuel":
                 break;
@@ -192,5 +198,4 @@ public class Story {
     public void setImg(Image img) {
         this.img = img;
     }
-    
 }

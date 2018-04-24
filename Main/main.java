@@ -9,6 +9,7 @@ import Objects.*;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,7 +36,19 @@ public class main extends Application {
     //Starting star
     public static Star startingStar;
     
+    //Scenes
     public static Scene mainMenu;
+    public static Scene mainView;
+    public static Scene exploreScene;
+    public static Scene starScene;
+    public static Scene planetScene;
+    
+    //MainViewThread
+    public static Thread mainThread;
+    public static Task mainTask;
+    
+    //Game over?
+    public static boolean gameOver = false;
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
@@ -58,13 +71,17 @@ public class main extends Application {
         
         //Creates stars, planets, etc.
         worldGeneration();
-        
+            
         //Gui starts here.
         launch(args);
+ 
     }
     
     //The universe.............................................................
     public static void worldGeneration() {
+        System.out.println("World generation get mainMenu: " + main.getMainMenu());
+        setGameOver(false);
+        
         //Location list.
         Map<String, Boolean> starsScanned = new HashMap();
         setStarsScanned(starsScanned);
@@ -199,5 +216,61 @@ public class main extends Application {
 
     public static void setShipImage(Image shipImage) {
         main.shipImage = shipImage;
+    }
+
+    public static void setMainView(Scene mainView) {
+        main.mainView = mainView;
+    }
+
+    public static Scene getMainView() {
+        return mainView;
+    }
+
+    public static Scene getExploreScene() {
+        return exploreScene;
+    }
+
+    public static void setExploreScene(Scene exploreScene) {
+        main.exploreScene = exploreScene;
+    }
+
+    public static Scene getPlanetScene() {
+        return planetScene;
+    }
+
+    public static void setPlanetScene(Scene planetScene) {
+        main.planetScene = planetScene;
+    }
+
+    public static Scene getStarScene() {
+        return starScene;
+    }
+
+    public static void setStarScene(Scene starScene) {
+        main.starScene = starScene;
+    }
+
+    public static boolean isGameOver() {
+        return gameOver;
+    }
+
+    public static void setGameOver(boolean gameOver) {
+        main.gameOver = gameOver;
+    }
+
+    public static void setMainThread(Thread mainThread) {
+        main.mainThread = mainThread;
+    }
+
+    public static Thread getMainThread() {
+        return mainThread;
+    }
+
+    public static void setMainTask(Task mainTask) {
+        main.mainTask = mainTask;
+    }
+
+    public static Task getMainTask() {
+        return mainTask;
     }
 }

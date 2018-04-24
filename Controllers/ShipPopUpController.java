@@ -7,6 +7,7 @@ package Controllers;
  */
 
 import Main.main;
+import static Main.main.setMainMenu;
 import Objects.Ship;
 import java.io.IOException;
 import java.net.URL;
@@ -64,37 +65,40 @@ public class ShipPopUpController implements Initializable {
         stage.close();
     }
     
-    
-     //game starts when the ship is chosen
+    //game starts when the ship is chosen
     private void startGame() throws IOException {
         
         //Closes the ship selection pop up.
         Stage popUpStage = (Stage) adderButton.getScene().getWindow();
         popUpStage.close();
         
-        //Switches the main menu to the main view.
-        Parent normalView = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainView.fxml"));
-        Scene normalScene = new Scene(normalView);
-        Stage window = (Stage)main.getMainMenu().getWindow();
-        window.setScene(normalScene);
-        window.show();
-        
         //Ship generation Starting star system name, star system object and the chosen ship name.
         Ship newShip = new Ship("Sol", main.getStartingStar(), main.getChosenShipName());
         main.setMyShip(newShip);
+        
+        //Switches the main menu to the main view.
+        Parent normalView = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainView.fxml"));
+        Scene normalScene = new Scene(normalView);
+        main.setMainView(normalScene);
+    
+        Stage window = (Stage)main.getMainMenu().getWindow();
+        main.setMainView(normalScene);
+        window.setScene(normalScene);
+        window.show();
     }
     
     @Override   //Mouse hover action.
     public void initialize(URL url, ResourceBundle rb) {
+     
         eaglemk2Button.hoverProperty().addListener(l->{ //EagleMK2 button mouse hover.
             Image image = new Image("Images/Ships/Eagle MkII.png");
             shipImage.setImage(image);
             startFuelLabel.setText("100");
             startHullLabel.setText("100");
             startEngineLabel.setText("Advanced");
-            shipNameLabel.setText("Eagle MkII");
-            
+            shipNameLabel.setText("Eagle MkII");    
         });
+        
         haulerButton.hoverProperty().addListener(l->{ //Hauler button mouse hover.
             Image image = new Image("Images/Ships/Hauler.png");
             shipImage.setImage(image);

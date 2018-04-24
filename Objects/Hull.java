@@ -18,7 +18,7 @@ public class Hull {
     private String name;    //Lightweight, Reinforced, Military
     private Image hullImage;
     
-    private final int lightweightArmor = 100;
+    private final int lightweightArmor = 1;
     
     private final int reinforcedArmor = 200;
     

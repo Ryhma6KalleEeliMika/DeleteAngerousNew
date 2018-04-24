@@ -22,16 +22,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -69,9 +70,6 @@ public class MainViewController implements Initializable {
     
     //Is ship image updated?
     private boolean update = true;
-    
-    //Is game over?
-    private boolean gameOver = false;
 
     @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
@@ -222,8 +220,8 @@ public class MainViewController implements Initializable {
             p4.setStyle("-fx-background-color:DarkOrange");
         }
         
-        if(!(isGameOver()) && main.myShip.getShipHull().getHull() < 1) {
-            setGameOver(true);
+        if(!(main.isGameOver()) && main.myShip.getShipHull().getHull() < 1) {
+            main.setGameOver(true);
                 try {
                     System.out.println("GameOver");
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/GameOver.fxml"));
@@ -232,6 +230,14 @@ public class MainViewController implements Initializable {
                     stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                     stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
                     stage.setScene(new Scene(root1));
+                    stage.setX(660);
+                    stage.setY(540);
+                    
+                    /*
+                    Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                    stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2); 
+                    stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);
+                    */
                     stage.show();
                     
                 } catch (Exception e) {
@@ -429,6 +435,7 @@ public class MainViewController implements Initializable {
     
     @FXML  //Opens the star pop up window.
     private void starButton(ActionEvent event) {
+        main.myShip.getShipHull().hullLoss(1);
         if (main.getMyShip().getStar() != null) {
             try {
                 //Scanned stars counter goes up, if new star is scanned.
@@ -443,10 +450,11 @@ public class MainViewController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/StarPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
-                stage.setTitle("Second window");
                 stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
-                stage.setScene(new Scene(root1));
+                Scene scene = new Scene(root1);
+                stage.setScene(scene);
+                main.setStarScene(scene);   //Scene goes global
                 stage.show();
             } 
             catch (Exception e) {   
@@ -473,7 +481,9 @@ public class MainViewController implements Initializable {
                 stage.setTitle("Second window");
                 stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
-                stage.setScene(new Scene(root1));
+                Scene scene = new Scene(root1);
+                stage.setScene(scene);
+                main.setPlanetScene(scene); //Scene goes global
                 stage.show();
             } 
             catch (Exception e) {
@@ -484,9 +494,7 @@ public class MainViewController implements Initializable {
     //Code that runs first when the GUI starts.
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        
-        setGameOver(false);
-        
+ 
         //setJumpLabel("");   //Empty jump label "Jump successful"
         jumpLabel.setText("");
         warningLabel.setText("");   //Empty warning label "Warning!"
@@ -515,29 +523,26 @@ public class MainViewController implements Initializable {
             this.update = false;
         });
         
-            //Automatically updates the GUI every tenth of a second.
-            Task task = new Task<Void>() {
-             @Override
-             public Void call() throws Exception {
-               int i = 0;
-                while (true) {
-                     final int finalI = i++;
-                     Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
-                     Thread.sleep (100);    //How often
-                 }
+        //Automatically updates the GUI every tenth of a second.
+        Task task = new Task<Void>() {
+        @Override
+        public Void call() throws Exception {
+          int i = 0;
+           while (true) {
+                final int finalI = i++;
+                Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
+                Thread.sleep (100);    //How often
+
              }
-           };
-           Thread th = new Thread(task);
-           th.setDaemon(true);
-           th.start();
-        }
+         }
+       };
+       Thread th = new Thread(task);
+       th.setDaemon(true);
+       th.start();
+       
+       main.setMainTask(task);
 
-        public void setGameOver(boolean gameOver) {
-            this.gameOver = gameOver;
-        }
-
-        public boolean isGameOver() {
-            return gameOver;
-        }
+       main.setMainThread(th);
     }
+}
 
