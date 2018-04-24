@@ -43,6 +43,7 @@ public class ShopPopUpController implements Initializable {
     private int fuelScoopPrice = 100;
     
     private final int fuelPrice = 1;
+    private final int hullPrice = 2;
     
     //Tax rate of the current shop/planet
     private int tax = main.myShip.getPlanet().getTax();
@@ -52,7 +53,8 @@ public class ShopPopUpController implements Initializable {
             mediumCellButton, largeCellButton, 
             reinforcedHullButton, militaryHullButton,
             advancedEngButton, eliteEngButton,
-            fuelScoopButton, fuel1Button, fuel10Button;
+            fuelScoopButton, fuel1Button, fuel10Button,
+            hull1Button, hull10Button;
     
     @FXML
     private Label actionLabel, moduleNameLabel, taxLabel, 
@@ -198,10 +200,17 @@ public class ShopPopUpController implements Initializable {
         
     @FXML   //When pressing the +10 fuel button
     private void fuel10ButtonAction() {
+        
         if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()){
             setActionLabel("Fuel cell already full.");
         }
         
+        else if(main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipFuelCell().getMaxFuel() - 9) {
+            main.myShip.loseCredits(fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel()));
+            main.myShip.getShipFuelCell().fuelGain(10);
+            setActionLabel("fuel refilled.");
+        }
+    
         else if (main.myShip.getCredits() < (fuelPrice * 10)) {
             setActionLabel("Not enough credits.");
         }
@@ -210,6 +219,45 @@ public class ShopPopUpController implements Initializable {
             main.myShip.getShipFuelCell().fuelGain(10);
             main.myShip.loseCredits(fuelPrice * 10);
             setActionLabel("10 fuel refilled.");
+        }
+    }
+    
+    @FXML   //When pressing the +1 hull button
+    private void hull1ButtonAction() {
+        if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
+            setActionLabel("Hull is already full.");
+        }
+        else if (main.myShip.getCredits() < hullPrice) {
+            setActionLabel("Not enough credits.");
+        }
+        else {
+            main.myShip.getShipHull().hullGain(1);
+            main.myShip.loseCredits(hullPrice);
+            setActionLabel("1 hull repaired.");
+        }
+    }
+        
+    @FXML   //When pressing the +10 hull button
+    private void hull10ButtonAction() {
+        
+        if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
+            setActionLabel("Hull already full.");
+        }
+        
+        else if(main.myShip.getShipHull().getHull() >= main.myShip.getShipHull().getMaxHull() - 9) {
+            main.myShip.loseCredits(hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull()));
+            main.myShip.getShipHull().hullGain(10);
+            setActionLabel("hull refilled.");
+        }
+    
+        else if (main.myShip.getCredits() < (hullPrice * 10)) {
+            setActionLabel("Not enough credits.");
+        }
+        
+        else {
+            main.myShip.getShipHull().hullGain(10);
+            main.myShip.loseCredits(hullPrice * 10);
+            setActionLabel("10 hull refilled.");
         }
     }
     
@@ -352,6 +400,24 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/fuel10.png");
             moduleImage.setImage(image);
             priceLabel.setText(Integer.toString(fuelPrice * 10));
+            hideSpecs1();
+            hideSpecs2();
+        });
+        hull1Button.hoverProperty().addListener(l->{ //Fuel 1 button mouse hover.
+            showPriceLabel();
+            moduleNameLabel.setText("Hull + 1");
+            Image image = new Image("Images/Modules/hull1.png");
+            moduleImage.setImage(image);
+            priceLabel.setText(Integer.toString(hullPrice));
+            hideSpecs1();
+            hideSpecs2();
+        });
+        hull10Button.hoverProperty().addListener(l->{ //Fuel 10 button mouse hover.
+            showPriceLabel();
+            moduleNameLabel.setText("Hull + 10");
+            Image image = new Image("Images/Modules/hull10.png");
+            moduleImage.setImage(image);
+            priceLabel.setText(Integer.toString(hullPrice * 10));
             hideSpecs1();
             hideSpecs2();
         });

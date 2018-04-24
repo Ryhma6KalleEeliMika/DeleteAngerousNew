@@ -32,7 +32,7 @@ public class Ship {
     private Engine shipEngine;
     private boolean fuelScoopInstalled = false;
     private Image fuelScoopImage;
-    private int Credits = 0;
+    private int Credits;
     
 
     //Ship's constructor

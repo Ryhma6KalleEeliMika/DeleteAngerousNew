@@ -154,6 +154,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="Fuel cell" textFill="DARKORANGE">
@@ -201,17 +202,32 @@
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuelScoopButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#fuelScoopButtonAction" style="-fx-background-color: darkorange;" text="Fuel Scoop" GridPane.rowIndex="3">
+                  <Button fx:id="fuelScoopButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#fuelScoopButtonAction" style="-fx-background-color: darkorange;" text="Fuel Scoop" GridPane.rowIndex="4">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuel1Button" layoutX="172.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel1ButtonAction" style="-fx-background-color: darkorange;" text="+1 fuel" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="fuel1Button" layoutX="172.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel1ButtonAction" style="-fx-background-color: darkorange;" text="+1 fuel" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuel10Button" layoutX="333.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel10ButtonAction" style="-fx-background-color: darkorange;" text="+10 fuel" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="fuel10Button" layoutX="333.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel10ButtonAction" style="-fx-background-color: darkorange;" text="+10 fuel" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Xirod-Regular" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="10.0" layoutY="76.0" text="Repair" textFill="DARKORANGE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Xirod-Regular" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="hull1Button" layoutX="175.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull1ButtonAction" style="-fx-background-color: darkorange;" text="+1 hull" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Xirod-Regular" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="hull10Button" layoutX="340.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull10ButtonAction" style="-fx-background-color: darkorange;" text="+10 hull" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
