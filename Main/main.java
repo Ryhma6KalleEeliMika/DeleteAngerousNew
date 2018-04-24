@@ -47,6 +47,8 @@ public class main extends Application {
     public static Thread mainThread;
     public static Task mainTask;
     
+    public static final String soundPath = "/src/Sounds/";
+    
     //Game over?
     public static boolean gameOver = false;
     
