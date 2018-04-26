@@ -13,16 +13,16 @@ import javafx.scene.image.Image;
  * @author Mika Vuorinen
  */
 public class Hull {
-    private int hull;
-    private int maxHull;
+    private double hull;
+    private double maxHull;
     private String name;    //Lightweight, Reinforced, Military
     private Image hullImage;
     
-    private final int lightweightArmor = 1;
+    private final double lightweightArmor = 1;
     
-    private final int reinforcedArmor = 200;
+    private final double reinforcedArmor = 200;
     
-    private final int militaryArmor = 300;
+    private final double militaryArmor = 300;
     
     //Constructor
     public Hull(String moduleName){
@@ -48,12 +48,12 @@ public class Hull {
     }
     
     //Hull loss method
-    public void hullLoss(int hullLoss){
+    public void hullLoss(double hullLoss){
         setHull(hull - hullLoss);
     }
     
     //Hull gain method "Not used yet."
-    public void hullGain(int hullGain){
+    public void hullGain(double hullGain){
         if(hullGain + getHull() >= getMaxHull()){
             setHull(getMaxHull());
         }
@@ -63,19 +63,19 @@ public class Hull {
     }
     
     //Setters and getters................................
-    public int getHull() {
+    public double getHull() {
         return hull;
     }
 
-    public void setHull(int hull) {
+    public void setHull(double hull) {
         this.hull = hull;
     }
 
-    public int getMaxHull() {
+    public double getMaxHull() {
         return maxHull;
     }
 
-    public void setMaxHull(int maxHull) {
+    public void setMaxHull(double maxHull) {
         this.maxHull = maxHull;
     }
 
@@ -95,15 +95,15 @@ public class Hull {
         return hullImage;
     }
 
-    public int getLightweightArmor() {
+    public double getLightweightArmor() {
         return lightweightArmor;
     }
 
-    public int getReinforcedArmor() {
+    public double getReinforcedArmor() {
         return reinforcedArmor;
     }
 
-    public int getMilitaryArmor() {
+    public double getMilitaryArmor() {
         return militaryArmor;
     }
 }

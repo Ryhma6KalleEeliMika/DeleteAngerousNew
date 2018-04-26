@@ -13,27 +13,27 @@ import javafx.scene.image.Image;
  * @author Kalle Mustonen
  */
 public class FuelCell {
-    private int fuel;
+    private double fuel;
     
-    private int maxFuel;
+    private double maxFuel;
     
     private String name;    //Small, Medium, Large
     
     private Image fuelImage;
     
-    private final int smallMaxFuel = 100;
+    private final double smallMaxFuel = 100;
     
-    private final int mediumMaxFuel = 150;
+    private final double mediumMaxFuel = 150;
     
-    private final int largeMaxFuel = 200;
+    private final double largeMaxFuel = 200;
     
     //Fuel loss method
-    public void fuelLoss(int fuelLoss){
+    public void fuelLoss(double fuelLoss){
         setFuel(fuel - fuelLoss);
     }
     
     //Fuel gain method
-    public void fuelGain(int fuelGain){
+    public void fuelGain(double fuelGain){
         if(fuelGain + getFuel() >= getMaxFuel()){
             setFuel(getMaxFuel());
         }
@@ -69,19 +69,19 @@ public class FuelCell {
     }
     
     //Setters and getters................................
-    public int getFuel() {
+    public double getFuel() {
         return fuel;
     }
 
-    public void setFuel(int fuel) {
+    public void setFuel(double fuel) {
         this.fuel = fuel;
     }
 
-    public int getMaxFuel() {
+    public double getMaxFuel() {
         return maxFuel;
     }
 
-    public void setMaxFuel(int maxFuel) {
+    public void setMaxFuel(double maxFuel) {
         this.maxFuel = maxFuel;
     }
 
@@ -101,15 +101,15 @@ public class FuelCell {
         return fuelImage;
     }
 
-    public int getSmallMaxFuel() {
+    public double getSmallMaxFuel() {
         return smallMaxFuel;
     }
 
-    public int getMediumMaxFuel() {
+    public double getMediumMaxFuel() {
         return mediumMaxFuel;
     }
 
-    public int getLargeMaxFuel() {
+    public double getLargeMaxFuel() {
         return largeMaxFuel;
     }
 }

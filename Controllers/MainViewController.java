@@ -22,17 +22,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -56,6 +54,10 @@ public class MainViewController implements Initializable {
     @FXML
     public Label fuelLabel, hullLabel, creditsLabel;
     
+    @FXML
+            //Fuel and Hull Progress Bar
+    private ProgressBar fuelProgressBar, hullProgressBar;
+    
     @FXML   //Current star, current planet, galaxy map button 
     private Button currentStarButton, currentPlanetButton, gMBapButton;
     
@@ -71,27 +73,42 @@ public class MainViewController implements Initializable {
     //Is ship image updated?
     private boolean update = true;
 
-    @FXML   //Fuel meter/ammount
+  
+     @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
         Ship myShip = main.getMyShip();
-        fuelLabel.setText(Integer.toString(myShip.getShipFuelCell().getFuel()));
-        if (myShip.getShipFuelCell().getFuel() < 21){ //Color changes to red if fuel is low.
-            fuelLabel.setTextFill(Color.web("red"));
+        fuelLabel.setText(Integer.toString((int) myShip.getShipFuelCell().getFuel()));
+        fuelProgressBar.setProgress(myShip.getShipFuelCell().getFuel()/ myShip.getShipFuelCell().getMaxFuel());
+        if (myShip.getShipFuelCell().getFuel()>(myShip.getShipFuelCell().getMaxFuel()*0.75)){
+            fuelProgressBar.setStyle("-fx-accent: green");
         }
-        else {
-            fuelLabel.setTextFill(Color.web("darkorange"));
+        if (myShip.getShipFuelCell().getFuel()<=(myShip.getShipFuelCell().getMaxFuel()*0.75)){
+            fuelProgressBar.setStyle("-fx-accent: yellow");
+        }
+        if (myShip.getShipFuelCell().getFuel()<=(myShip.getShipFuelCell().getMaxFuel()*0.50)){
+            fuelProgressBar.setStyle("-fx-accent: orange");
+        }
+        if (myShip.getShipFuelCell().getFuel() < (myShip.getShipFuelCell().getMaxFuel()*0.25)){ 
+            fuelProgressBar.setStyle("-fx-accent: red");
         }
     }
     
-    @FXML   //Hull ammount
+     @FXML   //Hull ammount
     private void setHullAmmount() {
         Ship myShip = main.getMyShip();
-        hullLabel.setText(Integer.toString(myShip.getShipHull().getHull()));
-        if (myShip.getShipHull().getHull() < 21){ //Color changes to red if hull is low.
-            hullLabel.setTextFill(Color.web("red"));
+        hullLabel.setText(Integer.toString((int) myShip.getShipHull().getHull()));
+        hullProgressBar.setProgress(myShip.getShipHull().getHull()/myShip.getShipHull().getMaxHull());
+        if (myShip.getShipHull().getHull()>(myShip.getShipHull().getMaxHull()*0.75)){
+            hullProgressBar.setStyle("-fx-accent: green");
         }
-        else {
-            hullLabel.setTextFill(Color.web("darkorange"));
+        if (myShip.getShipHull().getHull()<=(myShip.getShipHull().getMaxHull()*0.75)){
+            hullProgressBar.setStyle("-fx-accent: yellow");
+        }
+        if (myShip.getShipHull().getHull()<=(myShip.getShipHull().getMaxHull()*0.50)){
+            hullProgressBar.setStyle("-fx-accent: orange");
+        }
+        if (myShip.getShipHull().getHull() < (myShip.getShipHull().getMaxHull()*0.25)){
+            hullProgressBar.setStyle("-fx-accent: red");
         }
     }
     

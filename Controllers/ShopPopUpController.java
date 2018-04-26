@@ -81,7 +81,7 @@ public class ShopPopUpController implements Initializable {
         else {
             FuelCell medFuelCell = new FuelCell("Medium");
             main.myShip.setShipFuelCell(medFuelCell);
-            main.myShip.loseCredits(medFuelCellPrice);
+            main.myShip.loseCredits((int) medFuelCellPrice);
             setActionLabel("Medium fuel cell installed.");
         }
     }
@@ -99,7 +99,7 @@ public class ShopPopUpController implements Initializable {
         else {
             FuelCell largeFuelCell = new FuelCell("Large");
             main.myShip.setShipFuelCell(largeFuelCell);
-            main.myShip.loseCredits(largeFuelCellPrice);
+            main.myShip.loseCredits((int) largeFuelCellPrice);
             setActionLabel("Large fuel cell installed.");
         }
     }
@@ -115,7 +115,7 @@ public class ShopPopUpController implements Initializable {
         else {
             Hull reinforcedHull = new Hull("Reinforced");
             main.myShip.setShipHull(reinforcedHull);
-            main.myShip.loseCredits(reinforcedHullPrice);
+            main.myShip.loseCredits((int) reinforcedHullPrice);
             setActionLabel("Reinforced alloys installed.");
         }
     }
@@ -131,7 +131,7 @@ public class ShopPopUpController implements Initializable {
         else {
             Hull militaryHull = new Hull("Military");
             main.myShip.setShipHull(militaryHull);
-            main.myShip.loseCredits(militaryHullPrice);
+            main.myShip.loseCredits((int) militaryHullPrice);
             setActionLabel("Military grade alloys installed.");
         }
     }
@@ -147,7 +147,7 @@ public class ShopPopUpController implements Initializable {
         else {
             Engine advancedEngine = new Engine("Advanced");
             main.myShip.setShipEngine(advancedEngine);
-            main.myShip.loseCredits(advancedEnginePrice);
+            main.myShip.loseCredits((int) advancedEnginePrice);
             setActionLabel("Advanced engine installed.");
         }
     }
@@ -163,7 +163,7 @@ public class ShopPopUpController implements Initializable {
         else {
             Engine eliteEngine = new Engine("Elite");
             main.myShip.setShipEngine(eliteEngine);
-            main.myShip.loseCredits(eliteEnginePrice);
+            main.myShip.loseCredits((int) eliteEnginePrice);
             setActionLabel("Elite engine installed.");
         }
     }
@@ -178,7 +178,7 @@ public class ShopPopUpController implements Initializable {
         }
         else {
             main.myShip.setFuelScoopInstalled(true);
-            main.myShip.loseCredits(fuelScoopPrice);
+            main.myShip.loseCredits((int) fuelScoopPrice);
             setActionLabel("Fuel scoop installed.");
         }
     }
@@ -193,7 +193,7 @@ public class ShopPopUpController implements Initializable {
         }
         else {
             main.myShip.getShipFuelCell().fuelGain(1);
-            main.myShip.loseCredits(fuelPrice);
+            main.myShip.loseCredits((int) fuelPrice);
             setActionLabel("1 fuel refilled.");
         }
     }
@@ -206,7 +206,7 @@ public class ShopPopUpController implements Initializable {
         }
         
         else if(main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipFuelCell().getMaxFuel() - 9) {
-            main.myShip.loseCredits(fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel()));
+            main.myShip.loseCredits((int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
             main.myShip.getShipFuelCell().fuelGain(10);
             setActionLabel("fuel refilled.");
         }
@@ -217,7 +217,7 @@ public class ShopPopUpController implements Initializable {
         
         else {
             main.myShip.getShipFuelCell().fuelGain(10);
-            main.myShip.loseCredits(fuelPrice * 10);
+            main.myShip.loseCredits((int) (fuelPrice * 10));
             setActionLabel("10 fuel refilled.");
         }
     }
@@ -232,7 +232,7 @@ public class ShopPopUpController implements Initializable {
         }
         else {
             main.myShip.getShipHull().hullGain(1);
-            main.myShip.loseCredits(hullPrice);
+            main.myShip.loseCredits((int) hullPrice);
             setActionLabel("1 hull repaired.");
         }
     }
@@ -245,7 +245,7 @@ public class ShopPopUpController implements Initializable {
         }
         
         else if(main.myShip.getShipHull().getHull() >= main.myShip.getShipHull().getMaxHull() - 9) {
-            main.myShip.loseCredits(hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull()));
+            main.myShip.loseCredits((int) (hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull())));
             main.myShip.getShipHull().hullGain(10);
             setActionLabel("hull refilled.");
         }
@@ -256,7 +256,7 @@ public class ShopPopUpController implements Initializable {
         
         else {
             main.myShip.getShipHull().hullGain(10);
-            main.myShip.loseCredits(hullPrice * 10);
+            main.myShip.loseCredits((int) (hullPrice * 10));
             setActionLabel("10 hull refilled.");
         }
     }
@@ -312,9 +312,9 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Medium.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Medium fuel cell");
-            priceLabel.setText(Integer.toString(medFuelCellPrice));
+            priceLabel.setText(Integer.toString((int) medFuelCellPrice));
             spec1Label.setText("Capacity");
-            spec1.setText(Integer.toString(f.getMediumMaxFuel()));
+            spec1.setText(Integer.toString((int) f.getMediumMaxFuel()));
         });
         largeCellButton.hoverProperty().addListener(l->{ //Large fuel cell button mouse hover.
             showPriceLabel();
@@ -323,9 +323,9 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Large.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Large fuel cell");
-            priceLabel.setText(Integer.toString(largeFuelCellPrice));
+            priceLabel.setText(Integer.toString((int) largeFuelCellPrice));
             spec1Label.setText("Capacity");
-            spec1.setText(Integer.toString(f.getLargeMaxFuel()));
+            spec1.setText(Integer.toString((int) f.getLargeMaxFuel()));
         });
         reinforcedHullButton.hoverProperty().addListener(l->{ //Reinforced hull button mouse hover.
             showPriceLabel();
@@ -334,9 +334,9 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Reinforced.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Reinforced Alloys");
-            priceLabel.setText(Integer.toString(reinforcedHullPrice));
+            priceLabel.setText(Integer.toString((int) reinforcedHullPrice));
             spec1Label.setText("Armor");
-            spec1.setText(Integer.toString(h.getReinforcedArmor()));
+            spec1.setText(Integer.toString((int) h.getReinforcedArmor()));
 
         });
         militaryHullButton.hoverProperty().addListener(l->{ //Military hull button mouse hover.
@@ -346,9 +346,9 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Military.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Military grade Alloys");
-            priceLabel.setText(Integer.toString(militaryHullPrice));
+            priceLabel.setText(Integer.toString((int) militaryHullPrice));
             spec1Label.setText("Armor");
-            spec1.setText(Integer.toString(h.getMilitaryArmor()));
+            spec1.setText(Integer.toString((int) h.getMilitaryArmor()));
         });
         advancedEngButton.hoverProperty().addListener(l->{ //Advanced engine button mouse hover.
             showPriceLabel();
@@ -357,7 +357,7 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Advanced.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Advanced engine");
-            priceLabel.setText(Integer.toString(advancedEnginePrice));
+            priceLabel.setText(Integer.toString((int) advancedEnginePrice));
             spec1Label.setText("Travel");
             spec1.setText(Integer.toString(e.getAdvancedEngTravel()));
             spec2Label.setText("Jump");
@@ -370,7 +370,7 @@ public class ShopPopUpController implements Initializable {
             Image image = new Image("Images/Modules/Elite.png");
             moduleImage.setImage(image);
             moduleNameLabel.setText("Elite engine");
-            priceLabel.setText(Integer.toString(eliteEnginePrice));
+            priceLabel.setText(Integer.toString((int) eliteEnginePrice));
             spec1Label.setText("Travel");
             spec1.setText(Integer.toString(e.getEliteEngineTravel()));
             spec2Label.setText("Jump");
@@ -381,7 +381,7 @@ public class ShopPopUpController implements Initializable {
             moduleNameLabel.setText("Fuel scoop");
             Image image = new Image("Images/Modules/FuelScoop.png");
             moduleImage.setImage(image);
-            priceLabel.setText(Integer.toString(fuelScoopPrice));
+            priceLabel.setText(Integer.toString((int) fuelScoopPrice));
             hideSpecs1();
             hideSpecs2();
         });
@@ -390,7 +390,7 @@ public class ShopPopUpController implements Initializable {
             moduleNameLabel.setText("Fuel + 1");
             Image image = new Image("Images/Modules/fuel1.png");
             moduleImage.setImage(image);
-            priceLabel.setText(Integer.toString(fuelPrice));
+            priceLabel.setText(Integer.toString((int) fuelPrice));
             hideSpecs1();
             hideSpecs2();
         });
@@ -399,7 +399,7 @@ public class ShopPopUpController implements Initializable {
             moduleNameLabel.setText("Fuel + 10");
             Image image = new Image("Images/Modules/fuel10.png");
             moduleImage.setImage(image);
-            priceLabel.setText(Integer.toString(fuelPrice * 10));
+            priceLabel.setText(Integer.toString((int) (fuelPrice * 10)));
             hideSpecs1();
             hideSpecs2();
         });
@@ -408,7 +408,7 @@ public class ShopPopUpController implements Initializable {
             moduleNameLabel.setText("Hull + 1");
             Image image = new Image("Images/Modules/hull1.png");
             moduleImage.setImage(image);
-            priceLabel.setText(Integer.toString(hullPrice));
+            priceLabel.setText(Integer.toString((int) hullPrice));
             hideSpecs1();
             hideSpecs2();
         });
@@ -417,7 +417,7 @@ public class ShopPopUpController implements Initializable {
             moduleNameLabel.setText("Hull + 10");
             Image image = new Image("Images/Modules/hull10.png");
             moduleImage.setImage(image);
-            priceLabel.setText(Integer.toString(hullPrice * 10));
+            priceLabel.setText(Integer.toString((int) (hullPrice * 10)));
             hideSpecs1();
             hideSpecs2();
         });
