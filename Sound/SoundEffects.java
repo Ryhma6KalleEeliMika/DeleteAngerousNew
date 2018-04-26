@@ -5,7 +5,7 @@
  */
 package Sound;
 
-import static Main.main.soundPath;
+import Main.main;
 
 /**
  *
@@ -14,7 +14,7 @@ import static Main.main.soundPath;
 public class SoundEffects {
 
 public static void Sound(String file){
-        Sound Sound = new Sound(soundPath+file);
+        Sound Sound = new Sound(main.SOUNDPATH+file);
         Sound.play();
     }
 }

@@ -19,12 +19,14 @@ public class Story {
     
     private String conclusion1, conclusion2, option1, option2;
     
+    private String blueLabel, redLabel;
+    
     private Image img;
     
-    private final String imgPath = "Images/Story/";
+    private final String IMGPATH = "Images/Story/";
     
     public Story(){
-        switch (2) {
+        switch (rng()) {
             //Starnded ship
             case 1:
                 //Premise of the event.
@@ -43,7 +45,7 @@ public class Story {
                 setConclusion2("You left them on their own.");
                 
                 //Image of the event
-                Image img1 = new Image(imgPath + "stranded.png");
+                Image img1 = new Image(IMGPATH + "stranded.png");
                 setImg(img1);
 
                 break;
@@ -60,7 +62,7 @@ public class Story {
 
                 setConclusion2("You took few hits, but you managed to escape.");
 
-                Image img2 = new Image(imgPath + "pirateAttack.png");
+                Image img2 = new Image(IMGPATH + "pirateAttack.png");
 
                 setImg(img2);
 
@@ -74,7 +76,7 @@ public class Story {
                 
                 setOption2("Try to escape");
                 
-                Image img3 = new Image(imgPath + "pirateFleet.png");
+                Image img3 = new Image(IMGPATH + "pirateFleet.png");
                 setImg(img3);
                 
                 break;
@@ -89,7 +91,7 @@ public class Story {
                 
                 setConclusion2("You decide to leave.");
                 
-                Image img4 = new Image(imgPath + "conflictZone.png");
+                Image img4 = new Image(IMGPATH + "conflictZone.png");
                 setImg(img4);
                 
                 break;
@@ -104,7 +106,7 @@ public class Story {
 
                 setConclusion2("You leave the scene.");
 
-                Image img20 = new Image(imgPath + "shipDebris.png");
+                Image img20 = new Image(IMGPATH + "shipDebris.png");
 
                 setImg(img20);
 
@@ -113,36 +115,35 @@ public class Story {
     }
     
     //Exploration rewards and label texts.
-    public String reward(String rewardName, Story story){
+    public void reward(String rewardName, Story story){
         Ship myShip = main.getMyShip();
         switch(rewardName){
             
             //Find a stranded ship.
             case "Give them 20 fuel":
-                if (myShip.getShipFuelCell().getFuel() >= 20) {
-                    myShip.getShipFuelCell().fuelLoss(20);
-                    myShip.gainCredits(50);
-                    return "-20 fuel & +50cr";
-                }
-                else {
-                    story.setConclusion1("You don't have enough fuel to give.");
-                    return "";
-                }
+                myShip.getShipFuelCell().fuelLoss(20);
+                myShip.gainCredits(50);
+                story.setBlueLabel("-20 fuel & +50cr");
+                break;
                 
             //Pirate attacks you.
             case "Accelerate":
                 if(myShip.getShipFuelCell().getFuel() >= 10){
                     myShip.getShipFuelCell().fuelLoss(10);
-                    return "-10 fuel";
+                    story.setRedLabel("-10 fuel");
+                    break;
                 }
                 else{
                     myShip.getShipHull().setHull(0);
                     story.setConclusion1("You didn\'t have enough fuel to get away and the pirate catches you and destroys your ship.");
+                    story.setRedLabel("Ship Destroyed");
+                    break;
                 }
                 
             case "Dodge":
                 myShip.getShipHull().hullLoss(20);
-                return "Warning! Hull damage";
+                story.setRedLabel("Warning! Hull damage");
+                break;
             
             //Conflict zone
             case "Help the Empire":
@@ -150,60 +151,66 @@ public class Story {
                     case 1:
                         story.setConclusion1("You help the Empire and managed to bring few pirate ships down without problems.");
                         myShip.gainCredits(150);
-                        Image conflictImg = new Image(imgPath + "conflictSuccess.png");
+                        Image conflictImg = new Image(IMGPATH + "conflictSuccess.png");
                         story.setImg(conflictImg);
-                        return "+ 150cr";
+                        story.setBlueLabel("+150cr");
+                        break;
+                        
                     case 2:
                         story.setConclusion1("You help the Empire and managed to bring few pirate ships down, although you took few hits");
                         myShip.getShipHull().hullLoss(25);
                         myShip.gainCredits(100);
-                        Image conflict2Img = new Image(imgPath + "conflictOk.png");
+                        Image conflict2Img = new Image(IMGPATH + "conflictOk.png");
                         story.setImg(conflict2Img);
-                        return "Warning! Hull damage";
+                        story.setBlueLabel("+100cr");
+                        story.setRedLabel("Warning! Hull damage");
+                        break;
+                        
                     case 3:
                         story.setConclusion1("You were mostly a moving practice target to the pirates and you took few really bad hits.");
                         myShip.getShipHull().hullLoss(50);
                         myShip.gainCredits(75);
-                        Image conflict3Img = new Image(imgPath + "conflictFail.png");
+                        Image conflict3Img = new Image(IMGPATH + "conflictFail.png");
                         story.setImg(conflict3Img);
-                        return "Warning! Hull damage";
+                        story.setBlueLabel("+75cr");
+                        story.setRedLabel("Warning! Hull damage");
+                        break;
                 }
                 
                 
             //pirate fleet escape needs to be under this case.
             case "Give 50cr":
-                if(myShip.getCredits() >= 50){
-                    myShip.loseCredits(50);
-                    setConclusion1("You gave them 50cr and they leave you alone.");
-                    return "- 50cr.";
-                }
+                myShip.loseCredits(50);
+                story.setConclusion1("You gave them 50cr and they leave you alone.");
+                story.setRedLabel("-50cr");
+                break;
+                
             //pirate fleet escape. case give 50cr needs to be above this.
             case "Try to escape":
                 switch (subrng()) {
                     case 1: //Took damage on attack.
                         story.setConclusion2("You managed to escape, but took some heave damage.");
-                        story.setConclusion1("You managed to escape, but took some heave damage.");
                         myShip.getShipHull().hullLoss(30);
-                        Image pirateImg = new Image(imgPath + "pirateAttack.png");
+                        Image pirateImg = new Image(IMGPATH + "pirateAttack.png");
                         story.setImg(pirateImg);
-                        return "Warning! Hull damage";
+                        story.setRedLabel("Warning! Hull damage");
+                        break;
                     
                     case 2: //Lost some fuel and hull.
                         story.setConclusion2("You managed to escape and dodge most of the attacks, but you lost some fuel on the process.");
-                        story.setConclusion1("You managed to escape and dodge most of the attacks, but you lost some fuel on the process.");
                         myShip.getShipHull().hullLoss(15);
-                        myShip.getShipFuelCell().fuelLoss(5);
-                        Image pirate2Img = new Image(imgPath + "narrowEscape.png");
+                        Image pirate2Img = new Image(IMGPATH + "narrowEscape.png");
                         story.setImg(pirate2Img);
-                        return "Warning! Hull damage";
+                        story.setRedLabel("Warning! Hull damage");
+                        break;
                         
-                    case 3: //only fuel lost.
+                    case 3: //Only fuel lost.
                         story.setConclusion2("You managed to escape without beeing hit, but you lost some fuel on the process.");
-                        story.setConclusion1("You managed to escape without beeing hit, but you lost some fuel on the process.");
                         myShip.getShipFuelCell().fuelLoss(15);
-                        Image pirate3Img = new Image(imgPath + "pirateEscape.png");
+                        Image pirate3Img = new Image(IMGPATH + "pirateEscape.png");
                         story.setImg(pirate3Img);
-                        return "- 15 fuel";
+                        story.setRedLabel("-15 fuel");
+                        break;
                 }
                 
             //Ship debris exploration.
@@ -213,19 +220,22 @@ public class Story {
                     case 1: //Found a fuelcell in the debris.
                     story.setConclusion1("You found a fuelcell with some fuel left in it.");
                     myShip.getShipFuelCell().fuelGain(50);
-                    return "+50 fuel";
+                    story.setBlueLabel("+50 fuel");
+                    break;
                     
                     case 2: //A pirate attacks you.
                     story.setConclusion1("A pirate ambushes you, but you managed to escape.");
-                    Image pirateImg = new Image(imgPath + "pirateAttack.png");
+                    Image pirateImg = new Image(IMGPATH + "pirateAttack.png");
                     story.setImg(pirateImg);
                     myShip.getShipHull().hullLoss(20);
-                    return "Warning! Hull damage";
+                    story.setRedLabel("Warning! Hull damage");
+                    break;
                     
                     case 3: //Found some credits in the debris.
                     story.setConclusion1("You found some credits in the debris.");
                     myShip.gainCredits(20);
-                    return "+20cr";
+                    story.setBlueLabel("+20cr");
+                    break;
                 }
 
             case "Don\'t explore":
@@ -234,14 +244,14 @@ public class Story {
             case "Don\'t help":
                 break;
         }
-        return "";
     }
-    //  rng for adventure creation
+    
+    //rng for adventure creation
     private int rng() {
         return ThreadLocalRandom.current().nextInt(1, 6 + 1);
     }
     
-    // sub rng for other stuff
+    //sub rng for other stuff
     private int subrng() {
         return ThreadLocalRandom.current().nextInt(1, 3 + 1);
     }
@@ -294,5 +304,20 @@ public class Story {
     public void setImg(Image img) {
         this.img = img;
     }
-    
+
+    public void setBlueLabel(String blueLabel) {
+        this.blueLabel = blueLabel;
+    }
+
+    public void setRedLabel(String redLabel) {
+        this.redLabel = redLabel;
+    }
+
+    public String getBlueLabel() {
+        return blueLabel;
+    }
+
+    public String getRedLabel() {
+        return redLabel;
+    }
 }

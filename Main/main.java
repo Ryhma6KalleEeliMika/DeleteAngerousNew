@@ -14,7 +14,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -39,18 +41,9 @@ public class main extends Application {
     //Scenes
     public static Scene mainMenu;
     public static Scene mainView;
-    public static Scene exploreScene;
-    public static Scene starScene;
-    public static Scene planetScene;
     
-    //MainViewThread
-    public static Thread mainThread;
-    public static Task mainTask;
-    
-    public static final String soundPath = "/src/Sounds/";
-    
-    //Game over?
-    public static boolean gameOver = false;
+    //SoundFXpath
+    public static final String SOUNDPATH = "src/Sounds/";
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
@@ -67,7 +60,6 @@ public class main extends Application {
     /**
      * @param args the command line arguments
      */
-
     
     public static void main(String[] args) {
         
@@ -81,9 +73,7 @@ public class main extends Application {
     
     //The universe.............................................................
     public static void worldGeneration() {
-        System.out.println("World generation get mainMenu: " + main.getMainMenu());
-        setGameOver(false);
-        
+     
         //Location list.
         Map<String, Boolean> starsScanned = new HashMap();
         setStarsScanned(starsScanned);
@@ -226,53 +216,5 @@ public class main extends Application {
 
     public static Scene getMainView() {
         return mainView;
-    }
-
-    public static Scene getExploreScene() {
-        return exploreScene;
-    }
-
-    public static void setExploreScene(Scene exploreScene) {
-        main.exploreScene = exploreScene;
-    }
-
-    public static Scene getPlanetScene() {
-        return planetScene;
-    }
-
-    public static void setPlanetScene(Scene planetScene) {
-        main.planetScene = planetScene;
-    }
-
-    public static Scene getStarScene() {
-        return starScene;
-    }
-
-    public static void setStarScene(Scene starScene) {
-        main.starScene = starScene;
-    }
-
-    public static boolean isGameOver() {
-        return gameOver;
-    }
-
-    public static void setGameOver(boolean gameOver) {
-        main.gameOver = gameOver;
-    }
-
-    public static void setMainThread(Thread mainThread) {
-        main.mainThread = mainThread;
-    }
-
-    public static Thread getMainThread() {
-        return mainThread;
-    }
-
-    public static void setMainTask(Task mainTask) {
-        main.mainTask = mainTask;
-    }
-
-    public static Task getMainTask() {
-        return mainTask;
     }
 }

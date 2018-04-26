@@ -19,13 +19,13 @@ public class Surface {
     
     private String Name;
     
-    private String imgPath = "Images/Surface/";
+    private final String IMGPATH = "Images/Surface/";
     
     //Constructor
     Surface(String newName){
         setName(newName);
         try{
-            Image newImage = new Image(imgPath + Name + ".png");
+            Image newImage = new Image(IMGPATH + Name + ".png");
             setSurfaceImage(newImage);
         }
         catch (Exception e){

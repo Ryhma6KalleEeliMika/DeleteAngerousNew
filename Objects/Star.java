@@ -44,9 +44,9 @@ public class Star {
     private Planet planet1, planet2, planet3, planet4;
     
     //image paths
-    private String imgFolder = "Images/Stars/";
+    private final String STARIMGPATH = "Images/Stars/";
     
-    private String gMapFolder = "Images/GalaxyMap/";
+    private final String GMAPIMGPATH = "Images/GalaxyMap/";
     
     //Star's default constructor creates the star's image object.
     public Star(int starId, String starName, boolean scoopable) {
@@ -63,37 +63,37 @@ public class Star {
         
         //Setting up images for stars/planets/galaxy map
         try {
-            Image newStarImage = new Image(imgFolder + starName + "/" + starName + ".png");
+            Image newStarImage = new Image(STARIMGPATH + starName + "/" + starName + ".png");
             setStarImage(newStarImage);
         }
         catch (Exception e) {
         }
         try {
-            Image newGalaxyMapImage = new Image(gMapFolder + starName + "Map.png");
+            Image newGalaxyMapImage = new Image(GMAPIMGPATH + starName + "Map.png");
             setGalaxyMapImage(newGalaxyMapImage);
         }
         catch (Exception e) {
         }
         try {
-            Image newStarImage1 = new Image(imgFolder + starName + "/" + starName  +"1.png");
+            Image newStarImage1 = new Image(STARIMGPATH + starName + "/" + starName  +"1.png");
             setStarImage1(newStarImage1);
         }
         catch (Exception e) {
         }
         try {
-            Image newStarImage2 = new Image(imgFolder + starName + "/" + starName  +"2.png");
+            Image newStarImage2 = new Image(STARIMGPATH + starName + "/" + starName  +"2.png");
             setStarImage2(newStarImage2);
         }
         catch (Exception e) {
         }
         try {
-            Image newStarImage3 = new Image(imgFolder + starName + "/" + starName  +"3.png");
+            Image newStarImage3 = new Image(STARIMGPATH + starName + "/" + starName  +"3.png");
             setStarImage3(newStarImage3);
         }
         catch (Exception e) {
         }
         try {
-            Image newStarImage4 = new Image(imgFolder + starName + "/" + starName  +"4.png");
+            Image newStarImage4 = new Image(STARIMGPATH + starName + "/" + starName  +"4.png");
             setStarImage4(newStarImage4);
         }
         catch (Exception e) {

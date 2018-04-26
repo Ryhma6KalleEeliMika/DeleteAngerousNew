@@ -16,11 +16,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -41,6 +45,18 @@ public class StarPopUpController implements Initializable {
     
     @FXML
     private void exitButtonAction(){
+        if (main.myShip.getShipHull().getHull() <= 0){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/GameOver.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                stage.setScene(new Scene(root1));
+                stage.show();
+            } catch (Exception e) {
+            }
+        }
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }

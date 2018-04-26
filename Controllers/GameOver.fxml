@@ -14,15 +14,6 @@
          <children>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="tryAgainButton" minWidth="180.0" mnemonicParsing="false" onAction="#tryAgainButtonAction" style="-fx-background-color: darkorange;" text="Try Again">
-                     <font>
-                        <Font name="Xirod-Regular" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="79.0" prefWidth="150.0">
-               <children>
                   <Button fx:id="quitButton" minWidth="180.0" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: darkorange;" text="quit">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />

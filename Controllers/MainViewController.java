@@ -219,31 +219,6 @@ public class MainViewController implements Initializable {
         else {
             p4.setStyle("-fx-background-color:DarkOrange");
         }
-        
-        if(!(main.isGameOver()) && main.myShip.getShipHull().getHull() < 1) {
-            main.setGameOver(true);
-                try {
-                    System.out.println("GameOver");
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/GameOver.fxml"));
-                    Parent root1 = (Parent) fxmlLoader.load();
-                    Stage stage = new Stage();
-                    stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
-                    stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
-                    stage.setScene(new Scene(root1));
-                    stage.setX(660);
-                    stage.setY(540);
-                    
-                    /*
-                    Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-                    stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2); 
-                    stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);
-                    */
-                    stage.show();
-                    
-                } catch (Exception e) {
-                    
-            }
-        }
     }
     
     //Label that appears after jump attempt. "Jump succesful or something else."
@@ -282,7 +257,7 @@ public class MainViewController implements Initializable {
     
     //Switches to the galaxy map view.
     @FXML
-    private void gMapButton(ActionEvent event) throws IOException {
+    private void gMapButtonAction(ActionEvent event) throws IOException {
         Parent gMap = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/GalaxyMap.fxml"));
         Scene gMapScene = new Scene(gMap);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -292,150 +267,57 @@ public class MainViewController implements Initializable {
     
     //N1 - N4 buttons for jumping neighbouring star systems.
     @FXML
-    private void n1Button(ActionEvent event) {
-        Ship myShip = main.getMyShip(); //Get my ship from the main
-        try {
-            Star starToTravel = myShip.getStar().getStar1(); //Get the target star
-            String jumpResult = starTravel(myShip, starToTravel); //Returns a string wether the jump was success or not.
-            setJumpLabel(jumpResult); //Sets the jump label after trip E.G. "Jump successful"
-        } catch (Exception e) {
-            setJumpLabel("Error! Invalid selection.");
-        }
+    private void n1ButtonAction(ActionEvent event) {
+        Star destinationStar = main.myShip.getStar().getStar1(); //Get the destination star
+        setJumpLabel(main.myShip.starJump(destinationStar)); //Sets the jump label after trip E.G. "Jump successful"
     }
     
     @FXML
-    private void n2Button(ActionEvent event) {
-        Ship myShip = main.getMyShip();
-        try {
-            Star starToTravel = myShip.getStar().getStar2();
-            String jumpResult = starTravel(myShip, starToTravel);
-            setJumpLabel(jumpResult);
-        } catch (Exception e) {
-            setJumpLabel("Error! Invalid selection.");
-        }
+    private void n2ButtonAction(ActionEvent event) {
+        Star destinationStar = main.myShip.getStar().getStar2();
+        setJumpLabel(main.myShip.starJump(destinationStar));
     }
     
     @FXML
-    private void n3Button(ActionEvent event) {
-        Ship myShip = main.getMyShip();
-        try {
-            Star starToTravel = myShip.getStar().getStar3();
-            String jumpResult = starTravel(myShip, starToTravel);
-            setJumpLabel(jumpResult);
-        } catch (Exception e) {
-            setJumpLabel("Error! Invalid selection.");
-        }
+    private void n3ButtonAction(ActionEvent event) {
+        Star destinationStar = main.myShip.getStar().getStar3();
+        setJumpLabel(main.myShip.starJump(destinationStar));
     }
     
     @FXML
-    private void n4Button(ActionEvent event) {
-        Ship myShip = main.getMyShip();
-        try {
-            Star starToTravel = myShip.getStar().getStar4();
-            String jumpResult = starTravel(myShip, starToTravel);
-            setJumpLabel(jumpResult);
-        } catch (Exception e) {
-            setJumpLabel("Error! Invalid selection.");
-        }
+    private void n4ButtonAction(ActionEvent event) {
+        Star destinationStar = main.myShip.getStar().getStar4();
+        setJumpLabel(main.myShip.starJump(destinationStar));
     }
-    
-    //Method for traveling to between stars.  Warns the player if fuel is low or 0.
-    private String starTravel(Ship myShip, Star starTo){
-        if (starTo == null) {   //If star doesn't exist
-            return "Error! Invalid selection.";
-        }
-        else if (myShip.getShipFuelCell().getFuel() >= myShip.getShipEngine().getFuelUsageJump()) { //If fuel is above 10
-            myShip.setStar(starTo); //Ship's star is set to the new star.
-            myShip.setCurrentStarName(starTo.getName());
-            myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageJump());    //Ship loses fuel after the jump
-            myShip.setPlanet(null); //Ship is not orbiting any planet after jump.
-            myShip.setPlanetName("");
-            return "Jump succesful";        
-        }
-        else {  //If not enough fuel for the jump.
-            return "Not enough fuel for jump!";
-        }
-    }
-        
 
     //Planet buttons P1 - P4.
     @FXML
-    private void p1Button(ActionEvent event) {
-        try {
-            Ship myShip = main.getMyShip(); //Get my ship from the main
-            Planet destinationPlanet = myShip.getStar().getPlanet1(); //Get the destination planet.
-            String planetName = destinationPlanet.getName(); //Destination planet's name.
-            String travelResult = planetTravel(myShip, planetName, destinationPlanet); //Returns the resulting string if the travel was possible or not.
-            setJumpLabel(travelResult); //Sets the jump label after trip E.G. "Orbiting Terra"
-        }
-        catch (Exception e) {
-            setJumpLabel("Error! Invalid selection!");
-        }
+    private void p1ButtonAction(ActionEvent event) {
+        Planet destinationPlanet = main.myShip.getStar().getPlanet1(); //Get the destination planet.
+        setJumpLabel(main.myShip.planetTravel(destinationPlanet)); //Sets the jump label after trip E.G. "Orbiting Terra"
     }
     
     @FXML
-    private void p2Button(ActionEvent event) {
-        try {
-            Ship myShip = main.getMyShip();
-            Planet destinationPlanet = myShip.getStar().getPlanet2();
-            String planetName = destinationPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
-            setJumpLabel(travelResult);
-        }
-        catch (Exception e) {
-            setJumpLabel("Error! Invalid selection!");
-        }
+    private void p2ButtonAction(ActionEvent event) {
+        Planet destinationPlanet = main.myShip.getStar().getPlanet2();
+        setJumpLabel(main.myShip.planetTravel(destinationPlanet));
     }
     
     @FXML
-    private void p3Button(ActionEvent event) {
-        try {
-            Ship myShip = main.getMyShip();
-            Planet destinationPlanet = myShip.getStar().getPlanet3();
-            String planetName = destinationPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
-            setJumpLabel(travelResult);
-        }
-        catch (Exception e) {
-            setJumpLabel("Error! Invalid selection!");
-        }
+    private void p3ButtonAction(ActionEvent event) {
+        Planet destinationPlanet = main.myShip.getStar().getPlanet3();
+        setJumpLabel(main.myShip.planetTravel(destinationPlanet));
     }
     
     @FXML
-    private void p4Button(ActionEvent event) {
-        try {
-            Ship myShip = main.getMyShip();
-            Planet destinationPlanet = myShip.getStar().getPlanet4();
-            String planetName = destinationPlanet.getName();
-            String travelResult = planetTravel(myShip, planetName, destinationPlanet);
-            setJumpLabel(travelResult);
-        }
-        catch (Exception e) {
-            setJumpLabel("Error! Invalid selection!");
-        }
+    private void p4ButtonAction(ActionEvent event) {
+        Planet destinationPlanet = main.myShip.getStar().getPlanet4();
+        setJumpLabel(main.myShip.planetTravel(destinationPlanet));
     }
-    
-    //Method for traveling between planet. Warns the player if fuel is low or 0.
-    private String planetTravel(Ship myShip, String planetName, Planet destinationPlanet) {
-        if(myShip.getPlanetName().equals(planetName)){  //Checks if the ship is already orbiting that planet
-            return "Error! Invalid selection!\nAlready orbiting " + planetName;   
-        }
-        else if (myShip.getShipFuelCell().getFuel() >= myShip.getShipEngine().getFuelUsageTravel() && destinationPlanet != null) { //Checks if there is enough fuel and the target exists
-            if (planetName != null) { //If planet exists.
-                myShip.getShipFuelCell().fuelLoss(myShip.getShipEngine().getFuelUsageTravel()); //Fuel depletes by one.
-                myShip.setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
-                myShip.setPlanetName(planetName); //Sets ships current planet name as the new planet.
-                return "Orbiting " + planetName;
-            }return "Invalid selection";    //If null button was pressed.
-        }
-        else { //If no enough fuel.
-            return "Travel failed. Not enough fuel!";
-        }
-    }
-    
+
     @FXML  //Opens the star pop up window.
-    private void starButton(ActionEvent event) {
-        main.myShip.getShipHull().hullLoss(1);
+    private void starButtonAction(ActionEvent event) {
+        main.myShip.getShipHull().hullLoss(1000);
         if (main.getMyShip().getStar() != null) {
             try {
                 //Scanned stars counter goes up, if new star is scanned.
@@ -452,9 +334,7 @@ public class MainViewController implements Initializable {
                 Stage stage = new Stage();
                 stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
-                Scene scene = new Scene(root1);
-                stage.setScene(scene);
-                main.setStarScene(scene);   //Scene goes global
+                stage.setScene(new Scene(root1));
                 stage.show();
             } 
             catch (Exception e) {   
@@ -463,7 +343,7 @@ public class MainViewController implements Initializable {
     }
     
     @FXML  //Opens the planet pop up window.
-    private void planetButton(ActionEvent event) {
+    private void planetButtonAction(ActionEvent event) {
         if (main.getMyShip().getPlanet() != null) {
             try {
                 //Scanned planets counter goes up, if new planet is scanned.
@@ -481,9 +361,7 @@ public class MainViewController implements Initializable {
                 stage.setTitle("Second window");
                 stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
-                Scene scene = new Scene(root1);
-                stage.setScene(scene);
-                main.setPlanetScene(scene); //Scene goes global
+                stage.setScene(new Scene(root1));
                 stage.show();
             } 
             catch (Exception e) {
@@ -539,10 +417,6 @@ public class MainViewController implements Initializable {
        Thread th = new Thread(task);
        th.setDaemon(true);
        th.start();
-       
-       main.setMainTask(task);
-
-       main.setMainThread(th);
     }
 }
 

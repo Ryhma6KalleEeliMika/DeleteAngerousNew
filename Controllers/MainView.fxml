@@ -24,7 +24,7 @@
                         <Font name="Xirod-Regular" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="n1" alignment="CENTER" layoutX="18.0" layoutY="103.0" maxWidth="200.0" minWidth="200.0" mnemonicParsing="false" onAction="#n1Button" style="-fx-background-color: darkorange;" text="Maxima">
+                  <Button fx:id="n1" alignment="CENTER" layoutX="18.0" layoutY="103.0" maxWidth="200.0" minWidth="200.0" mnemonicParsing="false" onAction="#n1ButtonAction" style="-fx-background-color: darkorange;" text="Maxima">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
@@ -32,22 +32,22 @@
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button fx:id="n2" alignment="CENTER" layoutX="18.0" layoutY="175.0" minWidth="200.0" mnemonicParsing="false" onAction="#n2Button" style="-fx-background-color: #ff8c00;" text="Ales">
+                  <Button fx:id="n2" alignment="CENTER" layoutX="18.0" layoutY="175.0" minWidth="200.0" mnemonicParsing="false" onAction="#n2ButtonAction" style="-fx-background-color: #ff8c00;" text="Ales">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="n3" alignment="CENTER" layoutX="18.0" layoutY="246.0" minWidth="200.0" mnemonicParsing="false" onAction="#n3Button" style="-fx-background-color: #ff8c00;" text="Null">
+                  <Button fx:id="n3" alignment="CENTER" layoutX="18.0" layoutY="246.0" minWidth="200.0" mnemonicParsing="false" onAction="#n3ButtonAction" style="-fx-background-color: #ff8c00;" text="Null">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="n4" alignment="CENTER" layoutX="18.0" layoutY="317.0" minWidth="200.0" mnemonicParsing="false" onAction="#n4Button" style="-fx-background-color: #ff8c00;" text="Stripruar">
+                  <Button fx:id="n4" alignment="CENTER" layoutX="18.0" layoutY="317.0" minWidth="200.0" mnemonicParsing="false" onAction="#n4ButtonAction" style="-fx-background-color: #ff8c00;" text="Stripruar">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gMapButton" layoutX="23.0" layoutY="425.0" minHeight="70.0" minWidth="190.0" mnemonicParsing="false" onAction="#gMapButton" style="-fx-background-color: darkorange;" text="GALAXY MAP">
+                  <Button fx:id="gMapButton" layoutX="23.0" layoutY="425.0" minHeight="70.0" minWidth="190.0" mnemonicParsing="false" onAction="#gMapButtonAction" style="-fx-background-color: darkorange;" text="GALAXY MAP">
                      <font>
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
@@ -62,7 +62,7 @@
                               <Insets bottom="10.0" />
                            </padding>
                         </Label>
-                        <Button fx:id="currentStarButton" minWidth="185.0" mnemonicParsing="false" onAction="#starButton" style="-fx-background-color: darkorange;" text="Sol">
+                        <Button fx:id="currentStarButton" minWidth="185.0" mnemonicParsing="false" onAction="#starButtonAction" style="-fx-background-color: darkorange;" text="Sol">
                            <font>
                               <Font name="Xirod-Regular" size="20.0" />
                            </font>
@@ -182,22 +182,22 @@
                               <Font name="Xirod-Regular" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="p1" minWidth="150.0" mnemonicParsing="false" onAction="#p1Button" style="-fx-background-color: Darkorange;" text="Earth">
+                        <Button fx:id="p1" minWidth="150.0" mnemonicParsing="false" onAction="#p1ButtonAction" style="-fx-background-color: Darkorange;" text="Earth">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="p2" layoutX="61.0" layoutY="45.0" minWidth="150.0" mnemonicParsing="false" onAction="#p2Button" style="-fx-background-color: Darkorange;" text="Earth">
+                        <Button fx:id="p2" layoutX="61.0" layoutY="45.0" minWidth="150.0" mnemonicParsing="false" onAction="#p2ButtonAction" style="-fx-background-color: Darkorange;" text="Earth">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="p3" layoutX="61.0" layoutY="84.0" minWidth="150.0" mnemonicParsing="false" onAction="#p3Button" style="-fx-background-color: Darkorange;" text="Earth">
+                        <Button fx:id="p3" layoutX="61.0" layoutY="84.0" minWidth="150.0" mnemonicParsing="false" onAction="#p3ButtonAction" style="-fx-background-color: Darkorange;" text="Earth">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
                         </Button>
-                        <Button fx:id="p4" layoutX="61.0" layoutY="123.0" minWidth="150.0" mnemonicParsing="false" onAction="#p4Button" style="-fx-background-color: Darkorange;" text="Earth">
+                        <Button fx:id="p4" layoutX="61.0" layoutY="123.0" minWidth="150.0" mnemonicParsing="false" onAction="#p4ButtonAction" style="-fx-background-color: Darkorange;" text="Earth">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>
@@ -214,7 +214,7 @@
                               <Font name="Xirod-Regular" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="currentPlanetButton" minWidth="150.0" mnemonicParsing="false" onAction="#planetButton" style="-fx-background-color: darkorange;">
+                        <Button fx:id="currentPlanetButton" minWidth="150.0" mnemonicParsing="false" onAction="#planetButtonAction" style="-fx-background-color: darkorange;">
                            <font>
                               <Font name="Xirod-Regular" size="15.0" />
                            </font>

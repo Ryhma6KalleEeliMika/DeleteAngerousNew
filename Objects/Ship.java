@@ -92,6 +92,39 @@ public class Ship {
         return currentStar.getName();
     }
     
+    //Method for traveling to between stars.
+    public String starJump(Star destinationStar) {
+        if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageJump()) { //If fuel is above the current engine's jump fuel usage.
+            setStar(destinationStar); //Ship's star is set to the new star.
+            setCurrentStarName(destinationStar.getName());
+            getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageJump());  //Ship loses fuel after the jump
+            setPlanet(null); //Ship is not orbiting any planet after jump.
+            setPlanetName("");
+            return "Jump succesful";        
+        }
+        else {  //If not enough fuel for the jump.
+            return "Not enough fuel for jump!";
+        }
+    }
+    
+    
+    //Method for traveling between planet.
+    public String planetTravel(Planet destinationPlanet) {
+        if (getPlanetName().equals(destinationPlanet.getName())) {  //Checks if the player is already orbiting the destination planet.
+            return "Already orbiting " + getPlanetName();
+        }
+        else if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageTravel()) { //Checks if there is enough fuel.
+                getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageTravel()); //Fuel depletes.
+                setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
+                setPlanetName(destinationPlanet.getName()); //Sets ships current planet name as the new planet.
+                return "Orbiting " + destinationPlanet.getName();
+            }
+        else { //If no enough fuel.
+            return "Travel failed. Not enough fuel!";
+        }
+    }
+    
+    
     //Getters and setters.........................................................
     public String getName() {
         return name;
