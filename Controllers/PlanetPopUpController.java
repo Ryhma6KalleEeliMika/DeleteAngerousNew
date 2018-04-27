@@ -52,7 +52,8 @@ public class PlanetPopUpController implements Initializable {
     private BorderPane borderPane;
     
     @FXML
-    private void exitButtonAction(){
+    private void exitButtonAction() throws IOException{
+        gameOver();
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
@@ -90,6 +91,20 @@ public class PlanetPopUpController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
                 stage.setScene(new Scene(root));
                 stage.show();
+        }
+    }
+    
+    //GameOver
+    private void gameOver() throws IOException{
+        //Opens win screen if all planets and stars are scanned
+        if (main.myShip.getPlanetsScanned() == main.getMAXPLANETS() && main.myShip.getStarsScanned() == main.getMAXSTARS()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/GameOver.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+            stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+            stage.setScene(new Scene(root1));
+            stage.show();
         }
     }
     

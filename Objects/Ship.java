@@ -2,8 +2,8 @@ package Objects;
 
 
 import Main.main;
-import Objects.Engine;
-import Objects.FuelCell;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.scene.image.Image;
 
 
@@ -33,8 +33,7 @@ public class Ship {
     private boolean fuelScoopInstalled = false;
     private Image fuelScoopImage;
     private int Credits = 0;
-    
-
+  
     //Ship's constructor
     public Ship(String location, Star star, String newName) {
         setName(newName);
@@ -123,6 +122,39 @@ public class Ship {
             return "Travel failed. Not enough fuel!";
         }
     }
+    
+    public String starScanner() {
+        if(!currentStar.isScanned()) {
+            currentStar.setScanned(true);
+            starsScannedCounter();
+            gainCredits(5);
+            return currentStarName + " scanned +5cr";
+        }
+        else {
+            return "";
+        }
+    }
+    
+    private void starsScannedCounter() {
+        setStarsScanned(getStarsScanned() + 1);
+    }
+    
+    public String planetScanner() {
+        if(!currentPlanet.isScanned()) {
+            currentPlanet.setScanned(true);
+            planetScannedCounter();
+            gainCredits(1);
+            return currentPlanetName + " scanned +1cr";
+        }
+        else {
+            return "";
+        }
+    }
+    
+    private void planetScannedCounter() {
+        setPlanetsScanned(getPlanetsScanned() + 1);
+    }
+
     
     
     //Getters and setters.........................................................
@@ -229,4 +261,5 @@ public class Ship {
     public Image getFuelScoopImage() {
         return fuelScoopImage;
     }
+    
 }

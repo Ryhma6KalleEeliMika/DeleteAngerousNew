@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -33,13 +34,13 @@ import javafx.util.Duration;
  *
  * @author Kalle
  */
-public class ExplorePopUpController implements Initializable {
+public class BeaconPopUpController implements Initializable {
     
     @FXML    
     private Button option1Button, option2Button, exitButton;
     
     @FXML
-    private Label eventExplanationLabel, eventOutcomeLabel, gainLabel, lossLabel;
+    private Label eventOutcomeLabel, gainLabel, lossLabel;
     
     @FXML
     private ImageView eventImage;
@@ -47,55 +48,29 @@ public class ExplorePopUpController implements Initializable {
     @FXML   //Exit button after exploration event has concluded.
     private void exitButtonAction() throws IOException {
         gameOver();
-        main.myShip.getPlanet().setExplored(true);
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
     
     @FXML   //Choice 1 in the exploration event.
     private void option1ButtonAction() {
-        Story story = main.myShip.getPlanet().getStory();
-        story.reward(option1Button.getText(), story);
-        eventOutcomeLabel.setText(story.getConclusion1());
-        storyEnd(story);
+        eventOutcomeLabel.setText(Story.beaconEncounter());
+        gainLabel.setText(Story.getBeaconReward());
+        lossLabel.setText(Story.getBeaconFail());
+        eventImage.setImage(Story.getBeaconImg());
+        eventEnd();
     }
     
     @FXML   //Choice 2 in the exploration event.
     private void option2ButtonAction() {
-        Story story = main.myShip.getPlanet().getStory();
-        story.reward(option2Button.getText(), story);
-        eventOutcomeLabel.setText(story.getConclusion2());
-        storyEnd(story);
+        eventOutcomeLabel.setText("You didn\'t want to attract any unwanted attention");
+        eventEnd();
     }
     
-    //After the choice has been made.
-    private void storyEnd(Story story) {
-        eventImage.setImage(story.getImg());
+    private void eventEnd() {
         exitButton.setVisible(true);
         option1Button.setDisable(true);
-        option2Button.setDisable(true);
-        gainLabel.setText(story.getBlueLabel());
-        lossLabel.setText(story.getRedLabel());
-    }
-    
-    //Displaying the planets rng 'story'
-    private void story(){    
-        Story story = main.myShip.getPlanet().getStory();
-        option1Button.setText(story.getOption1());
-        option2Button.setText(story.getOption2());
-        eventExplanationLabel.setText(story.getStory());
-        eventOutcomeLabel.setText("");
-        eventImage.setImage(story.getImg());    
-        
-        //Money check for 50cr
-        if (option1Button.getText().equals("Give 50cr") && main.myShip.getCredits() < 50) {
-            option1Button.setDisable(true);
-        }
-        
-        //Fuel check for 20 fuel
-        if (option1Button.getText().equals("Give them 20 fuel") && main.myShip.getShipFuelCell().getFuel() < 20) {
-            option1Button.setDisable(true);
-        }
+        option2Button.setDisable(true);  
     }
     
     //Opens game over pop up.
@@ -115,9 +90,11 @@ public class ExplorePopUpController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         gainLabel.setText("");
         lossLabel.setText("");
+        eventOutcomeLabel.setText("");
         exitButton.setVisible(false);
         option1Button.setDisable(false);
-        option2Button.setDisable(false);
-        story();    
+        option2Button.setDisable(false);  
+        Image img = new Image("Images/Story/beacon.png");
+        eventImage.setImage(img);
     }
 }

@@ -28,9 +28,9 @@ public class main extends Application {
     //Main ship
     public static Ship myShip;
     public static Image shipImage;
-    
-    //Stars scanned list
-    public static Map starsScanned, planetsScanned;
+        
+    //The ammount of stars and planets.
+    public static final int MAXSTARS = 32, MAXPLANETS = 77;
     
     //Chosen shipName
     public static String chosenShipName;
@@ -47,7 +47,6 @@ public class main extends Application {
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
-        
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent mainMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainMenu.fxml"));
         Scene scene = new Scene(mainMenu);
@@ -74,13 +73,6 @@ public class main extends Application {
     //The universe.............................................................
     public static void worldGeneration() {
      
-        //Location list.
-        Map<String, Boolean> starsScanned = new HashMap();
-        setStarsScanned(starsScanned);
-        
-        Map<String, Boolean> planetsScanned = new HashMap();
-        setPlanetsScanned(planetsScanned);
-        
         //Star generation Id number and name.
         Star Sol = new Star(1, "Sol", true);
         Star Maxima = new Star(2, "Maxima", true);
@@ -128,7 +120,7 @@ public class main extends Application {
         Evrae.setStarDetails("Giol", "Azon", null, null, Giol, Azon, null, null, Evrae, "Steelar", "rock", "Crio", "terran", null, null, null, null);
         Azon.setStarDetails("Evrae", "Veprio", "Strope", "Koh", Evrae, Veprio, Strope, Koh, Azon, "Boothill", "black hole", "Giunope", "gas", "Duitera", "ring", "Spor", "rock");
         Lah.setStarDetails("Tramois", "Stripruar", "Adeotre", "Kuel", Tramois, Stripruar, Adeotre, Kuel, Lah, "Beophus", "rock", "Glogua", "rock", "Stasie", "ice", null, null);
-        Kuel.setStarDetails("Lah", "Ruan", null, null, Lah, Ruan, null, null, Kuel, "Praanus", "water", "Clapus", "rock", "Pelara", "gas", null, null);
+        Kuel.setStarDetails("Lah", "Ruan", null, null, Lah, Ruan, null, null, Kuel, "Praanus", "water", "Pelara", "gas", "Clapus", "rock", null, null);
         Ruan.setStarDetails("Kuel", null, null, null, Kuel, null, null, null, Ruan, "Foerus", "rock", "Blore", "rock", "Ailara", "ice", null, null);
         Strope.setStarDetails("Veprio", "Azon", "Stripruar", null, Veprio, Azon, Stripruar, null, Strope, "Geter", "rock", "Thorix", "gas", "Biluq", "ring", null, null);
         Stripruar.setStarDetails("Tramois", "Strope", "Lah", "Adeotre", Tramois, Strope, Lah, Adeotre, Stripruar, "Degroilite", "gas", null, null, null, null, null, null);
@@ -160,22 +152,6 @@ public class main extends Application {
 
     public static Ship getMyShip() {
         return myShip;
-    }
-
-    public static void setStarsScanned(Map starsScanned) {
-        main.starsScanned = starsScanned;
-    }
-
-    public static Map getStarsScanned() {
-        return starsScanned;
-    }
-
-    public static void setPlanetsScanned(Map planetsScanned) {
-        main.planetsScanned = planetsScanned;
-    }
-
-    public static Map getPlanetsScanned() {
-        return planetsScanned;
     }
 
     public static void setChosenShipName(String chosenShipName) {
@@ -216,5 +192,13 @@ public class main extends Application {
 
     public static Scene getMainView() {
         return mainView;
+    }
+
+    public static int getMAXPLANETS() {
+        return MAXPLANETS;
+    }
+
+    public static int getMAXSTARS() {
+        return MAXSTARS;
     }
 }

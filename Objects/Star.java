@@ -43,6 +43,9 @@ public class Star {
     //Star's child planets.
     private Planet planet1, planet2, planet3, planet4;
     
+    //Is star scanned
+    private boolean scanned;
+    
     //image paths
     private final String STARIMGPATH = "Images/Stars/";
     
@@ -56,7 +59,6 @@ public class Star {
         if (scoopable){
             this.scoopTimes = 2;
         }
-        main.starsScanned.put(starName,false);
         Surface starsSurface = new Surface(starName);
         setStarsSurface(starsSurface);
         
@@ -267,6 +269,14 @@ public class Star {
 
     public int getScoopTimes() {
         return scoopTimes;
+    }
+
+    public void setScanned(boolean scanned) {
+        this.scanned = scanned;
+    }
+
+    public boolean isScanned() {
+        return scanned;
     }
     
 }

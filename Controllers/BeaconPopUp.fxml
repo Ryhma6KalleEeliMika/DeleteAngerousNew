@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black; -fx-border-color: DarkOrange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ExplorePopUpController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Black; -fx-border-color: DarkOrange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BeaconPopUpController">
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Random Event" textFill="DARKORANGE">
+            <Label text="Distress beacon" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>
@@ -27,7 +27,7 @@
          <children>
             <ImageView fx:id="eventImage" fitHeight="238.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Story/stranded.png" />
+                  <Image url="@../Images/Story/beacon.png" />
                </image>
             </ImageView>
             <Label fx:id="gainLabel" alignment="CENTER" text="You gained 50 credits" textFill="DEEPSKYBLUE">
@@ -51,7 +51,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="option1Button" mnemonicParsing="false" onAction="#option1ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Action 1" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="option1Button" mnemonicParsing="false" onAction="#option1ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Activate Beacon" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -60,7 +60,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="305.0" layoutY="10.0" prefHeight="60.0" prefWidth="401.0">
                <children>
-                  <Button fx:id="option2Button" mnemonicParsing="false" onAction="#option2ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Action 2" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="option2Button" mnemonicParsing="false" onAction="#option2ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Do not activate" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -77,7 +77,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="284.0">
                      <children>
-                        <Label fx:id="eventExplanationLabel" prefHeight="95.0" prefWidth="314.0" text="You see a stranded ship orbiting the planet. The ship hails you and asks you for a fuel." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
+                        <Label prefHeight="95.0" prefWidth="314.0" text="Activate your distress beacon to signal other ships for help." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
                            <font>
                               <Font name="Xirod-Regular" size="13.0" />
                            </font>

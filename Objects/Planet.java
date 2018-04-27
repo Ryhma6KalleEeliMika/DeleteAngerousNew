@@ -41,10 +41,12 @@ public class Planet {
     
     //Checks if the planet has been explored
     private boolean explored;
+
+    //Checks if the planet has been scanned.
+    private boolean scanned;
     
     //Constructor  
     public Planet(Star parent, String name, String type,Image planetImage) {
-        main.planetsScanned.put(name,false);
         setName(name);
         Surface newSurface = new Surface(name);
         setPlanetSurface(newSurface);
@@ -124,17 +126,17 @@ public class Planet {
     
     // Low resource rng
     private int lowRes() {
-        return ThreadLocalRandom.current().nextInt(1, 20 + 1);    
+        return ThreadLocalRandom.current().nextInt(1, 30 + 1);    
     }
     
     // Medium resource rng
     private int medRes() {
-        return ThreadLocalRandom.current().nextInt(20, 40 + 1);
+        return ThreadLocalRandom.current().nextInt(30, 60 + 1);
     }
     
     // High resource rng
     private int highRes() {
-        return ThreadLocalRandom.current().nextInt(40, 80 + 1);
+        return ThreadLocalRandom.current().nextInt(60, 100 + 1);
     }
     
     //Getters and setters........................................................
@@ -225,5 +227,12 @@ public class Planet {
     public boolean getExplored() {
         return explored;
     }
-    
+
+    public void setScanned(boolean scanned) {
+        this.scanned = scanned;
+    }
+
+    public boolean isScanned() {
+        return scanned;
+    }
 }
