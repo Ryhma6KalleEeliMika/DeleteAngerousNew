@@ -56,6 +56,7 @@ public class Star {
         this.id = starId;
         this.name = starName;
         this.scoop = scoopable;
+        main.starMap.put(starName, false);
         if (scoopable){
             this.scoopTimes = 2;
         }

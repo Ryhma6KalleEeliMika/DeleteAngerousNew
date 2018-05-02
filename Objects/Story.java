@@ -320,15 +320,15 @@ public class Story {
         switch (intSubRng()) {
             case 1:
                 main.myShip.getShipHull().hullLoss(40);
-                main.myShip.getShipFuelCell().fuelLoss(2);
-                setBeaconFail("-2 fuel & Hull damage!");
+                main.myShip.getShipFuelCell().fuelLoss(5);
+                setBeaconFail("-5 fuel & Hull damage!");
                 Image img = new Image("Images/Story/narrowEscape.png");
                 setInterdictImg(img);
                 return "You were able to escape, but took some heavy damage.";
             
             default: 
-                main.myShip.getShipFuelCell().fuelLoss(2);
-                setBeaconFail("-2 fuel");
+                main.myShip.getShipFuelCell().fuelLoss(5);
+                setBeaconFail("-5 fuel");
                 Image img2 = new Image("Images/Story/pirateEscape.png");
                 setInterdictImg(img2);
                 return "You were able to escape your pursuer.";

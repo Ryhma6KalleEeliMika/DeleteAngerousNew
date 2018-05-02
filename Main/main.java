@@ -42,6 +42,10 @@ public class main extends Application {
     public static Scene mainMenu;
     public static Scene mainView;
     
+    //hashmaps
+    public static HashMap starMap;
+    public static HashMap planetMap;
+    
     //SoundFXpath
     public static final String SOUNDPATH = "src/Sounds/";
     
@@ -62,12 +66,19 @@ public class main extends Application {
     
     public static void main(String[] args) {
         
+        //hashmap creation.
+        HashMap <String, Boolean> sMap = new HashMap();
+        HashMap <String, Boolean> pMap = new HashMap();
+        setStarMap(sMap);
+        setPlanetMap(pMap);
+        
         //Creates stars, planets, etc.
         worldGeneration();
             
         //Gui starts here.
         launch(args);
- 
+        
+        
     }
     
     //The universe.............................................................
@@ -201,4 +212,22 @@ public class main extends Application {
     public static int getMAXSTARS() {
         return MAXSTARS;
     }
+
+    public static HashMap getPlanetMap() {
+        return planetMap;
+    }
+
+    public static void setPlanetMap(HashMap planetMap) {
+        main.planetMap = planetMap;
+    }
+
+    public static HashMap getStarMap() {
+        return starMap;
+    }
+
+    public static void setStarMap(HashMap starMap) {
+        main.starMap = starMap;
+    }
+    
+    
 }

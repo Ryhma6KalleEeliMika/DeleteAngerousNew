@@ -24,9 +24,9 @@ public class Weapon {
     
     private final int miningLaserDmg = 10;
     
-    private final int pulseLaserDmg = 60;
+    private final int pulseLaserDmg = 55;
     
-    private final int multiCannonDmg = 85;
+    private final int multiCannonDmg = 80;
     
     //Constructor
     public Weapon(String moduleName){

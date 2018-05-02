@@ -35,7 +35,7 @@
                </BorderPane.margin></VBox>
          </left>
          <right>
-            <VBox alignment="BOTTOM_CENTER" prefWidth="175.0" spacing="10.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="569.0" prefWidth="186.0" spacing="10.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="-3.0" right="-3.0" />
                </BorderPane.margin>
@@ -97,17 +97,50 @@
          <center>
             <VBox alignment="CENTER" style="-fx-background-color: black; -fx-border-width: 3; -fx-border-color: darkorange;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="galaxyImage" fitHeight="900.0" fitWidth="1000.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/GalaxyMap/SolMap.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
+                  <AnchorPane prefHeight="563.0" prefWidth="1002.0">
+                     <children>
+                        <ImageView fx:id="galaxyImage" fitHeight="900.0" fitWidth="1000.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/GalaxyMap/SolMap.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <Button fx:id="solScanned" layoutX="91.5" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="alesScanned" layoutX="150.5" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="maximaScanned" layoutX="192.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="atokScanned" layoutX="282.0" layoutY="373.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="kriyScanned" layoutX="233.5" layoutY="469.5" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="giolScanned" layoutX="324.0" layoutY="435.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="tramoisScanned" layoutX="338.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="lahScanned" layoutX="296.0" layoutY="237.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="stripruarScanned" layoutX="380.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="kuelScanned" layoutX="303.0" layoutY="146.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="ruanScanned" layoutX="359.0" layoutY="64.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="adeotreScanned" layoutX="380.0" layoutY="196.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="veprioScanned" layoutX="387.0" layoutY="384.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="stropeScanned" layoutX="441.0" layoutY="331.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="evraeScanned" layoutX="408.0" layoutY="476.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="azonScanned" layoutX="490.0" layoutY="404.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="euraScanned" layoutX="689.0" layoutY="175.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="fleokScanned" layoutX="662.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="ikumScanned" layoutX="738.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="peodeScanned" layoutX="717.0" layoutY="393.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="oxuatriScanned" layoutX="655.0" layoutY="456.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="pheurScanned" layoutX="648.0" layoutY="364.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button layoutX="561.0" layoutY="491.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" fx:id="xaarScanned" />
+                        <Button fx:id="kohScanned" layoutX="571.0" layoutY="353.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="kroScanned" layoutX="572.0" layoutY="260.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button layoutX="627.0" layoutY="216.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" fx:id="xosScanned" />
+                        <Button fx:id="kadiScanned" layoutX="606.0" layoutY="134.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="sarenScanned" layoutX="550.0" layoutY="175.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="thiolScanned" layoutX="501.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="kelethScanned" layoutX="420.5" layoutY="126.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="botaScanned" layoutX="469.0" layoutY="187.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="avlianScanned" layoutX="731.0" layoutY="237.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                     </children>
+                  </AnchorPane>
                </children>
                <BorderPane.margin>
                   <Insets left="-3.0" />

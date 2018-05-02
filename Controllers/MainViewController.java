@@ -141,7 +141,6 @@ public class MainViewController implements Initializable {
     
     @FXML
     private void beaconButtonAction(ActionEvent event) throws IOException{
-        //Star scanner
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/BeaconPopUp.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -154,7 +153,6 @@ public class MainViewController implements Initializable {
     @FXML  //Opens the star pop up window.
     private void starButtonAction(ActionEvent event) throws IOException{
         if (main.getMyShip().getStar() != null) {
-            //Star scanner
             setJumpLabel(main.myShip.starScanner()); //Prints the current planet name scanned message.
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/StarPopUp.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -170,7 +168,6 @@ public class MainViewController implements Initializable {
     private void planetButtonAction(ActionEvent event) {
         if (main.getMyShip().getPlanet() != null) {
             try {
-                //Planedt scanner
                 setJumpLabel(main.myShip.planetScanner()); //Prints the current planet name scanned message.
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PlanetPopUp.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();

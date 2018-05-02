@@ -142,6 +142,7 @@ public class Ship {
     
     public String starScanner() {
         if(!currentStar.isScanned()) {
+            main.starMap.put(currentStarName, true);
             currentStar.setScanned(true);
             starsScannedCounter();
             gainCredits(5);
@@ -158,6 +159,7 @@ public class Ship {
     
     public String planetScanner() {
         if(!currentPlanet.isScanned()) {
+            main.planetMap.put(currentPlanetName, true);
             currentPlanet.setScanned(true);
             planetScannedCounter();
             gainCredits(1);

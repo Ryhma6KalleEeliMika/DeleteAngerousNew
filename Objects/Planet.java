@@ -85,11 +85,11 @@ public class Planet {
     private void resourceGeneration(String planetType){
             switch (planetType) {
                 case "rock":
-                    if (coinFlip() == 1) {  //Low resources 1 - 20
+                    if (coinFlip() == 1) {  //Low resources 1 - 30
                         setResources(lowRes());
                         setResGrade("Low");
                     }
-                    else {  //Medium resources 20 - 40
+                    else {  //Medium resources 30 - 60
                         setResources(medRes());
                         setResGrade("Medium");
                     }
@@ -98,11 +98,11 @@ public class Planet {
                     break;
                     
                 case "lava":
-                    if (coinFlip() == 1) {  //Medium resources 20 - 40
+                    if (coinFlip() == 1) {  //Medium resources 30 - 60
                         setResources(medRes());
                         setResGrade("Medium");
                     }
-                    else {  //High resources 40 - 80
+                    else {  //High resources 60 - 100
                         setResources(highRes());
                         setResGrade("High");
                     }
