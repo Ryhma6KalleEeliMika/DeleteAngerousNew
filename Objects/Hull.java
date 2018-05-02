@@ -13,9 +13,13 @@ import javafx.scene.image.Image;
  * @author Mika Vuorinen
  */
 public class Hull {
+    
     private double hull;
+    
     private double maxHull;
+    
     private String name;    //Lightweight, Reinforced, Military
+    
     private Image hullImage;
     
     private final double lightweightArmor = 100;

@@ -39,7 +39,7 @@ public class ExplorePopUpController implements Initializable {
     private Button option1Button, option2Button, exitButton;
     
     @FXML
-    private Label eventExplanationLabel, eventOutcomeLabel, gainLabel, lossLabel;
+    private Label storyTypeLabel, eventExplanationLabel, eventOutcomeLabel, gainLabel, lossLabel;
     
     @FXML
     private ImageView eventImage;
@@ -55,7 +55,7 @@ public class ExplorePopUpController implements Initializable {
     @FXML   //Choice 1 in the exploration event.
     private void option1ButtonAction() {
         Story story = main.myShip.getPlanet().getStory();
-        story.reward(option1Button.getText(), story);
+        story.explorationConclusion(option1Button.getText(), story);
         eventOutcomeLabel.setText(story.getConclusion1());
         storyEnd(story);
     }
@@ -63,9 +63,40 @@ public class ExplorePopUpController implements Initializable {
     @FXML   //Choice 2 in the exploration event.
     private void option2ButtonAction() {
         Story story = main.myShip.getPlanet().getStory();
-        story.reward(option2Button.getText(), story);
+        story.explorationConclusion(option2Button.getText(), story);
         eventOutcomeLabel.setText(story.getConclusion2());
         storyEnd(story);
+    }
+    
+    //Displaying the planets random encounter.
+    private void storyStart(){
+        Story story = main.myShip.getPlanet().getStory();
+        storyTypeLabel.setText(story.getStoryType());
+        gainLabel.setText("");
+        lossLabel.setText("");
+        exitButton.setVisible(false);
+        option1Button.setDisable(false);
+        option2Button.setDisable(false);
+        option1Button.setText(story.getOption1());
+        option2Button.setText(story.getOption2());
+        eventExplanationLabel.setText(story.getStory());
+        eventOutcomeLabel.setText("");
+        eventImage.setImage(story.getImg());    
+        
+        //Money check for 50cr // Huge pirate fleet event.
+        if (option1Button.getText().equals("Give 50cr") && main.myShip.getCredits() < 50) {
+            option1Button.setDisable(true);
+        }
+        
+        //Fuel check for 20 fuel // Stranded ship found event.
+        if (option1Button.getText().equals("Give them 20 fuel") && main.myShip.getShipFuelCell().getFuel() < 20) {
+            option1Button.setDisable(true);
+        }
+        
+        //Fuel check for 10 fuel // Pirate escape event.
+        if (option1Button.getText().equals("Accelerate") && main.myShip.getShipFuelCell().getFuel() < 10) {
+            option1Button.setDisable(true);
+        }
     }
     
     //After the choice has been made.
@@ -76,26 +107,6 @@ public class ExplorePopUpController implements Initializable {
         option2Button.setDisable(true);
         gainLabel.setText(story.getBlueLabel());
         lossLabel.setText(story.getRedLabel());
-    }
-    
-    //Displaying the planets rng 'story'
-    private void story(){    
-        Story story = main.myShip.getPlanet().getStory();
-        option1Button.setText(story.getOption1());
-        option2Button.setText(story.getOption2());
-        eventExplanationLabel.setText(story.getStory());
-        eventOutcomeLabel.setText("");
-        eventImage.setImage(story.getImg());    
-        
-        //Money check for 50cr
-        if (option1Button.getText().equals("Give 50cr") && main.myShip.getCredits() < 50) {
-            option1Button.setDisable(true);
-        }
-        
-        //Fuel check for 20 fuel
-        if (option1Button.getText().equals("Give them 20 fuel") && main.myShip.getShipFuelCell().getFuel() < 20) {
-            option1Button.setDisable(true);
-        }
     }
     
     //Opens game over pop up.
@@ -113,11 +124,6 @@ public class ExplorePopUpController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gainLabel.setText("");
-        lossLabel.setText("");
-        exitButton.setVisible(false);
-        option1Button.setDisable(false);
-        option2Button.setDisable(false);
-        story();    
+        storyStart();    
     }
 }

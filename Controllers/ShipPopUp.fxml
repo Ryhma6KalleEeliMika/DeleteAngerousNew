@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -67,7 +68,7 @@
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="startEngineLabel" alignment="CENTER" minWidth="170.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="ADVANCED" textFill="DARKORANGE">
+                  <Label fx:id="startEngineLabel" alignment="CENTER" minWidth="170.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="basic" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -87,40 +88,78 @@
       </HBox>
    </bottom>
    <left>
-      <VBox prefHeight="261.0" prefWidth="180.0" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="eaglemk2Button" minWidth="180.0" mnemonicParsing="false" onAction="#eaglemk2ButtonAction" style="-fx-background-color: darkorange;" text="EAGLE MKII">
-                     <font>
-                        <Font name="Xirod-Regular" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="haulerButton" minWidth="180.0" mnemonicParsing="false" onAction="#haulerButtonAction" style="-fx-background-color: darkorange;" text="HAULER">
-                     <font>
-                        <Font name="Xirod-Regular" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button fx:id="adderButton" minWidth="180.0" mnemonicParsing="false" onAction="#adderButtonAction" style="-fx-background-color: darkorange;" text="ADDER">
-                     <font>
-                        <Font name="Xirod-Regular" size="18.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
+      <AnchorPane BorderPane.alignment="TOP_CENTER">
          <BorderPane.margin>
             <Insets left="25.0" top="50.0" />
          </BorderPane.margin>
-      </VBox>
+         <children>
+            <VBox alignment="CENTER" layoutY="-51.0" prefHeight="261.0" prefWidth="180.0" spacing="10.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="shipTypeLabel1" layoutX="50.0" layoutY="10.0" text="Type" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="shipTypeLabel" alignment="CENTER" minWidth="180.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="Combat" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="eaglemk2Button" minWidth="180.0" mnemonicParsing="false" onAction="#eaglemk2ButtonAction" style="-fx-background-color: darkorange;" text="EAGLE MKII">
+                           <font>
+                              <Font name="Xirod-Regular" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="haulerButton" minWidth="180.0" mnemonicParsing="false" onAction="#haulerButtonAction" style="-fx-background-color: darkorange;" text="HAULER">
+                           <font>
+                              <Font name="Xirod-Regular" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="adderButton" minWidth="180.0" mnemonicParsing="false" onAction="#adderButtonAction" style="-fx-background-color: darkorange;" text="ADDER">
+                           <font>
+                              <Font name="Xirod-Regular" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="4.0">
+                     <children>
+                        <Label fx:id="startModuleLabel" text="Weapon" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="startWpnLabel" alignment="CENTER" minWidth="180.0" style="-fx-border-color: darkorange; -fx-border-width: 2;" text="Pulse Laser" textFill="DARKORANGE">
+                           <font>
+                              <Font name="Xirod-Regular" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </left>
    <top>
       <HBox prefHeight="49.0" prefWidth="590.0" BorderPane.alignment="CENTER">

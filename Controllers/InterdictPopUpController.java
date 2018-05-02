@@ -52,24 +52,41 @@ public class InterdictPopUpController implements Initializable {
         stage.close();
     }
     
-    @FXML   //Choice 1 in the exploration event.
+    @FXML   //Choice 1 in the interdiction event.
     private void option1ButtonAction() {
-        eventOutcomeLabel.setText(Story.interdictFight());
+        eventConclusion("Fight");
+    }
+    
+    @FXML   //Choice 2 in the interdiction event.
+    private void option2ButtonAction() {
+        eventConclusion("Escape");
+    }
+    
+    //Event start
+    private void eventStart() {
+        Story.setBeaconReward("");
+        Story.setBeaconFail("");
+        gainLabel.setText("");
+        lossLabel.setText("");
+        eventOutcomeLabel.setText("");
+        exitButton.setVisible(false);
+        option1Button.setDisable(false);
+        if(main.myShip.getShipFuelCell().getFuel() >= 2) {
+            option2Button.setDisable(false); 
+        }
+        else {
+            option2Button.setDisable(true);
+        }
+        Image img = new Image("Images/Story/interdiction.png");
+        eventImage.setImage(img);
+    }
+    
+    //Event conclusion
+    private void eventConclusion(String action) {
+        eventOutcomeLabel.setText(Story.interDictionEncounter(action));
         gainLabel.setText(Story.getBeaconReward());
         lossLabel.setText(Story.getBeaconFail());
         eventImage.setImage(Story.getInterdictImg());
-        eventEnd();
-    }
-    
-    @FXML   //Choice 2 in the exploration event.
-    private void option2ButtonAction() {
-        eventOutcomeLabel.setText("You were able to escape your pursuer.");
-        Image img = new Image("Images/Story/pirateEscape.png");
-        eventImage.setImage(img);
-        eventEnd();
-    }
-    
-    private void eventEnd() {
         exitButton.setVisible(true);
         option1Button.setDisable(true);
         option2Button.setDisable(true);  
@@ -90,18 +107,7 @@ public class InterdictPopUpController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        gainLabel.setText("");
-        lossLabel.setText("");
-        eventOutcomeLabel.setText("");
-        exitButton.setVisible(false);
-        option1Button.setDisable(false);
-        if(main.myShip.getShipFuelCell().getFuel() >= 10) {
-            option2Button.setDisable(false); 
-        }
-        else {
-            option2Button.setDisable(true);
-        }
-        Image img = new Image("Images/Story/interdiction.png");
-        eventImage.setImage(img);
+        eventStart();
     }
+
 }

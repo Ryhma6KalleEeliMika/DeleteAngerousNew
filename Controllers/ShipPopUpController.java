@@ -36,7 +36,7 @@ public class ShipPopUpController implements Initializable {
     private Button eaglemk2Button, haulerButton, adderButton, shipExitButton;
     
     @FXML   //Ship name and information labels.
-    private Label startFuelLabel, startHullLabel, startEngineLabel, shipNameLabel;
+    private Label shipTypeLabel, startModuleLabel, startWpnLabel, startFuelLabel, startHullLabel, startEngineLabel, shipNameLabel;
     
     @FXML   //Ship images.
     private ImageView shipImage;
@@ -93,15 +93,21 @@ public class ShipPopUpController implements Initializable {
         eaglemk2Button.hoverProperty().addListener(l->{ //EagleMK2 button mouse hover.
             Image image = new Image("Images/Ships/Eagle MkII.png");
             shipImage.setImage(image);
+            shipTypeLabel.setText("Combat");
+            startModuleLabel.setText("Weapon");
+            startWpnLabel.setText("Pulse laser");
             startFuelLabel.setText("100");
             startHullLabel.setText("100");
-            startEngineLabel.setText("Advanced");
+            startEngineLabel.setText("Basic");
             shipNameLabel.setText("Eagle MkII");    
         });
         
         haulerButton.hoverProperty().addListener(l->{ //Hauler button mouse hover.
             Image image = new Image("Images/Ships/Hauler.png");
             shipImage.setImage(image);
+            shipTypeLabel.setText("Mining");
+            startModuleLabel.setText("Weapon");
+            startWpnLabel.setText("Mining laser");
             startFuelLabel.setText("100");
             startHullLabel.setText("200");
             startEngineLabel.setText("Basic");
@@ -111,6 +117,9 @@ public class ShipPopUpController implements Initializable {
         adderButton.hoverProperty().addListener(l->{ //Adder button mouseHover.
             Image image = new Image("Images/Ships/Adder.png");
             shipImage.setImage(image);
+            shipTypeLabel.setText("Exploration");
+            startModuleLabel.setText("Module");
+            startWpnLabel.setText("Fuel scoop");
             startFuelLabel.setText("150");
             startHullLabel.setText("100");
             startEngineLabel.setText("Basic");

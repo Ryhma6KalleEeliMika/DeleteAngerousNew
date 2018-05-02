@@ -42,7 +42,7 @@ public class GameOverController implements Initializable {
             reasonLabel.setText("Your ship was destroyed");
         }
         else {
-            gameOverLabel.setText("Congratulations!");
+            gameOverLabel.setText("Exploration victory");
             reasonLabel.setText("You have scoured the entire galaxy and there is nothing left to do than retire");
             reasonLabel.setTextFill(Color.web("DeepSkyBlue"));
         }

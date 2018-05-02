@@ -133,18 +133,35 @@
                         <Font name="Xirod-Regular" size="15.0" />
                      </font>
                   </Label>
-                  <VBox fx:id="moduleBox" alignment="CENTER" layoutX="4.0" layoutY="180.0" minWidth="245.0" spacing="10.0" style="-fx-border-color: darkorange; -fx-border-width: 3;">
+                  <VBox fx:id="moduleBox" alignment="CENTER" layoutX="4.0" layoutY="180.0" minWidth="245.0" spacing="4.0" style="-fx-border-color: darkorange; -fx-border-width: 3;">
                      <children>
-                        <HBox alignment="CENTER" spacing="10.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="18.0" spacing="10.0">
+                           <children>
+                              <Label text="Weapon" textFill="DARKORANGE">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="wpnTypeLabel" alignment="CENTER_RIGHT" style="-fx-border-color: darkorange;" text="Pulse Laser" textFill="DARKORANGE">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="12.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
                            <children>
                               <Label text="Fuel cell" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                               </Label>
                               <Label fx:id="fuelCellTypeLabel" alignment="CENTER_RIGHT" style="-fx-border-color: darkorange;" text="Small" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                                  <padding>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -159,12 +176,12 @@
                            <children>
                               <Label text="Hull" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                               </Label>
                               <Label fx:id="hullTypeLabel" alignment="CENTER_RIGHT" style="-fx-border-color: darkorange;" text="Lightweight" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                                  <padding>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -176,12 +193,12 @@
                            <children>
                               <Label text="ENGINE" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                               </Label>
                               <Label fx:id="engineTypeLabel" alignment="CENTER_RIGHT" style="-fx-border-color: darkorange;" text="Advanced" textFill="DARKORANGE">
                                  <font>
-                                    <Font name="Xirod-Regular" size="15.0" />
+                                    <Font name="Xirod-Regular" size="12.0" />
                                  </font>
                                  <padding>
                                     <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -191,7 +208,7 @@
                         </HBox>
                         <Label fx:id="fuelScoopLabel" disable="true" text="Fuel scoop" textFill="DARKORANGE">
                            <font>
-                              <Font name="Xirod-Regular" size="15.0" />
+                              <Font name="Xirod-Regular" size="12.0" />
                            </font>
                         </Label>
                      </children>

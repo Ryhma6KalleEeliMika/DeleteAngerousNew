@@ -48,7 +48,7 @@ public class MainViewController implements Initializable {
     
     @FXML   //BLue "jump successful" label, fuel ammount, ship name.
     private Label jumpLabel, warningLabel, starsScannedAmmount, planetsScannedAmmount ,shipNameLabel,
-            fuelCellTypeLabel, hullTypeLabel, engineTypeLabel, fuelScoopLabel;
+            wpnTypeLabel, fuelCellTypeLabel, hullTypeLabel, engineTypeLabel, fuelScoopLabel;
     
     @FXML
     public Label fuelLabel, hullLabel, creditsLabel;
@@ -205,9 +205,9 @@ public class MainViewController implements Initializable {
         return false;
     }
     
+    //One in tenth chance to be interdict when travelling between planets.
     private boolean interdictRng() {
-        if(ThreadLocalRandom.current().nextInt(1, 10 + 1) == 1) {
-            System.out.println("jee");
+        if(ThreadLocalRandom.current().nextInt(1, 9 + 1) == 1) {
             return true;
         }
         return false;
@@ -286,7 +286,6 @@ public class MainViewController implements Initializable {
         else {
             n4.setVisible(false);
         }
-        
         if(myShip.getPlanet() != null){
            currentPlanetButton.setVisible(true); 
         }
@@ -362,8 +361,6 @@ public class MainViewController implements Initializable {
         }
     }
     
-
-    
     @FXML //GUI refresh. Happens every tenth of a second.
     public void guiRefresh() {
         Ship myShip = main.getMyShip();
@@ -389,6 +386,7 @@ public class MainViewController implements Initializable {
         planetButtonsRefresh(myShip, currentStar);
         
         //Updates ship modules
+        wpnTypeLabel.setText(myShip.getShipWeapon().getName());
         fuelCellTypeLabel.setText(myShip.getShipFuelCell().getName());
         hullTypeLabel.setText(myShip.getShipHull().getName());
         engineTypeLabel.setText(myShip.getShipEngine().getName());
@@ -442,18 +440,15 @@ public class MainViewController implements Initializable {
         return fade;
     }
     
-
-    
-    //Code that runs first when the GUI starts.
-    @Override
-    public void initialize(URL url, ResourceBundle rb){
- 
-        //setJumpLabel("");   //Empty jump label "Jump successful"
-        jumpLabel.setText("");
-        warningLabel.setText("");   //Empty warning label "Warning!"
-
+    //Mouse hover
+    private void mouseHoverAction() {
         moduleBox.hoverProperty().addListener(l->{ //Allows ship image to update.
             this.update = true;
+        });
+        
+        wpnTypeLabel.hoverProperty().addListener(l->{ //Weapon image. Stops ship image..
+            shipImage.setImage(main.myShip.getShipWeapon().getWeaponImage());
+            this.update = false;
         });
         
         fuelCellTypeLabel.hoverProperty().addListener(l->{ //Fuel cell image. Stops ship image..
@@ -475,6 +470,17 @@ public class MainViewController implements Initializable {
             shipImage.setImage(main.myShip.getFuelScoopImage());
             this.update = false;
         });
+    }
+    
+    //Code that runs first when the GUI starts.
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+ 
+        //setJumpLabel("");   //Empty jump label "Jump successful"
+        jumpLabel.setText("");
+        warningLabel.setText("");   //Empty warning label "Warning!"
+
+        mouseHoverAction();
         
         //Automatically updates the GUI every tenth of a second.
         Task task = new Task<Void>() {

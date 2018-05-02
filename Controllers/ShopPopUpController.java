@@ -10,6 +10,7 @@ import Main.main;
 import Objects.Engine;
 import Objects.FuelCell;
 import Objects.Hull;
+import Objects.Weapon;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -31,6 +32,10 @@ import javafx.util.Duration;
  */
 public class ShopPopUpController implements Initializable {
     
+    private int miningLaserPrice = 200;
+    private int pulseLaserPrice = 100;
+    private int multiCannonPrice = 200;
+    
     private int medFuelCellPrice = 200;
     private int largeFuelCellPrice = 400;
     
@@ -49,7 +54,8 @@ public class ShopPopUpController implements Initializable {
     private int tax = main.myShip.getPlanet().getTax();
     
     @FXML    
-    private Button exitButton, actionButton, 
+    private Button exitButton, actionButton,
+            miningLaserButton, pulseLaserButton, multiCannonButton,
             mediumCellButton, largeCellButton, 
             reinforcedHullButton, militaryHullButton,
             advancedEngButton, eliteEngButton,
@@ -68,6 +74,54 @@ public class ShopPopUpController implements Initializable {
     private void exitButtonAction(){
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
+    }
+    
+    @FXML   //When pressing the Mining laser button.
+    private void miningLaserButtonAction() {
+        if(main.myShip.getShipWeapon().getName().equals("Mining Laser")){
+            setActionLabel("Weapon already installed.");
+        }
+        else if (main.myShip.getCredits() < miningLaserPrice) {
+            setActionLabel("Not enough credits.");
+        }
+        else {
+            Weapon newWeapon = new Weapon("Mining Laser");
+            main.myShip.setShipWeapon(newWeapon);
+            main.myShip.loseCredits((int) miningLaserPrice);
+            setActionLabel("Mining laser installed.");
+        }
+    }
+    
+    @FXML   //When pressing the Pulse laser button.
+    private void pulseLaserButtonAction() {
+        if(main.myShip.getShipWeapon().getName().equals("Pulse Laser")){
+            setActionLabel("Weapon already installed.");
+        }
+        else if (main.myShip.getCredits() < pulseLaserPrice) {
+            setActionLabel("Not enough credits.");
+        }
+        else {
+            Weapon newWeapon = new Weapon("Pulse Laser");
+            main.myShip.setShipWeapon(newWeapon);
+            main.myShip.loseCredits((int) pulseLaserPrice);
+            setActionLabel("Pulse laser installed.");
+        }
+    }
+        
+    @FXML   //When pressing the Multi-cannon button.
+    private void multiCannonButtonAction() {
+        if(main.myShip.getShipWeapon().getName().equals("Multi-cannon")){
+            setActionLabel("Weapon already installed.");
+        }
+        else if (main.myShip.getCredits() < pulseLaserPrice) {
+            setActionLabel("Not enough credits.");
+        }
+        else {
+            Weapon newWeapon = new Weapon("Multi-cannon");
+            main.myShip.setShipWeapon(newWeapon);
+            main.myShip.loseCredits((int) multiCannonPrice);
+            setActionLabel("Multi-cannon installed.");
+        }
     }
     
     @FXML   //When pressing the Medium fuel cell button.
@@ -288,14 +342,23 @@ public class ShopPopUpController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setActionLabel("");
         //setSpecs1Visible();
-        taxLabel.setText(Integer.toString(tax) + "cr");
+        if (tax > 0) {
+            taxLabel.setText("+" + Integer.toString(tax) + "cr");
+        }
+        else {
+            taxLabel.setText(Integer.toString(tax) + "cr");
+        }
         
         //For getting the specs
+        Weapon w = main.myShip.getShipWeapon();
         FuelCell f = main.myShip.getShipFuelCell();
         Hull h = main.myShip.getShipHull();
         Engine e = main.myShip.getShipEngine();
         
         //Adding taxes to the prices.
+        this.miningLaserPrice = miningLaserPrice + tax;
+        this.pulseLaserPrice = pulseLaserPrice + tax;
+        this.multiCannonPrice = multiCannonPrice + tax;
         this.fuelScoopPrice = fuelScoopPrice + tax;
         this.medFuelCellPrice = medFuelCellPrice + tax;
         this.largeFuelCellPrice = largeFuelCellPrice + tax;
@@ -305,6 +368,42 @@ public class ShopPopUpController implements Initializable {
         this.eliteEnginePrice = eliteEnginePrice + tax;
         
         //Mouse hover action.
+        miningLaserButton.hoverProperty().addListener(l->{ //Mining laser button mouse hover.
+            showPriceLabel();
+            setSpecs1Visible();
+            hideSpecs2();
+            Image image = new Image("Images/Modules/Mining Laser.png");
+            moduleImage.setImage(image);
+            moduleNameLabel.setText("Mining Laser");
+            priceLabel.setText(Integer.toString(miningLaserPrice));
+            spec1Label.setText("Combat");
+            spec1.setText(Integer.toString(w.getMiningLaserDmg()) + "%");
+        });
+        
+        pulseLaserButton.hoverProperty().addListener(l->{ //Pulse laser button mouse hover.
+            showPriceLabel();
+            setSpecs1Visible();
+            hideSpecs2();
+            Image image = new Image("Images/Modules/Pulse Laser.png");
+            moduleImage.setImage(image);
+            moduleNameLabel.setText("Pulse Laser");
+            priceLabel.setText(Integer.toString((int) pulseLaserPrice));
+            spec1Label.setText("Combat");
+            spec1.setText(Integer.toString(w.getPulseLaserDmg()) + "%");
+        });
+        
+        multiCannonButton.hoverProperty().addListener(l->{ //Multi-cannon button mouse hover.
+            showPriceLabel();
+            setSpecs1Visible();
+            hideSpecs2();
+            Image image = new Image("Images/Modules/Multi-cannon.png");
+            moduleImage.setImage(image);
+            moduleNameLabel.setText("Multi-cannon");
+            priceLabel.setText(Integer.toString((int) multiCannonPrice));
+            spec1Label.setText("Combat");
+            spec1.setText(Integer.toString(w.getMultiCannonDmg()) + "%");
+        });
+        
         mediumCellButton.hoverProperty().addListener(l->{ //Medium fuel cell button mouse hover.
             showPriceLabel();
             setSpecs1Visible();

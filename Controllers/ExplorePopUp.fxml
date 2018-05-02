@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Random Event" textFill="DARKORANGE">
+            <Label fx:id="storyTypeLabel" text="Random Event" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>

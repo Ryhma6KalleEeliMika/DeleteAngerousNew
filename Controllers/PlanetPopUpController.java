@@ -65,12 +65,17 @@ public class PlanetPopUpController implements Initializable {
         
         //In rock and lava planets you can mine.
         if (planetResources > 0 && actionButton.getText().equals("Mine")) {
-            main.myShip.gainCredits(planetResources);
-            main.getMyShip().getPlanet().setResources(0);
-            setActionLabel(planetResources + " credits mined.");
-            main.myShip.getPlanet().setResGrade("Empty");
-            resGradeLabel.setText(main.myShip.getPlanet().getResGrade());
-            actionButton.setDisable(true);
+            if (!main.myShip.getShipWeapon().getName().equals("Mining Laser")) {
+                setActionLabel("No mining laser.");
+            }
+            else {
+                main.myShip.gainCredits(planetResources);
+                main.getMyShip().getPlanet().setResources(0);
+                setActionLabel(planetResources + " credits mined.");
+                main.myShip.getPlanet().setResGrade("Empty");
+                resGradeLabel.setText(main.myShip.getPlanet().getResGrade());
+                actionButton.setDisable(true);
+            }
         }
         //In terran planets there are shops.
         else if (actionButton.getText().equals("Shop")) {

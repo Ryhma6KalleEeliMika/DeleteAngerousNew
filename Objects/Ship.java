@@ -2,8 +2,6 @@ package Objects;
 
 
 import Main.main;
-import java.util.HashMap;
-import java.util.Map;
 import javafx.scene.image.Image;
 
 
@@ -20,18 +18,30 @@ import javafx.scene.image.Image;
  */
 public class Ship {
     //Ship's info
-    private String name;
-    private String currentStarName;
+    private String name, currentStarName;
+    
     private Star currentStar;
+    
     private String currentPlanetName = "";
+    
     private Planet currentPlanet;
+    
     private int starsScanned = 0;
+    
     private int planetsScanned = 0;
+    
     private FuelCell shipFuelCell;
+    
     private Hull shipHull;
+    
     private Engine shipEngine;
+    
+    private Weapon shipWeapon;
+    
     private boolean fuelScoopInstalled = false;
+    
     private Image fuelScoopImage;
+    
     private int Credits = 0;
   
     //Ship's constructor
@@ -49,7 +59,9 @@ public class Ship {
             case "Eagle MkII":  //Eagle MkII ship
                 FuelCell newFuelCell = new FuelCell("Small");
                 Hull newHull = new Hull("Lightweight");
-                Engine newEngine = new Engine("Advanced");
+                Engine newEngine = new Engine("Basic");
+                Weapon newWeapon = new Weapon("Pulse Laser");
+                setShipWeapon(newWeapon);
                 setShipEngine(newEngine);
                 setShipFuelCell(newFuelCell);
                 setShipHull(newHull);
@@ -59,6 +71,8 @@ public class Ship {
                 FuelCell newFuelCell2 = new FuelCell("Small");
                 Hull newHull2 = new Hull("Reinforced");
                 Engine newEngine2 = new Engine("Basic");
+                Weapon newWeapon2 = new Weapon("Mining Laser");
+                setShipWeapon(newWeapon2);
                 setShipEngine(newEngine2);
                 setShipFuelCell(newFuelCell2);
                 setShipHull(newHull2);
@@ -66,8 +80,11 @@ public class Ship {
                 
             case "Adder":   //Adder ship
                 FuelCell newFuelCell3 = new FuelCell("Medium");
+                setFuelScoopInstalled(true);
                 Hull newHull3 = new Hull("Lightweight");
                 Engine newEngine3 = new Engine("Basic");
+                Weapon newWeapon3 = new Weapon("Unarmed");
+                setShipWeapon(newWeapon3);
                 setShipEngine(newEngine3);
                 setShipFuelCell(newFuelCell3);
                 setShipHull(newHull3);
@@ -261,5 +278,12 @@ public class Ship {
     public Image getFuelScoopImage() {
         return fuelScoopImage;
     }
-    
+
+    public Weapon getShipWeapon() {
+        return shipWeapon;
+    }
+
+    public void setShipWeapon(Weapon shipWeapon) {
+        this.shipWeapon = shipWeapon;
+    }
 }
