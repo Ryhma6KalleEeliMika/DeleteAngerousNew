@@ -205,8 +205,6 @@ public class GalaxyMapController implements Initializable {
         //Location label update.
         locationLabel.setText(currentStar.getName());
         
-        
         scanned();
-        
     }
 }

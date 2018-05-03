@@ -260,17 +260,30 @@ public class Story {
         }
     }
     
+    //Normal interdiction encounter
     public static String interDictionEncounter(String option) {
         setBeaconFail("");
         setBeaconReward("");
         switch(option) {
-            
             case "Fight":
                 return interdictFight();
                 
             case "Escape":
                 return interdictEscape();
-            
+        }
+        return "";
+    }
+    
+    //Alien encounter
+    public static String alienEncounter(String option) {
+        setBeaconFail("");
+        setBeaconReward("");
+        switch(option) {
+            case "Fight":
+                return alienFight();
+                
+            case "Escape":
+                return alienCommunication();
         }
         return "";
     }
@@ -308,7 +321,7 @@ public class Story {
         }
         else {
             main.myShip.getShipHull().hullLoss(40);
-            setBeaconFail("Hull damage!");
+            setBeaconFail("Warning! Hull damage");
             Image img = new Image("Images/Story/narrowEscape.png");
             setInterdictImg(img);
             return "The fight didn\'t go so well and you took some heavy damage.";
@@ -333,6 +346,60 @@ public class Story {
                 setInterdictImg(img2);
                 return "You were able to escape your pursuer.";
         }
+    }
+    
+    //Alien fight
+    public static String alienFight() {
+        if (weaponIntRng()) {
+          if (coinFlip() == 1) {
+            main.myShip.gainCredits(400);
+            setBeaconReward("+400cr");
+            Image img1 = new Image("Images/Story/explosion.png");
+            setInterdictImg(img1);
+            return "You were able to destroy the alien ship and it left some rare minerals behind.";
+          }
+          else {
+            Image img2 = new Image("Images/Stars/Empty/Empty.png");
+            setInterdictImg(img2);
+            return "Your weapons weren't able to penetrate the alien armor and the alien ship disappeared.";   
+          } 
+        }
+        else {
+            main.myShip.getShipHull().hullLoss(60);
+            setBeaconFail("Warning! Hull damage");
+            Image img3 = new Image("Images/Story/alienAttack.png");
+            setInterdictImg(img3);
+            return "You attacked the alien ship, but the alien retaliates.";
+        }
+    }
+    
+    //Alien communication
+    public static String alienCommunication() {
+        switch (intSubRng()) {
+            case 1:
+                main.myShip.getShipHull().hullLoss(40);
+                setBeaconFail("Warning! Hull damage");
+                Image img1 = new Image("Images/Story/alienAttack.png");
+                setInterdictImg(img1);
+                return "You send a greeting to the alien ship, but it misinterprets your message and attacks you.";
+            
+            case 2:
+                Image img2 = new Image("Images/Stars/Empty/Empty.png");
+                setInterdictImg(img2);
+                return "You send a greeting to the alien ship, but the alien ship disappeared.";   
+                
+            default: 
+                main.myShip.getShipFuelCell().fuelLoss(20);
+                setBeaconFail("-20 fuel");
+                Image img3 = new Image("Images/Story/alienAttack.png");
+                setInterdictImg(img3);
+                return "You send a greeting to the alien ship, but the alien siphons some fuel from you and leaves.";  
+        }
+    }
+    
+    //rng coinflip
+    private static int coinFlip() {
+        return ThreadLocalRandom.current().nextInt(1, 2 + 1);
     }
     
     

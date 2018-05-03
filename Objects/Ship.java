@@ -1,7 +1,9 @@
 package Objects;
 
 
+import Controllers.MainViewController;
 import Main.main;
+import java.util.concurrent.ThreadLocalRandom;
 import javafx.scene.image.Image;
 
 
@@ -110,7 +112,7 @@ public class Ship {
     
     //Method for traveling to between stars.
     public String starJump(Star destinationStar) {
-        if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageJump()) { //If fuel is above the current engine's jump fuel usage.
+      if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageJump()) { //If fuel is above the current engine's jump fuel usage.
             setStar(destinationStar); //Ship's star is set to the new star.
             setCurrentStarName(destinationStar.getName());
             getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageJump());  //Ship loses fuel after the jump

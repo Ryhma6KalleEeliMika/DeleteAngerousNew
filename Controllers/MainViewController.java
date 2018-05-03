@@ -12,7 +12,6 @@ import Objects.Ship;
 import Objects.Planet;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.animation.FadeTransition;
@@ -29,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -71,6 +71,10 @@ public class MainViewController implements Initializable {
     //Is ship image updated?
     private boolean update = true;
     
+    //Alien encounter emptyImage
+    public static boolean alienEncounter = false;
+    private static boolean openAlienEncounterPopUp = false;
+    
     //Switches to the galaxy map view.
     @FXML
     private void gMapButtonAction(ActionEvent event) throws IOException {
@@ -84,26 +88,34 @@ public class MainViewController implements Initializable {
     //N1 - N4 buttons for jumping neighbouring star systems.
     @FXML
     private void n1ButtonAction(ActionEvent event) {
-        Star destinationStar = main.myShip.getStar().getStar1(); //Get the destination star
-        setJumpLabel(main.myShip.starJump(destinationStar)); //Sets the jump label after trip E.G. "Jump successful"
+        if(!alienInterdiction()) {
+            Star destinationStar = main.myShip.getStar().getStar1(); //Get the destination star
+            setJumpLabel(main.myShip.starJump(destinationStar)); //Sets the jump label after trip E.G. "Jump successful"
+        }
     }
     
     @FXML
     private void n2ButtonAction(ActionEvent event) {
-        Star destinationStar = main.myShip.getStar().getStar2();
-        setJumpLabel(main.myShip.starJump(destinationStar));
+        if(!alienInterdiction()) {
+            Star destinationStar = main.myShip.getStar().getStar2();
+            setJumpLabel(main.myShip.starJump(destinationStar));
+        }
     }
     
     @FXML
     private void n3ButtonAction(ActionEvent event) {
-        Star destinationStar = main.myShip.getStar().getStar3();
-        setJumpLabel(main.myShip.starJump(destinationStar));
+        if(!alienInterdiction()) {
+            Star destinationStar = main.myShip.getStar().getStar3();
+            setJumpLabel(main.myShip.starJump(destinationStar));
+        }
     }
     
     @FXML
     private void n4ButtonAction(ActionEvent event) {
-        Star destinationStar = main.myShip.getStar().getStar4();
-        setJumpLabel(main.myShip.starJump(destinationStar));
+        if(!alienInterdiction()) {
+            Star destinationStar = main.myShip.getStar().getStar4();
+            setJumpLabel(main.myShip.starJump(destinationStar));
+        }
     }
 
     //Planet buttons P1 - P4.
@@ -201,14 +213,45 @@ public class MainViewController implements Initializable {
         }
         return false;
     }
+        
+    //Random chance to be interdicted by another ship when traveling from planet to planet
+    private boolean alienInterdiction() {
+        if(alienEncounterRng()) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PursuerPopUp.fxml")); 
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+                stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+                stage.setScene(new Scene(root1));
+                stage.show();
+                return true;
+            }
+            catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return false;
+    }
+    
     
     //One in tenth chance to be interdict when travelling between planets.
     private boolean interdictRng() {
-        if(ThreadLocalRandom.current().nextInt(1, 9 + 1) == 1) {
+        if(ThreadLocalRandom.current().nextInt(1, 10 + 1) == 1) {
             return true;
         }
         return false;
     }
+        
+    //One in hundred chance to be interdict when travelling between stars.
+    private boolean alienEncounterRng() {
+        if(ThreadLocalRandom.current().nextInt(1, 100 + 1) == 1) {
+            setAlienEncounter(true);
+            return true;
+        }
+        return false;
+    }
+    
   
      @FXML   //Fuel meter/ammount
     private void setFuelAmmount() {
@@ -301,32 +344,32 @@ public class MainViewController implements Initializable {
         p3.setText(currentStar.getPlanet3().getName());
         p4.setText(currentStar.getPlanet4().getName());
         
-        //Button visibility update
+        //Button visibility update, If alien encounter is active -> planet buttons are disabled.
         if(currentStar.getPlanet1().getName()!= null){
-            p1.setVisible(true);
+            p1.setVisible(!isAlienEncounter());
         }
         else {
             p1.setVisible(false);
         }
         if(currentStar.getPlanet2().getName()!= null){
-            p2.setVisible(true);
+            p2.setVisible(!isAlienEncounter());
         }
         else {
             p2.setVisible(false);
         }
         if(currentStar.getPlanet3().getName()!= null){
-            p3.setVisible(true);
+            p3.setVisible(!isAlienEncounter());
         }
         else {
             p3.setVisible(false);
         }
         if(currentStar.getPlanet4().getName()!= null){
-            p4.setVisible(true);
+            p4.setVisible(!isAlienEncounter());
         }
         else {
             p4.setVisible(false);
         }
-        
+
         //Button colors orange/blue update and image change.
         if (myShip.getPlanet() == currentStar.getPlanet1()) {
             p1.setStyle("-fx-background-color:DeepSkyBlue");
@@ -366,7 +409,13 @@ public class MainViewController implements Initializable {
         setHullAmmount();
         
         //Images and ship name.
-        mainImage.setImage(currentStar.getStarImage());
+        if (isAlienEncounter()) {
+            Image emptyImg = new Image("Images/Stars/Empty/Empty.png");
+            mainImage.setImage(emptyImg); 
+        }
+        else {
+            mainImage.setImage(currentStar.getStarImage());
+        }
         
         shipNameLabel.setText(myShip.getName());
         if (update) {
@@ -495,6 +544,22 @@ public class MainViewController implements Initializable {
        Thread th = new Thread(task);
        th.setDaemon(true);
        th.start();
+    }
+
+    public static void setAlienEncounter(boolean emptyStarImg) {
+        MainViewController.alienEncounter = emptyStarImg;
+    }
+
+    public static boolean isAlienEncounter() {
+        return alienEncounter;
+    }
+
+    public static void setOpenAlienEncounterPopUp(boolean openAlienEncounterPopUp) {
+        MainViewController.openAlienEncounterPopUp = openAlienEncounterPopUp;
+    }
+
+    public static boolean isOpenAlienEncounterPopUp() {
+        return openAlienEncounterPopUp;
     }
 }
 

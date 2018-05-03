@@ -25,9 +25,9 @@
    <right>
       <VBox alignment="TOP_CENTER" prefHeight="198.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="eventImage" fitHeight="238.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="eventImage" fitHeight="200.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/Story/interdiction.png" />
+                  <Image url="@../Images/Story/alien.png" />
                </image>
             </ImageView>
             <Label fx:id="gainLabel" alignment="CENTER" text="You gained 50 credits" textFill="DEEPSKYBLUE">

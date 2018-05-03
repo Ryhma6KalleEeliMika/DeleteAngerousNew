@@ -47,6 +47,8 @@ public class InterdictPopUpController implements Initializable {
     
     @FXML   //Exit button after exploration event has concluded.
     private void exitButtonAction() throws IOException {
+        MainViewController.setOpenAlienEncounterPopUp(false);
+        MainViewController.setAlienEncounter(false);
         gameOver();
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
@@ -71,7 +73,20 @@ public class InterdictPopUpController implements Initializable {
         eventOutcomeLabel.setText("");
         exitButton.setVisible(false);
         option1Button.setDisable(false);
-        if(main.myShip.getShipFuelCell().getFuel() >= 2) {
+        
+        //Alien interdiction
+        if (MainViewController.isAlienEncounter()) {
+            Image img = new Image("Images/Story/alien.png");
+            eventImage.setImage(img);
+            option1Button.setText("Attack");
+            option2Button.setText("Try to communicate");
+        }
+        
+        //Normal interdiction
+        else {
+            option1Button.setText("Fight");
+            option2Button.setText("Escape");
+            if(main.myShip.getShipFuelCell().getFuel() >= 2) {
             option2Button.setDisable(false); 
         }
         else {
@@ -79,11 +94,19 @@ public class InterdictPopUpController implements Initializable {
         }
         Image img = new Image("Images/Story/interdiction.png");
         eventImage.setImage(img);
+        } 
     }
     
     //Event conclusion
     private void eventConclusion(String action) {
-        eventOutcomeLabel.setText(Story.interDictionEncounter(action));
+        //Alien encounter end
+        if (MainViewController.isAlienEncounter()) {
+            eventOutcomeLabel.setText(Story.alienEncounter(action));
+        }
+        //Normal interdiction end
+        else {
+            eventOutcomeLabel.setText(Story.interDictionEncounter(action));
+        }
         gainLabel.setText(Story.getBeaconReward());
         lossLabel.setText(Story.getBeaconFail());
         eventImage.setImage(Story.getInterdictImg());
