@@ -53,6 +53,7 @@ public class Planet {
         setParentStar(parent);
         setPlanetImage(planetImage);
         setType(type);
+        main.planetMap.put(name, false);
         
         try{
             if (type.equals("rock") || type.equals("lava")) {

@@ -54,6 +54,7 @@ public class Star {
     //Star's default constructor creates the star's image object.
     public Star(int starId, String starName, boolean scoopable) {
         main.starMap.put(starName, false);
+        main.systemMap.put(starName, false);
         this.id = starId;
         this.name = starName;
         this.scoop = scoopable;

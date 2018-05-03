@@ -45,6 +45,7 @@ public class main extends Application {
     //hashmaps
     public static HashMap starMap;
     public static HashMap planetMap;
+    public static HashMap systemMap;
     
     //SoundFXpath
     public static final String SOUNDPATH = "src/Sounds/";
@@ -69,8 +70,10 @@ public class main extends Application {
         //hashmap creation.
         HashMap <String, Boolean> sMap = new HashMap();
         HashMap <String, Boolean> pMap = new HashMap();
+        HashMap <String, Boolean> sysMap = new HashMap();
         setStarMap(sMap);
         setPlanetMap(pMap);
+        setSystemMap(sysMap);
         
         //Creates stars, planets, etc.
         worldGeneration();
@@ -228,6 +231,12 @@ public class main extends Application {
     public static void setStarMap(HashMap starMap) {
         main.starMap = starMap;
     }
-    
-    
+
+    public static void setSystemMap(HashMap systemMap) {
+        main.systemMap = systemMap;
+    }
+
+    public static HashMap getSystemMap() {
+        return systemMap;
+    }
 }

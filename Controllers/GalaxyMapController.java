@@ -56,7 +56,10 @@ public class GalaxyMapController implements Initializable {
         window.show();
     }
     
-    private void scanned(){
+    /**
+     * Initializes the controller class.
+     */
+   private void scanned(){
         HashMap s = main.starMap;
         HashMap p = main.planetMap;
         solScanned(s, p);
@@ -92,109 +95,265 @@ public class GalaxyMapController implements Initializable {
         oxuatriScanned(s, p);
         xaarScanned(s, p);
     }
-    
-    
+   
+    //System scanner    
     private void solScanned(HashMap s, HashMap p){
-        solScanned.setVisible(s.get("Sol").equals(true) && p.get("Terra").equals(true) && p.get("Kronos").equals(true) && p.get("Smagua").equals(true));
+        if (main.systemMap.get("Sol").equals(true)) {
+            solScanned.setVisible(true);
+        }
+        else {
+            solScanned.setVisible(false);
+        }
     }
     private void maximaScanned(HashMap s, HashMap p){
-        maximaScanned.setVisible(s.get("Maxima").equals(true) && p.get("Veibos").equals(true) && p.get("Clao").equals(true));
+        if (main.systemMap.get("Maxima").equals(true)) {
+            maximaScanned.setVisible(true);
+        }
+        else {
+            maximaScanned.setVisible(false);
+        }
     }
     private void alesScanned(HashMap s, HashMap p){
-        alesScanned.setVisible(s.get("Ales").equals(true) && p.get("Utreon").equals(true));
+        if (main.systemMap.get("Ales").equals(true)) {
+            alesScanned.setVisible(true);
+        }
+        else {
+            alesScanned.setVisible(false);
+        }
     }
     private void kriyScanned(HashMap s, HashMap p){
-        kriyScanned.setVisible(s.get("Kriy").equals(true) && p.get("Emerth").equals(true) && p.get("Ramara").equals(true) && p.get("Datov").equals(true) && p.get("Iulov").equals(true));
+        if (main.systemMap.get("Kriy").equals(true)) {
+            kriyScanned.setVisible(true);
+        }
+        else {
+            kriyScanned.setVisible(false);
+        }
     }
     private void atokScanned(HashMap s, HashMap p){
-        atokScanned.setVisible(s.get("Atok").equals(true) && p.get("Lounov").equals(true) && p.get("Bosnera").equals(true) && p.get("Detrone").equals(true));
+        if (main.systemMap.get("Atok").equals(true)) {
+            atokScanned.setVisible(true);
+        }
+        else {
+            atokScanned.setVisible(false);
+        }
     }
     private void giolScanned(HashMap s, HashMap p){
-        giolScanned.setVisible(s.get("Giol").equals(true) && p.get("Strelek").equals(true) && p.get("Qonus").equals(true) && p.get("Poftro").equals(true) && p.get("Ieliv").equals(true));
+        if (main.systemMap.get("Giol").equals(true)) {
+            giolScanned.setVisible(true);
+        }
+        else {
+            giolScanned.setVisible(false);
+        }
     }
     private void tramoisScanned(HashMap s, HashMap p){
-        tramoisScanned.setVisible(s.get("Tramois").equals(true));
+        if (main.systemMap.get("Tramois").equals(true)) {
+            tramoisScanned.setVisible(true);
+        }
+        else {
+            tramoisScanned.setVisible(false);
+        }
     }
     private void veprioScanned(HashMap s, HashMap p){
-        veprioScanned.setVisible(s.get("Veprio").equals(true) && p.get("Proxia").equals(true) && p.get("Skilia").equals(true) && p.get("Sloria").equals(true));
+        if (main.systemMap.get("Veprio").equals(true)) {
+            veprioScanned.setVisible(true);
+        }
+        else {
+            veprioScanned.setVisible(false);
+        }
     }
     private void evraeScanned(HashMap s, HashMap p){
-        evraeScanned.setVisible(s.get("Evrae").equals(true) && p.get("Steelar").equals(true) && p.get("Crio").equals(true));
+        if (main.systemMap.get("Evrae").equals(true)) {
+            evraeScanned.setVisible(true);
+        }
+        else {
+            evraeScanned.setVisible(false);
+        }
     }
     private void azonScanned(HashMap s, HashMap p){
-        azonScanned.setVisible(s.get("Azon").equals(true) && p.get("Boothill").equals(true) && p.get("Giunope").equals(true) && p.get("Duitera").equals(true) && p.get("Spor").equals(true));
+        if (main.systemMap.get("Azon").equals(true)) {
+            azonScanned.setVisible(true);
+        }
+        else {
+            azonScanned.setVisible(false);
+        }
     }
     private void lahScanned(HashMap s, HashMap p){
-        lahScanned.setVisible(s.get("Lah").equals(true) && p.get("Beophus").equals(true) && p.get("Glogua").equals(true) && p.get("Stasie").equals(true));
+        if (main.systemMap.get("Lah").equals(true)) {
+            lahScanned.setVisible(true);
+        }
+        else {
+            lahScanned.setVisible(false);
+        }
     }
     private void kuelScanned(HashMap s, HashMap p){
-        kuelScanned.setVisible(s.get("Kuel").equals(true) && p.get("Praanus").equals(true) && p.get("Pelara").equals(true) && p.get("Clapus").equals(true));
+        if (main.systemMap.get("Kuel").equals(true)) {
+            kuelScanned.setVisible(true);
+        }
+        else {
+            kuelScanned.setVisible(false);
+        }
     }
     private void ruanScanned(HashMap s, HashMap p){
-        ruanScanned.setVisible(s.get("Ruan").equals(true) && p.get("Foerus").equals(true) && p.get("Blore").equals(true) && p.get("Ailara").equals(true));
+        if (main.systemMap.get("Ruan").equals(true)) {
+            ruanScanned.setVisible(true);
+        }
+        else {
+            ruanScanned.setVisible(false);
+        }
     }
     private void stropeScanned(HashMap s, HashMap p){
-        stropeScanned.setVisible(s.get("Strope").equals(true) && p.get("Geter").equals(true) && p.get("Thorix").equals(true) && p.get("Biluq").equals(true));
+        if (main.systemMap.get("Strope").equals(true)) {
+            stropeScanned.setVisible(true);
+        }
+        else {
+            stropeScanned.setVisible(false);
+        }
     }
     private void stripruarScanned(HashMap s, HashMap p){
-        stripruarScanned.setVisible(s.get("Stripruar").equals(true) && p.get("Degroilite").equals(true));
+        if (main.systemMap.get("Stripruar").equals(true)) {
+            stripruarScanned.setVisible(true);
+        }
+        else {
+            stripruarScanned.setVisible(false);
+        }
     }
     private void adeotreScanned(HashMap s, HashMap p){
-        adeotreScanned.setVisible(s.get("Adeotre").equals(true) && p.get("Oetha").equals(true) && p.get("Eylaar").equals(true) && p.get("Styke").equals(true));
+        if (main.systemMap.get("Adeotre").equals(true)) {
+            adeotreScanned.setVisible(true);
+        }
+        else {
+            adeotreScanned.setVisible(false);
+        }
     }
     private void sarenScanned(HashMap s, HashMap p){
-        sarenScanned.setVisible(s.get("Saren").equals(true));
+        if (main.systemMap.get("Saren").equals(true)) {
+            sarenScanned.setVisible(true);
+        }
+        else {
+            sarenScanned.setVisible(false);
+        }
     }
     private void botaScanned(HashMap s, HashMap p){
-        botaScanned.setVisible(s.get("Bota").equals(true) && p.get("Rag").equals(true) && p.get("Usnivobo").equals(true));
+        if (main.systemMap.get("Bota").equals(true)) {
+            botaScanned.setVisible(true);
+        }
+        else {
+            botaScanned.setVisible(false);
+        }
     }
     private void thiolScanned(HashMap s, HashMap p){
-        thiolScanned.setVisible(s.get("Thiol").equals(true));
+        if (main.systemMap.get("Thiol").equals(true)) {
+            thiolScanned.setVisible(true);
+        }
+        else {
+            thiolScanned.setVisible(false);
+        }
     }
     private void kelethScanned(HashMap s, HashMap p){
-        kelethScanned.setVisible(s.get("Keleth").equals(true) && p.get("Korvot").equals(true) && p.get("Kalameet").equals(true) && p.get("Kasmet").equals(true));
+        if (main.systemMap.get("Keleth").equals(true)) {
+            kelethScanned.setVisible(true);
+        }
+        else {
+            kelethScanned.setVisible(false);
+        }
     }
     private void kadiScanned(HashMap s, HashMap p){
-        kadiScanned.setVisible(s.get("Kadi").equals(true) && p.get("Ravinus").equals(true) && p.get("Tenes").equals(true) && p.get("Genur").equals(true) && p.get("Vargon").equals(true));
+        if (main.systemMap.get("Kadi").equals(true)) {
+            kadiScanned.setVisible(true);
+        }
+        else {
+            kadiScanned.setVisible(false);
+        }
     }
     private void kroScanned(HashMap s, HashMap p){
-         kroScanned.setVisible(s.get("Kro").equals(true) && p.get("Rubric").equals(true) && p.get("Deus").equals(true) && p.get("Talkris").equals(true));
+        if (main.systemMap.get("Kro").equals(true)) {
+            kroScanned.setVisible(true);
+        }
+        else {
+            kroScanned.setVisible(false);
+        }
     }
     private void xosScanned(HashMap s, HashMap p){
-        xosScanned.setVisible(s.get("Xos").equals(true) && p.get("Sotha").equals(true) && p.get("Braade").equals(true) && p.get("Krona").equals(true) && p.get("Krota").equals(true));
+        if (main.systemMap.get("Xos").equals(true)) {
+            xosScanned.setVisible(true);
+        }
+        else {
+            xosScanned.setVisible(false);
+        }
     }
     private void euraScanned(HashMap s, HashMap p){
-        euraScanned.setVisible(s.get("Eura").equals(true) && p.get("Elea").equals(true) && p.get("Eria").equals(true) && p.get("Kolea").equals(true));
+        if (main.systemMap.get("Eura").equals(true)) {
+            euraScanned.setVisible(true);
+        }
+        else {
+            euraScanned.setVisible(false);
+        }
     }
     private void kohScanned(HashMap s, HashMap p){
-        kohScanned.setVisible(s.get("Koh").equals(true) && p.get("Yorma").equals(true) && p.get("Donurus").equals(true));
+        if (main.systemMap.get("Koh").equals(true)) {
+            kohScanned.setVisible(true);
+        }
+        else {
+            kohScanned.setVisible(false);
+        }
     }
     private void fleokScanned(HashMap s, HashMap p){
-        fleokScanned.setVisible(s.get("Fleok").equals(true) && p.get("Yorius").equals(true) && p.get("Andreus").equals(true) && p.get("Akirius").equals(true));
+        if (main.systemMap.get("Fleok").equals(true)) {
+            fleokScanned.setVisible(true);
+        }
+        else {
+            fleokScanned.setVisible(false);
+        }
     }
     private void avlianScanned(HashMap s, HashMap p){
-        avlianScanned.setVisible(s.get("Avlian").equals(true) && p.get("Arialus").equals(true));
+        if (main.systemMap.get("Avlian").equals(true)) {
+            avlianScanned.setVisible(true);
+        }
+        else {
+            avlianScanned.setVisible(false);
+        }
     }
     private void pheurScanned(HashMap s, HashMap p){
-        pheurScanned.setVisible(s.get("Pheur").equals(true) && p.get("Dyno").equals(true) && p.get("Nutor").equals(true));
+        if (main.systemMap.get("Pheur").equals(true)) {
+            pheurScanned.setVisible(true);
+        }
+        else {
+            pheurScanned.setVisible(false);
+        }
     }
     private void ikumScanned(HashMap s, HashMap p){
-        ikumScanned.setVisible(s.get("Ikum").equals(true) && p.get("Hynos").equals(true) && p.get("Aaros").equals(true));
+        if (main.systemMap.get("Ikum").equals(true)) {
+            ikumScanned.setVisible(true);
+        }
+        else {
+            ikumScanned.setVisible(false);
+        }
     }
     private void peodeScanned(HashMap s, HashMap p){
-        peodeScanned.setVisible(s.get("Peode").equals(true) && p.get("Kolas").equals(true) && p.get("Kora").equals(true) && p.get("Butarnus").equals(true));
+        if (main.systemMap.get("Peode").equals(true)) {
+            peodeScanned.setVisible(true);
+        }
+        else {
+            peodeScanned.setVisible(false);
+        }
     }
     private void oxuatriScanned(HashMap s, HashMap p){
-        oxuatriScanned.setVisible(s.get("Oxuatri").equals(true) && p.get("Xanran").equals(true) && p.get("Xemron").equals(true));
+        if (main.systemMap.get("Oxuatri").equals(true)) {
+            oxuatriScanned.setVisible(true);
+        }
+        else {
+            oxuatriScanned.setVisible(false);
+        }
     }
     private void xaarScanned(HashMap s, HashMap p){
-            xaarScanned.setVisible(s.get("Xaar").equals(true) && p.get("Ramor").equals(true));
+        if (main.systemMap.get("Xaar").equals(true)) {
+            xaarScanned.setVisible(true);
+        }
+        else {
+            xaarScanned.setVisible(false);
+        }
     }
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -206,5 +365,6 @@ public class GalaxyMapController implements Initializable {
         locationLabel.setText(currentStar.getName());
         
         scanned();
+        
     }
 }

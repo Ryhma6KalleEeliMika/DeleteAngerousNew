@@ -46,7 +46,7 @@
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="n4" alignment="CENTER" layoutX="18.0" layoutY="317.0" maxWidth="200.0" minWidth="200.0" mnemonicParsing="false" onAction="#n4ButtonAction" style="-fx-background-color: #ff8c00;" text="Stripruar">
+                  <Button fx:id="n4" alignment="CENTER" layoutX="18.0" layoutY="317.0" maxWidth="200.0" minWidth="190.0" mnemonicParsing="false" onAction="#n4ButtonAction" style="-fx-background-color: #ff8c00;" text="Stripruar">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
                      </font>
@@ -96,6 +96,26 @@
                         <Font name="Xirod-Regular" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="n3Mark" alignment="CENTER" layoutX="222.0" layoutY="261.0" mnemonicParsing="false" style="-fx-background-color: deepskyblue;" textFill="DARKORANGE">
+                     <font>
+                        <Font size="4.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="n4Mark" alignment="CENTER" layoutX="222.0" layoutY="332.0" mnemonicParsing="false" style="-fx-background-color: deepskyblue;" textFill="DARKORANGE">
+                     <font>
+                        <Font size="4.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="n2Mark" alignment="CENTER" layoutX="222.0" layoutY="190.0" mnemonicParsing="false" style="-fx-background-color: deepskyblue;" textFill="DARKORANGE">
+                     <font>
+                        <Font size="4.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="n1Mark" alignment="CENTER" layoutX="222.0" layoutY="117.0" mnemonicParsing="false" style="-fx-background-color: deepskyblue;" textFill="DARKORANGE">
+                     <font>
+                        <Font size="4.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

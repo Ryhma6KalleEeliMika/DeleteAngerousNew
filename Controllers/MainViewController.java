@@ -12,6 +12,7 @@ import Objects.Ship;
 import Objects.Planet;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.animation.FadeTransition;
@@ -60,7 +61,7 @@ public class MainViewController implements Initializable {
     private Button currentStarButton, currentPlanetButton, gMBapButton, beaconButton;
     
     @FXML   //Star buttons
-    private Button n1, n2, n3, n4, starMark;
+    private Button n1, n2, n3, n4, starMark, n1Mark, n2Mark, n3Mark, n4Mark;
 
     @FXML   //Planet buttons
     private Button p1, p2, p3, p4, p1Mark, p2Mark, p3Mark, p4Mark;
@@ -301,6 +302,253 @@ public class MainViewController implements Initializable {
         p4Mark.setVisible(s.getPlanet4().isScanned());
     }
     
+    private void scanned(){
+        HashMap s = main.starMap;
+        HashMap p = main.planetMap;
+        solScanned(s, p);
+        maximaScanned(s, p);
+        alesScanned(s, p);
+        kriyScanned(s, p);
+        atokScanned(s, p);
+        giolScanned(s, p);
+        evraeScanned(s, p);
+        azonScanned(s, p);
+        veprioScanned(s, p);
+        tramoisScanned(s, p);
+        stropeScanned(s, p);
+        stripruarScanned(s, p);
+        lahScanned(s, p);
+        kuelScanned(s, p);
+        ruanScanned(s, p);
+        adeotreScanned(s, p);
+        kelethScanned(s, p);
+        botaScanned(s, p);
+        thiolScanned(s, p);
+        sarenScanned(s, p);
+        kadiScanned(s, p);
+        euraScanned(s, p);
+        xosScanned(s, p);
+        kroScanned(s, p);
+        avlianScanned(s, p);
+        fleokScanned(s, p);
+        ikumScanned(s, p);
+        kohScanned(s, p);
+        pheurScanned(s, p);
+        peodeScanned(s, p);
+        oxuatriScanned(s, p);
+        xaarScanned(s, p);
+    }
+    
+    //System scanner    
+    private void solScanned(HashMap s, HashMap p){
+        if (s.get("Sol").equals(true) && p.get("Terra").equals(true) && p.get("Kronos").equals(true) && p.get("Smagua").equals(true)) {
+            main.systemMap.put("Sol",true);
+        }
+    }
+    private void maximaScanned(HashMap s, HashMap p){
+        if (s.get("Maxima").equals(true) && p.get("Veibos").equals(true) && p.get("Clao").equals(true)) {
+            main.systemMap.put("Maxima",true);
+        }
+    }
+    private void alesScanned(HashMap s, HashMap p){
+        if (s.get("Ales").equals(true) && p.get("Utreon").equals(true)) {
+            main.systemMap.put("Ales", true);
+        }
+    }
+    private void kriyScanned(HashMap s, HashMap p){
+        if (s.get("Kriy").equals(true) && p.get("Emerth").equals(true) && p.get("Ramara").equals(true) && p.get("Datov").equals(true) && p.get("Iulov").equals(true)) {
+            main.systemMap.put("Kriy",true);
+        }
+    }
+    private void atokScanned(HashMap s, HashMap p){
+        if (s.get("Atok").equals(true) && p.get("Lounov").equals(true) && p.get("Bosnera").equals(true) && p.get("Detrone").equals(true)) {
+            main.systemMap.put("Kriy", true);
+        }
+    }
+    private void giolScanned(HashMap s, HashMap p){
+        if (s.get("Giol").equals(true) && p.get("Strelek").equals(true) && p.get("Qonus").equals(true) && p.get("Poftro").equals(true) && p.get("Ieliv").equals(true)) {
+            main.systemMap.put("Kriy", true);
+        }
+    }
+    private void tramoisScanned(HashMap s, HashMap p){
+        if (s.get("Tramois").equals(true)) {
+            main.systemMap.put("Tramois", true);
+        }
+    }
+    private void veprioScanned(HashMap s, HashMap p){
+        if (s.get("Veprio").equals(true) && p.get("Proxia").equals(true) && p.get("Skilia").equals(true) && p.get("Sloria").equals(true)) {
+            main.systemMap.put("Veprio", true);
+        }
+    }
+    private void evraeScanned(HashMap s, HashMap p){
+        if (s.get("Evrae").equals(true) && p.get("Steelar").equals(true) && p.get("Crio").equals(true)) {
+            main.systemMap.put("Evrae", true);
+        }
+    }
+    private void azonScanned(HashMap s, HashMap p){
+        if (s.get("Azon").equals(true) && p.get("Boothill").equals(true) && p.get("Giunope").equals(true) && p.get("Duitera").equals(true) && p.get("Spor").equals(true)) {
+            main.systemMap.put("Azon", true);
+        }
+    }
+    private void lahScanned(HashMap s, HashMap p){
+        if (s.get("Lah").equals(true) && p.get("Beophus").equals(true) && p.get("Glogua").equals(true) && p.get("Stasie").equals(true)) {
+            main.systemMap.put("Lah", true);
+        }
+    }
+    private void kuelScanned(HashMap s, HashMap p){
+        if (s.get("Kuel").equals(true) && p.get("Praanus").equals(true) && p.get("Pelara").equals(true) && p.get("Clapus").equals(true)) {
+            main.systemMap.put("Kuel", true);
+        }
+    }
+    private void ruanScanned(HashMap s, HashMap p){
+        if (s.get("Ruan").equals(true) && p.get("Foerus").equals(true) && p.get("Blore").equals(true) && p.get("Ailara").equals(true)) {
+            main.systemMap.put("Ruan", true);
+        }
+    }
+    private void stropeScanned(HashMap s, HashMap p){
+        if (s.get("Strope").equals(true) && p.get("Geter").equals(true) && p.get("Thorix").equals(true) && p.get("Biluq").equals(true)) {
+            main.systemMap.put("Strope", true);
+        }
+    }
+    private void stripruarScanned(HashMap s, HashMap p){
+        if (s.get("Stripruar").equals(true) && p.get("Degroilite").equals(true)) {
+            main.systemMap.put("Stripruar", true);
+        }
+    }
+    private void adeotreScanned(HashMap s, HashMap p){
+        if (s.get("Adeotre").equals(true) && p.get("Oetha").equals(true) && p.get("Eylaar").equals(true) && p.get("Styke").equals(true)) {
+            main.systemMap.put("Adeotre", true);
+        }
+    }
+    private void sarenScanned(HashMap s, HashMap p){
+        if (s.get("Saren").equals(true)) {
+            main.systemMap.put("Saren", true);
+        }
+    }
+    private void botaScanned(HashMap s, HashMap p){
+        if (s.get("Bota").equals(true) && p.get("Rag").equals(true) && p.get("Usnivobo").equals(true)) {
+            main.systemMap.put("Bota", true);
+        }
+    }
+    private void thiolScanned(HashMap s, HashMap p){
+        if (s.get("Thiol").equals(true)) {
+            main.systemMap.put("Thiol", true);
+        }
+    }
+    private void kelethScanned(HashMap s, HashMap p){
+        if (s.get("Keleth").equals(true) && p.get("Korvot").equals(true) && p.get("Kalameet").equals(true) && p.get("Kasmet").equals(true)) {
+            main.systemMap.put("Keleth", true);
+        }
+    }
+    private void kadiScanned(HashMap s, HashMap p){
+        if (s.get("Kadi").equals(true) && p.get("Ravinus").equals(true) && p.get("Tenes").equals(true) && p.get("Genur").equals(true) && p.get("Vargon").equals(true)) {
+            main.systemMap.put("Kadi", true);
+        }
+    }
+    private void kroScanned(HashMap s, HashMap p){
+         if (s.get("Kro").equals(true) && p.get("Rubric").equals(true) && p.get("Deus").equals(true) && p.get("Talkris").equals(true)) {
+             main.systemMap.put("Kro", true);
+         }
+    }
+    private void xosScanned(HashMap s, HashMap p){
+        if (s.get("Xos").equals(true) && p.get("Sotha").equals(true) && p.get("Braade").equals(true) && p.get("Krona").equals(true) && p.get("Krota").equals(true)) {
+            main.systemMap.put("Xos", true);
+        }
+    }
+    private void euraScanned(HashMap s, HashMap p){
+        if (s.get("Eura").equals(true) && p.get("Elea").equals(true) && p.get("Eria").equals(true) && p.get("Kolea").equals(true)) {
+            main.systemMap.put("Eura", true);
+        }
+    }
+    private void kohScanned(HashMap s, HashMap p){
+        if (s.get("Koh").equals(true) && p.get("Yorma").equals(true) && p.get("Donurus").equals(true)) {
+            main.systemMap.put("Koh", true);
+        }
+    }
+    private void fleokScanned(HashMap s, HashMap p){
+        if (s.get("Fleok").equals(true) && p.get("Yorius").equals(true) && p.get("Andreus").equals(true) && p.get("Akirius").equals(true)) {
+            main.systemMap.put("Fleok", true);
+        }
+    }
+    private void avlianScanned(HashMap s, HashMap p){
+        if (s.get("Avlian").equals(true) && p.get("Arialus").equals(true)) {
+            main.systemMap.put("Avlian", true);
+        }
+    }
+    private void pheurScanned(HashMap s, HashMap p){
+        if (s.get("Pheur").equals(true) && p.get("Dyno").equals(true) && p.get("Nutor").equals(true)) {
+            main.systemMap.put("Pheur", true);
+        }
+    }
+    private void ikumScanned(HashMap s, HashMap p){
+        if (s.get("Ikum").equals(true) && p.get("Hynos").equals(true) && p.get("Aaros").equals(true)) {
+            main.systemMap.put("Ikum", true);
+        }
+    }
+    private void peodeScanned(HashMap s, HashMap p){
+        if (s.get("Peode").equals(true) && p.get("Kolas").equals(true) && p.get("Kora").equals(true) && p.get("Butarnus").equals(true)) {
+            main.systemMap.put("Peode", true);
+        }
+    }
+    private void oxuatriScanned(HashMap s, HashMap p){
+        if (s.get("Oxuatri").equals(true) && p.get("Xanran").equals(true) && p.get("Xemron").equals(true)) {
+            main.systemMap.put("Oxuatri", true);
+        }
+    }
+    private void xaarScanned(HashMap s, HashMap p){
+        if (s.get("Xaar").equals(true) && p.get("Ramor").equals(true)) {
+            main.systemMap.put("Oxuatri", true);
+        }
+    }
+    
+    //Nmarks
+    private void neighboursScannedMarks() {
+        try {
+            if (main.systemMap.get(n1.getText()).equals(true)) {
+                n1Mark.setVisible(true);
+            }
+            else {
+                n1Mark.setVisible(false);
+            }
+        }
+        catch (Exception e) {
+            n1Mark.setVisible(false);
+        }
+        try {
+            if (main.systemMap.get(n2.getText()).equals(true)) {
+                n2Mark.setVisible(true);
+            }
+            else {
+                n2Mark.setVisible(false);
+            }
+        }
+        catch (Exception e) {
+            n2Mark.setVisible(false);
+        }
+        try {
+            if (main.systemMap.get(n3.getText()).equals(true)) {
+                n3Mark.setVisible(true);
+            }
+            else {
+                n3Mark.setVisible(false);
+            }
+        }
+        catch (Exception e) {
+            n3Mark.setVisible(false);
+        }
+        try {
+            if (main.systemMap.get(n4.getText()).equals(true)) {
+                n4Mark.setVisible(true);
+            }
+            else {
+                n4Mark.setVisible(false);
+            }
+        }
+        catch (Exception e) {
+            n4Mark.setVisible(false);
+        }
+    }
+    
     private void starButtonsRefresh(Ship myShip, Star currentStar) {
         //Star buttons.
         currentStarButton.setText(currentStar.getName());
@@ -308,6 +556,8 @@ public class MainViewController implements Initializable {
         n2.setText(currentStar.getN2());
         n3.setText(currentStar.getN3());
         n4.setText(currentStar.getN4());
+        scanned();
+        neighboursScannedMarks();
         if(currentStar.getStar2()!= null){
             n2.setVisible(true);
         }
@@ -532,18 +782,17 @@ public class MainViewController implements Initializable {
         Task task = new Task<Void>() {
         @Override
         public Void call() throws Exception {
-          int i = 0;
-           while (true) {
-                final int finalI = i++;
-                Platform.runLater ( () -> guiRefresh()); //Calls the guiRefreshMethod
-                Thread.sleep (100);    //How often
-
-             }
-         }
-       };
-       Thread th = new Thread(task);
-       th.setDaemon(true);
-       th.start();
+            int i = 0;
+            while (true) {
+                 final int finalI = i++;
+                 Platform.runLater ( () -> guiRefresh());   //Calls the guiRefreshMethod
+                 Thread.sleep (100);    //How often
+              }
+            }
+        };
+        Thread th = new Thread(task);
+        th.setDaemon(true);
+        th.start();
     }
 
     public static void setAlienEncounter(boolean emptyStarImg) {
