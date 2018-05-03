@@ -18,6 +18,59 @@
          <left>
             <VBox alignment="BOTTOM_CENTER" prefWidth="175.0" spacing="10.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 3;" BorderPane.alignment="CENTER">
                <children>
+                  <VBox prefHeight="513.0" prefWidth="153.0">
+                     <children>
+                        <AnchorPane prefHeight="498.0" prefWidth="159.0">
+                           <children>
+                              <ImageView fitHeight="71.0" fitWidth="71.0" layoutX="42.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/ring.png" />
+                                 </image>
+                              </ImageView>
+                              <Label contentDisplay="CENTER" layoutX="38.0" layoutY="187.0" prefHeight="23.0" prefWidth="80.0" text="Shop" textFill="DARKORANGE" wrapText="true">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="8.0" prefHeight="38.0" prefWidth="143.0" text="Legend" textFill="DARKORANGE">
+                                 <font>
+                                    <Font name="Knife Princess" size="38.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutY="395.0" prefWidth="155.0" text="Explored" textAlignment="CENTER" textFill="DARKORANGE">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutY="287.0" prefHeight="31.0" prefWidth="155.0" text="Unexplored" textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutY="68.0" prefHeight="49.0" prefWidth="155.0" text="Player location" textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="55.0" layoutY="217.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="44.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-border-color: darkgreen; -fx-border-width: 3;" text="S" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="57.0" layoutY="418.0" maxHeight="42.0" maxWidth="42.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="42.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-radius: 5em; -fx-border-color: darkblue; -fx-border-width: 3;" text="E" wrapText="true">
+                                 <font>
+                                    <Font name="Xirod-Regular" size="18.0" />
+                                 </font>
+                              </Button>
+                              <ImageView fitHeight="85.0" fitWidth="79.0" layoutX="39.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/unExp.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: darkorange;" text="BACK">
                      <font>
                         <Font name="Xirod-Regular" size="20.0" />
@@ -107,38 +160,134 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Button fx:id="solScanned" layoutX="91.5" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="alesScanned" layoutX="150.5" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="maximaScanned" layoutX="192.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="atokScanned" layoutX="282.0" layoutY="373.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="kriyScanned" layoutX="233.5" layoutY="469.5" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="giolScanned" layoutX="324.0" layoutY="435.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="tramoisScanned" layoutX="338.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="lahScanned" layoutX="296.0" layoutY="237.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="stripruarScanned" layoutX="380.0" layoutY="269.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="kuelScanned" layoutX="303.0" layoutY="146.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="ruanScanned" layoutX="359.0" layoutY="64.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="adeotreScanned" layoutX="380.0" layoutY="196.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="veprioScanned" layoutX="387.0" layoutY="384.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="stropeScanned" layoutX="441.0" layoutY="331.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="evraeScanned" layoutX="408.0" layoutY="476.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="azonScanned" layoutX="490.0" layoutY="404.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="euraScanned" layoutX="689.0" layoutY="175.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="fleokScanned" layoutX="662.0" layoutY="281.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="ikumScanned" layoutX="738.0" layoutY="322.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="peodeScanned" layoutX="717.0" layoutY="393.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="oxuatriScanned" layoutX="655.0" layoutY="456.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="pheurScanned" layoutX="648.0" layoutY="364.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button layoutX="561.0" layoutY="491.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" fx:id="xaarScanned" />
-                        <Button fx:id="kohScanned" layoutX="571.0" layoutY="353.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="kroScanned" layoutX="572.0" layoutY="260.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button layoutX="627.0" layoutY="216.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" fx:id="xosScanned" />
-                        <Button fx:id="kadiScanned" layoutX="606.0" layoutY="134.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="sarenScanned" layoutX="550.0" layoutY="175.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="thiolScanned" layoutX="501.0" layoutY="106.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="kelethScanned" layoutX="420.5" layoutY="126.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="botaScanned" layoutX="469.0" layoutY="187.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
-                        <Button fx:id="avlianScanned" layoutX="731.0" layoutY="237.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em;" />
+                        <Button fx:id="solScanned" layoutX="91.5" layoutY="321.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="alesScanned" layoutX="150.5" layoutY="414.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="maximaScanned" layoutX="192.0" layoutY="356.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="atokScanned" layoutX="282.0" layoutY="373.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="kriyScanned" layoutX="233.5" layoutY="469.5" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="giolScanned" layoutX="324.0" layoutY="435.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="tramoisScanned" layoutX="338.0" layoutY="321.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="lahScanned" layoutX="296.0" layoutY="237.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="stripruarScanned" layoutX="380.0" layoutY="269.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="kuelScanned" layoutX="303.0" layoutY="146.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="ruanScanned" layoutX="359.0" layoutY="64.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="adeotreScanned" layoutX="380.0" layoutY="197.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="veprioScanned" layoutX="387.0" layoutY="384.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="stropeScanned" layoutX="441.0" layoutY="331.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="evraeScanned" layoutX="408.0" layoutY="476.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="azonScanned" layoutX="490.0" layoutY="404.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="euraScanned" layoutX="689.0" layoutY="175.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="fleokScanned" layoutX="662.0" layoutY="281.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="ikumScanned" layoutX="738.0" layoutY="322.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="peodeScanned" layoutX="717.0" layoutY="393.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="oxuatriScanned" layoutX="655.0" layoutY="456.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="pheurScanned" layoutX="648.0" layoutY="364.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button layoutX="561.0" layoutY="491.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true" fx:id="xaarScanned">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="kohScanned" layoutX="571.0" layoutY="353.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="kroScanned" layoutX="572.0" layoutY="260.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button layoutX="627.0" layoutY="216.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true" fx:id="xosScanned">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="kadiScanned" layoutX="606.0" layoutY="134.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: seagreen; -fx-background-radius: 5em; -fx-border-color: darkgreen; -fx-border-radius: 5em; -fx-border-width: 3;" text="S" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="11.0" />
+                           </font></Button>
+                        <Button fx:id="sarenScanned" layoutX="550.0" layoutY="175.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="thiolScanned" layoutX="501.0" layoutY="106.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="kelethScanned" layoutX="420.5" layoutY="126.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="botaScanned" layoutX="469.0" layoutY="187.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
+                        <Button fx:id="avlianScanned" layoutX="731.0" layoutY="237.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: deepskyblue; -fx-background-radius: 5em; -fx-border-color: darkblue; -fx-border-radius: 5em; -fx-border-width: 2.5;" text="E" wrapText="true">
+                           <font>
+                              <Font name="Xirod-Regular" size="12.0" />
+                           </font></Button>
                      </children>
                   </AnchorPane>
                </children>
