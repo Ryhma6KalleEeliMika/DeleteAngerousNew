@@ -6,6 +6,7 @@ package Main;
  * and open the template in the editor.
  */
 import Objects.*;
+import Sound.SoundEffects;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;

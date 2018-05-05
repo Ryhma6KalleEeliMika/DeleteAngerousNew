@@ -6,6 +6,7 @@ package Controllers;
  * and open the template in the editor.
  */
 
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +40,7 @@ public class MainMenuController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
         stage.setScene(new Scene(root1));
         stage.show();
+        SoundEffects.Sound("Button.wav");
     }
     
     @FXML //Button that closes the program.

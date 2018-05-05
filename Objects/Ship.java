@@ -3,6 +3,7 @@ package Objects;
 
 import Controllers.MainViewController;
 import Main.main;
+import Sound.SoundEffects;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.scene.image.Image;
 
@@ -102,6 +103,9 @@ public class Ship {
     public void gainCredits(int ammount) {
         setCredits(getCredits() + ammount);
         setAllCredits(getAllCredits() + ammount);
+        if(ammount > 6){
+            SoundEffects.Sound("Credit.wav");
+        }
     }
     
     //Lose credits method

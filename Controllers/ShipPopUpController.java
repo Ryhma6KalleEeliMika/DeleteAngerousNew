@@ -9,6 +9,7 @@ package Controllers;
 import Main.main;
 import static Main.main.setMainMenu;
 import Objects.Ship;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,18 +45,24 @@ public class ShipPopUpController implements Initializable {
     @FXML //Button when the Eagle MkII ship is selected.
     private void eaglemk2ButtonAction(ActionEvent event) throws IOException {
         main.setChosenShipName("Eagle MkII");
+        SoundEffects.Sound("Button.wav");
+        SoundEffects.Sound("EagleMkII.wav");
         startGame();
     }
     
     @FXML //Button when the Hauler ship is selected.
     private void haulerButtonAction(ActionEvent event) throws IOException {
         main.setChosenShipName("Hauler");
+        SoundEffects.Sound("Button.wav");
+        SoundEffects.Sound("Hauler.wav");
         startGame();
     }
     
     @FXML //Button when the Adder ship is selected.
     private void adderButtonAction(ActionEvent event) throws IOException {
         main.setChosenShipName("Adder");
+        SoundEffects.Sound("Button.wav");
+        SoundEffects.Sound("Adder.wav");
         startGame();
     }
     
@@ -99,7 +106,8 @@ public class ShipPopUpController implements Initializable {
             startFuelLabel.setText("100");
             startHullLabel.setText("100");
             startEngineLabel.setText("Basic");
-            shipNameLabel.setText("Eagle MkII");    
+            shipNameLabel.setText("Eagle MkII");
+            SoundEffects.Sound("ButtonHover.wav");
         });
         
         haulerButton.hoverProperty().addListener(l->{ //Hauler button mouse hover.
@@ -112,6 +120,7 @@ public class ShipPopUpController implements Initializable {
             startHullLabel.setText("200");
             startEngineLabel.setText("Basic");
             shipNameLabel.setText("Hauler");
+            SoundEffects.Sound("ButtonHover.wav");
         });
         
         adderButton.hoverProperty().addListener(l->{ //Adder button mouseHover.
@@ -124,6 +133,7 @@ public class ShipPopUpController implements Initializable {
             startHullLabel.setText("100");
             startEngineLabel.setText("Basic");
             shipNameLabel.setText("Adder");
+            SoundEffects.Sound("ButtonHover.wav");
         });
     }
 }

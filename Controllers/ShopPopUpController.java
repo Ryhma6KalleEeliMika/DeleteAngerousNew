@@ -11,6 +11,7 @@ import Objects.Engine;
 import Objects.FuelCell;
 import Objects.Hull;
 import Objects.Weapon;
+import Sound.SoundEffects;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -89,6 +90,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipWeapon(newWeapon);
             main.myShip.loseCredits((int) miningLaserPrice);
             setActionLabel("Mining laser installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -105,6 +107,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipWeapon(newWeapon);
             main.myShip.loseCredits((int) pulseLaserPrice);
             setActionLabel("Pulse laser installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
         
@@ -121,6 +124,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipWeapon(newWeapon);
             main.myShip.loseCredits((int) multiCannonPrice);
             setActionLabel("Multi-cannon installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -137,6 +141,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipFuelCell(medFuelCell);
             main.myShip.loseCredits((int) medFuelCellPrice);
             setActionLabel("Medium fuel cell installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -155,6 +160,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipFuelCell(largeFuelCell);
             main.myShip.loseCredits((int) largeFuelCellPrice);
             setActionLabel("Large fuel cell installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -171,6 +177,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipHull(reinforcedHull);
             main.myShip.loseCredits((int) reinforcedHullPrice);
             setActionLabel("Reinforced alloys installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -187,6 +194,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipHull(militaryHull);
             main.myShip.loseCredits((int) militaryHullPrice);
             setActionLabel("Military grade alloys installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
         
@@ -203,6 +211,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipEngine(advancedEngine);
             main.myShip.loseCredits((int) advancedEnginePrice);
             setActionLabel("Advanced engine installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -219,6 +228,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setShipEngine(eliteEngine);
             main.myShip.loseCredits((int) eliteEnginePrice);
             setActionLabel("Elite engine installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
     
@@ -234,6 +244,7 @@ public class ShopPopUpController implements Initializable {
             main.myShip.setFuelScoopInstalled(true);
             main.myShip.loseCredits((int) fuelScoopPrice);
             setActionLabel("Fuel scoop installed.");
+            SoundEffects.Sound("ShopBuy.wav");
         }
     }
 

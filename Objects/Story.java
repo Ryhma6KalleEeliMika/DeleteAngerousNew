@@ -6,6 +6,7 @@
 package Objects;
 
 import Main.main;
+import Sound.SoundEffects;
 import java.util.concurrent.ThreadLocalRandom;
 import javafx.scene.image.Image;
 
@@ -138,6 +139,7 @@ public class Story {
                 story.setConclusion1("You escaped the pirate.");
                 Image pirChase = new Image(IMGPATH + "pirateEscape.png");
                 story.setImg(pirChase);
+                SoundEffects.Sound("Accelerate.wav");
                 break;
 
                 
@@ -149,6 +151,8 @@ public class Story {
                     story.setBlueLabel("+50cr");
                     Image pirChase2 = new Image(IMGPATH + "explosion.png");
                     story.setImg(pirChase2);
+                    SoundEffects.Sound("Laser.wav");
+                    SoundEffects.Sound("Explosion.wav");
                     break;
                 }
                 else {
@@ -158,6 +162,7 @@ public class Story {
                     story.setRedLabel("Warning! Hull damage");
                     Image pirChase2 = new Image(IMGPATH + "narrowEscape.png");
                     story.setImg(pirChase2);
+                    SoundEffects.Sound("WarningHullDamage.mp3");
                     break;
                 }
                 
@@ -181,6 +186,7 @@ public class Story {
                             story.setImg(conflict2Img);
                             story.setBlueLabel("+40cr");
                             story.setRedLabel("Warning! Hull damage");
+                            SoundEffects.Sound("WarningHullDamage.mp3");
                             break;
 
                         default:
@@ -189,6 +195,7 @@ public class Story {
                             Image conflict3Img = new Image(IMGPATH + "conflictFail.png");
                             story.setImg(conflict3Img);
                             story.setRedLabel("Warning! Hull damage");
+                            SoundEffects.Sound("WarningHullDamage.mp3");
                             break;
                     }
                     break;
@@ -212,6 +219,7 @@ public class Story {
                         Image pirateImg = new Image(IMGPATH + "pirateAttack.png");
                         story.setImg(pirateImg);
                         story.setRedLabel("Warning! Hull damage");
+                        SoundEffects.Sound("WarningHullDamage.mp3");
                         break;
                     
                     case 2: //Took some damage.
@@ -221,6 +229,7 @@ public class Story {
                         Image pirate2Img = new Image(IMGPATH + "narrowEscape.png");
                         story.setImg(pirate2Img);
                         story.setRedLabel("Warning! Hull damage");
+                        SoundEffects.Sound("WarningHullDamage.mp3");
                         break;
                         
                     case 3: //No loss
@@ -228,6 +237,7 @@ public class Story {
                         story.setConclusion2("You managed to escape without being hit.");
                         Image pirate3Img = new Image(IMGPATH + "pirateEscape.png");
                         story.setImg(pirate3Img);
+                        SoundEffects.Sound("Accelerate.wav");
                         break;
                 }
                 break;
@@ -240,6 +250,7 @@ public class Story {
                     story.setConclusion1("You found a fuelcell with some fuel left in it.");
                     myShip.getShipFuelCell().fuelGain(50.0);
                     story.setBlueLabel("+50 fuel");
+                    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
                     break;
                     
                     case 2: //A pirate attacks you.
@@ -308,6 +319,7 @@ public class Story {
                 setBeaconFail("Critical damage!");
                 Image img = new Image("Images/Story/pirateAttack.png");
                 setBeaconImg(img);
+                ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
                 return "A pirate ship picked up on your signal before anyone else";
                 
             default:
@@ -315,6 +327,7 @@ public class Story {
                 setBeaconReward("+20 fuel");
                 Image img2 = new Image("Images/Story/stranded.png");
                 setBeaconImg(img2);
+                ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
                 return "A fuel rat arrives and brings you some fuel";
         }
     }
@@ -336,6 +349,7 @@ public class Story {
             setBeaconFail("Warning! Hull damage");
             Image img = new Image("Images/Story/narrowEscape.png");
             setInterdictImg(img);
+            SoundEffects.Sound("WarningHullDamage.mp3");
             return "The fight didn\'t go so well and you took some heavy damage.";
         }
     }
@@ -363,6 +377,7 @@ public class Story {
     }
     
     //Alien fight
+    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
     public static String alienFight() {
         if (weaponIntRng()) {
           if (coinFlip() == 1) {
@@ -391,6 +406,7 @@ public class Story {
     }
     
     //Alien communication
+    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
     public static String alienCommunication() {
         switch (intSubRng()) {
             case 1:
