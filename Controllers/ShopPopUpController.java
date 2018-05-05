@@ -248,6 +248,7 @@ public class ShopPopUpController implements Initializable {
         else {
             main.myShip.getShipFuelCell().fuelGain(1);
             main.myShip.loseCredits((int) fuelPrice);
+            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + 1);
             setActionLabel("1 fuel refilled.");
         }
     }
@@ -262,6 +263,7 @@ public class ShopPopUpController implements Initializable {
         else if(main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipFuelCell().getMaxFuel() - 9) {
             main.myShip.loseCredits((int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
             main.myShip.getShipFuelCell().fuelGain(10);
+            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + (int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
             setActionLabel("fuel refilled.");
         }
     
@@ -272,6 +274,7 @@ public class ShopPopUpController implements Initializable {
         else {
             main.myShip.getShipFuelCell().fuelGain(10);
             main.myShip.loseCredits((int) (fuelPrice * 10));
+            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + 10);
             setActionLabel("10 fuel refilled.");
         }
     }

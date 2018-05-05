@@ -28,6 +28,10 @@ public class Hull {
     
     private final double militaryArmor = 300;
     
+    private double hullGained = 0;
+    
+    private double hullLost = 0;
+    
     //Constructor
     public Hull(String moduleName){
         setName(moduleName);
@@ -54,15 +58,18 @@ public class Hull {
     //Hull loss method
     public void hullLoss(double hullLoss){
         setHull(hull - hullLoss);
+        setHullLost(hullLost + hullLoss);
     }
     
     //Hull gain method "Not used yet."
     public void hullGain(double hullGain){
         if(hullGain + getHull() >= getMaxHull()){
+            setHullGained(getHullGained() + (getMaxHull() - getHull()));
             setHull(getMaxHull());
         }
         else{
             setHull(getHull() + hullGain);
+            setHullGained(getHullGained() + hullGain);
         }    
     }
     
@@ -110,4 +117,21 @@ public class Hull {
     public double getMilitaryArmor() {
         return militaryArmor;
     }
+
+    public double getHullGained() {
+        return hullGained;
+    }
+
+    public void setHullGained(double hullGained) {
+        this.hullGained = hullGained;
+    }
+
+    public double getHullLost() {
+        return hullLost;
+    }
+
+    public void setHullLost(double hullLost) {
+        this.hullLost = hullLost;
+    }
+    
 }

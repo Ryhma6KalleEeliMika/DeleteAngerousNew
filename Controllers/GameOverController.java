@@ -7,6 +7,7 @@ package Controllers;
  */
 
 import Main.main;
+import Objects.Story;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,11 +29,22 @@ public class GameOverController implements Initializable {
     private Button tryAgainButton, quitButton;
     
     @FXML
-    private Label gameOverLabel, reasonLabel;
+    private Label gameOverLabel, reasonLabel, jumpsMadeNumber, totalCreditsNumber, planetStarNumber, hullLostNumber, fuelUsedNumber, fuelBuyedNumber, attackNumber, hullGainedNumber;
     
     @FXML //Close program
     private void quitButtonAction(ActionEvent event) throws IOException {
         System.exit(0);
+    }
+    
+    private void gameInformation(){
+        jumpsMadeNumber.setText(Integer.toString(main.myShip.getAllJumps()));
+        totalCreditsNumber.setText(Integer.toString(main.myShip.getAllCredits()));
+        fuelUsedNumber.setText(Double.toString(main.myShip.getShipFuelCell().getFuelUsed()));
+        planetStarNumber.setText(Integer.toString(main.myShip.getStarsScanned()) + "/" + Integer.toString(main.myShip.getPlanetsScanned()));
+        hullLostNumber.setText(Double.toString(main.myShip.getShipHull().getHullLost()));
+        hullGainedNumber.setText(Double.toString(main.myShip.getShipHull().getHullGained()));
+        fuelBuyedNumber.setText(Double.toString(main.myShip.getShipFuelCell().getFuelBuyed()));
+        attackNumber.setText(Integer.toString(Story.getTimesAttacked()));
     }
     
     @Override   //Mouse hover action.
@@ -40,11 +52,13 @@ public class GameOverController implements Initializable {
         if (main.myShip.getShipHull().getHull() <= 0) {
             gameOverLabel.setText("Game Over");
             reasonLabel.setText("Your ship was destroyed");
+            gameInformation();
         }
         else {
             gameOverLabel.setText("Exploration victory");
             reasonLabel.setText("You have scoured the entire galaxy and there is nothing left to do than retire");
             reasonLabel.setTextFill(Color.web("DeepSkyBlue"));
+            gameInformation();
         }
     }
 }

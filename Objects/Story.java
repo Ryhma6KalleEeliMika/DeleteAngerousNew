@@ -27,6 +27,8 @@ public class Story {
     
     private final String IMGPATH = "Images/Story/";
     
+    private static int timesAttacked = 0;
+    
     public Story(){
         switch (rng()) {
             //Stranded ship
@@ -141,6 +143,7 @@ public class Story {
                 
             case "Fight":
                 if (weaponRng()) {
+                    setTimesAttacked(getTimesAttacked() + 1);
                     story.setConclusion2("You were able to destroy the pirate, and gained few credits.");
                     myShip.gainCredits(50);
                     story.setBlueLabel("+50cr");
@@ -149,6 +152,7 @@ public class Story {
                     break;
                 }
                 else {
+                    setTimesAttacked(getTimesAttacked() + 1);
                     story.setConclusion2("You took some damage and had to escape.");
                     myShip.getShipHull().hullLoss(20.0);
                     story.setRedLabel("Warning! Hull damage");
@@ -192,6 +196,7 @@ public class Story {
                 
             //pirate fleet escape needs to be under this case..............................................................
             case "Give 50cr":
+                setTimesAttacked(getTimesAttacked() + 1);
                 myShip.loseCredits(50);
                 story.setConclusion1("You gave them 50cr and they left you alone.");
                 story.setRedLabel("-50cr");
@@ -201,6 +206,7 @@ public class Story {
             case "Try to escape":
                 switch (subRng()) {
                     case 1: //Took heavy damage.
+                        setTimesAttacked(getTimesAttacked() + 1);
                         story.setConclusion2("You managed to escape, but took some heave damage.");
                         myShip.getShipHull().hullLoss(30.0);
                         Image pirateImg = new Image(IMGPATH + "pirateAttack.png");
@@ -209,6 +215,7 @@ public class Story {
                         break;
                     
                     case 2: //Took some damage.
+                        setTimesAttacked(getTimesAttacked() + 1);
                         story.setConclusion2("You managed to escape and dodged most of the attacks.");
                         myShip.getShipHull().hullLoss(10.0);
                         Image pirate2Img = new Image(IMGPATH + "narrowEscape.png");
@@ -217,6 +224,7 @@ public class Story {
                         break;
                         
                     case 3: //No loss
+                        setTimesAttacked(getTimesAttacked() + 1);
                         story.setConclusion2("You managed to escape without being hit.");
                         Image pirate3Img = new Image(IMGPATH + "pirateEscape.png");
                         story.setImg(pirate3Img);
@@ -240,6 +248,7 @@ public class Story {
                     story.setImg(pirateImg);
                     myShip.getShipHull().hullLoss(20.0);
                     story.setRedLabel("Warning! Hull damage");
+                    setTimesAttacked(getTimesAttacked() + 1);
                     break;
                     
                     case 3: //Found some credits in the debris.
@@ -295,6 +304,7 @@ public class Story {
         switch(ThreadLocalRandom.current().nextInt(1, 3 + 1)) {
             case 1:
                 main.myShip.getShipHull().setHull(0);
+                setTimesAttacked(getTimesAttacked() + 1);
                 setBeaconFail("Critical damage!");
                 Image img = new Image("Images/Story/pirateAttack.png");
                 setBeaconImg(img);
@@ -312,6 +322,7 @@ public class Story {
     //Interdiction fight
     public static String interdictFight() {
         if (weaponIntRng()) {
+            setTimesAttacked(getTimesAttacked() + 1);
           main.myShip.gainCredits(50);
           setBeaconReward("+50cr");
           Image img3 = new Image("Images/Story/explosion.png");
@@ -320,6 +331,7 @@ public class Story {
             
         }
         else {
+            setTimesAttacked(getTimesAttacked() + 1);
             main.myShip.getShipHull().hullLoss(40);
             setBeaconFail("Warning! Hull damage");
             Image img = new Image("Images/Story/narrowEscape.png");
@@ -332,6 +344,7 @@ public class Story {
     public static String interdictEscape() {
         switch (intSubRng()) {
             case 1:
+                setTimesAttacked(getTimesAttacked() + 1);
                 main.myShip.getShipHull().hullLoss(40);
                 main.myShip.getShipFuelCell().fuelLoss(5);
                 setBeaconFail("-5 fuel & Hull damage!");
@@ -340,6 +353,7 @@ public class Story {
                 return "You were able to escape, but took some heavy damage.";
             
             default: 
+                setTimesAttacked(getTimesAttacked() + 1);
                 main.myShip.getShipFuelCell().fuelLoss(5);
                 setBeaconFail("-5 fuel");
                 Image img2 = new Image("Images/Story/pirateEscape.png");
@@ -352,6 +366,7 @@ public class Story {
     public static String alienFight() {
         if (weaponIntRng()) {
           if (coinFlip() == 1) {
+              setTimesAttacked(getTimesAttacked() + 1);
             main.myShip.gainCredits(400);
             setBeaconReward("+400cr");
             Image img1 = new Image("Images/Story/explosion.png");
@@ -359,12 +374,14 @@ public class Story {
             return "You were able to destroy the alien ship and it left some rare minerals behind.";
           }
           else {
+            setTimesAttacked(getTimesAttacked() + 1);
             Image img2 = new Image("Images/Stars/Empty/Empty.png");
             setInterdictImg(img2);
             return "Your weapons weren't able to penetrate the alien armor and the alien ship disappeared.";   
           } 
         }
         else {
+            setTimesAttacked(getTimesAttacked() + 1);
             main.myShip.getShipHull().hullLoss(60);
             setBeaconFail("Warning! Hull damage");
             Image img3 = new Image("Images/Story/alienAttack.png");
@@ -549,4 +566,13 @@ public class Story {
     public String getStoryType() {
         return storyType;
     }
+
+    public static int getTimesAttacked() {
+        return timesAttacked;
+    }
+
+    public static void setTimesAttacked(int timesAttacked) {
+        Story.timesAttacked = timesAttacked;
+    }
+    
 }

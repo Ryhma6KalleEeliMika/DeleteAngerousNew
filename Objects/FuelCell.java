@@ -27,9 +27,14 @@ public class FuelCell {
     
     private final double largeMaxFuel = 200;
     
+    private double fuelUsed = 0;
+    
+    private double fuelBuyed = 0;
+    
     //Fuel loss method
     public void fuelLoss(double fuelLoss){
         setFuel(fuel - fuelLoss);
+        setFuelUsed(fuelUsed + fuelLoss);
     }
     
     //Fuel gain method
@@ -112,4 +117,21 @@ public class FuelCell {
     public double getLargeMaxFuel() {
         return largeMaxFuel;
     }
+
+    public double getFuelUsed() {
+        return fuelUsed;
+    }
+
+    public void setFuelUsed(double fuelUsed) {
+        this.fuelUsed = fuelUsed;
+    }
+
+    public double getFuelBuyed() {
+        return fuelBuyed;
+    }
+
+    public void setFuelBuyed(double fuelBuyed) {
+        this.fuelBuyed = fuelBuyed;
+    }
+    
 }

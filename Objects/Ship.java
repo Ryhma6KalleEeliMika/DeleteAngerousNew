@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
 
 /**
  *
- * @author Kalle    
+ * @author Kalle
  */
 public class Ship {
     //Ship's info
@@ -45,6 +45,10 @@ public class Ship {
     private Image fuelScoopImage;
     
     private int Credits = 0;
+    
+    private int allCredits = 0;
+    
+    private int allJumps = 0;
   
     //Ship's constructor
     public Ship(String location, Star star, String newName) {
@@ -97,6 +101,7 @@ public class Ship {
     //Gain credits method
     public void gainCredits(int ammount) {
         setCredits(getCredits() + ammount);
+        setAllCredits(getAllCredits() + ammount);
     }
     
     //Lose credits method
@@ -106,6 +111,7 @@ public class Ship {
     
     //Prints the name of the current currentStar system.
     public String currentStarName() {
+        setAllJumps(getAllJumps() + 1);
         Star currentStar = getStar();
         return currentStar.getName();
     }
@@ -290,4 +296,22 @@ public class Ship {
     public void setShipWeapon(Weapon shipWeapon) {
         this.shipWeapon = shipWeapon;
     }
+
+    public int getAllCredits() {
+        return allCredits;
+    }
+
+    public void setAllCredits(int allCredits) {
+        this.allCredits = allCredits;
+    }
+
+    public int getAllJumps() {
+        return allJumps;
+    }
+
+    public void setAllJumps(int allJumps) {
+        this.allJumps = allJumps;
+    }
+    
+    
 }
