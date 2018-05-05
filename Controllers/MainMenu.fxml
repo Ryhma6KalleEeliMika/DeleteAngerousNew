@@ -24,7 +24,7 @@
       </Pane>
       <BorderPane prefHeight="768.0" prefWidth="1366.0" style="-fx-border-color: darkorange; -fx-border-width: 10;">
          <top>
-            <Label text="DELETE ANGEROUS" textFill="DARKORANGE" BorderPane.alignment="CENTER">
+            <Label stylesheets="@knifeFont.css" text="DELETE ANGEROUS" textFill="DARKORANGE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Knife Princess" size="96.0" />
                </font>
@@ -38,7 +38,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="1356.0">
                      <children>
-                        <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#startGameButtonAction" style="-fx-background-color: transparent;" text="NEW GAME" textFill="DARKORANGE">
+                        <Button fx:id="startGameButton" mnemonicParsing="false" onAction="#startGameButtonAction" style="-fx-background-color: transparent;" stylesheets="@xirodFont.css" text="NEW GAME" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="36.0" />
                            </font>
@@ -53,7 +53,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="optionButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="OPTIONS" textFill="DARKORANGE">
+                        <Button fx:id="optionButton" mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@xirodFont.css" text="OPTIONS" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="36.0" />
                            </font>
@@ -65,7 +65,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" style="-fx-background-color: transparent;" text="EXIT" textFill="DARKORANGE">
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" style="-fx-background-color: transparent;" stylesheets="@xirodFont.css" text="EXIT" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="36.0" />
                            </font>

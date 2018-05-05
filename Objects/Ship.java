@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
 
 /**
  *
- * @author Kalle
+ * @author Kalle    
  */
 public class Ship {
     //Ship's info

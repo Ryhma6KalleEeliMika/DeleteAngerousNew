@@ -4,6 +4,10 @@
     ensure build system copies the css file to the build output path */
 
 .progress-bar > .track {
-  -fx-control-inner-background: black;
-   -fx-text-box-border: darkorange;
+    -fx-control-inner-background: black;
+    -fx-text-box-border: darkorange;
+}
+
+@font-face{
+    src: url("Fonts/xirod.ttf");
 }

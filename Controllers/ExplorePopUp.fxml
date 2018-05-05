@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="storyTypeLabel" text="Random Event" textFill="DARKORANGE">
+            <Label fx:id="storyTypeLabel" stylesheets="@xirodFont.css" text="Random Event" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>
@@ -30,12 +30,12 @@
                   <Image url="@../Images/Story/stranded.png" />
                </image>
             </ImageView>
-            <Label fx:id="gainLabel" alignment="CENTER" text="You gained 50 credits" textFill="DEEPSKYBLUE">
+            <Label fx:id="gainLabel" alignment="CENTER" stylesheets="@xirodFont.css" text="You gained 50 credits" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Xirod-Regular" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lossLabel" alignment="CENTER" layoutX="25.0" layoutY="182.0" text="You lost 10 fuel" textFill="RED">
+            <Label fx:id="lossLabel" alignment="CENTER" layoutX="25.0" layoutY="182.0" stylesheets="@xirodFont.css" text="You lost 10 fuel" textFill="RED">
                <font>
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
@@ -51,7 +51,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="option1Button" mnemonicParsing="false" onAction="#option1ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Action 1" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="option1Button" mnemonicParsing="false" onAction="#option1ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Action 1" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -60,7 +60,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="305.0" layoutY="10.0" prefHeight="60.0" prefWidth="401.0">
                <children>
-                  <Button fx:id="option2Button" mnemonicParsing="false" onAction="#option2ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" text="Action 2" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="option2Button" mnemonicParsing="false" onAction="#option2ButtonAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Action 2" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -77,7 +77,7 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="284.0">
                      <children>
-                        <Label fx:id="eventExplanationLabel" prefHeight="95.0" prefWidth="314.0" text="You see a stranded ship orbiting the planet. The ship hails you and asks you for a fuel." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
+                        <Label fx:id="eventExplanationLabel" prefHeight="95.0" prefWidth="314.0" stylesheets="@xirodFont.css" text="You see a stranded ship orbiting the planet. The ship hails you and asks you for a fuel." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
                            <font>
                               <Font name="Xirod-Regular" size="13.0" />
                            </font>
@@ -86,7 +86,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="284.0">
                      <children>
-                        <Label fx:id="eventOutcomeLabel" prefHeight="96.0" prefWidth="284.0" text="You gave them 20 fuel and they gave you 50cr." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
+                        <Label fx:id="eventOutcomeLabel" prefHeight="96.0" prefWidth="284.0" stylesheets="@xirodFont.css" text="You gave them 20 fuel and they gave you 50cr." textAlignment="CENTER" textFill="DARKORANGE" wrapText="true">
                            <font>
                               <Font name="Xirod-Regular" size="13.0" />
                            </font>
@@ -97,7 +97,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="284.0">
                <children>
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: darkorange;" text="EXIT" textAlignment="CENTER">
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="EXIT" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>

@@ -14,7 +14,7 @@
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="starNameLabel" text="Star name" textFill="DARKORANGE">
+            <Label fx:id="starNameLabel" stylesheets="@xirodFont.css" text="Star name" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>
@@ -38,7 +38,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
                <children>
-                  <Button fx:id="fuelScoopButton" disable="true" mnemonicParsing="false" onAction="#fuelScoopButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Fuel Scoop" textAlignment="CENTER">
+                  <Button fx:id="fuelScoopButton" disable="true" mnemonicParsing="false" onAction="#fuelScoopButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Fuel Scoop" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -47,7 +47,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="401.0">
                <children>
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Exit" textAlignment="CENTER">
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Exit" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -62,19 +62,19 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Star description" textFill="DARKORANGE">
+                  <Label stylesheets="@xirodFont.css" text="Star description" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <Label fx:id="actionLabel" alignment="CENTER" text="Label" textFill="DEEPSKYBLUE">
+            <Label fx:id="actionLabel" alignment="CENTER" stylesheets="@xirodFont.css" text="Label" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Xirod-Regular" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="warningLabel" text="Warning" textFill="RED">
+            <Label fx:id="warningLabel" stylesheets="@xirodFont.css" text="Warning" textFill="RED">
                <font>
                   <Font name="Xirod-Regular" size="15.0" />
                </font>

@@ -14,7 +14,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="quitButton" minWidth="180.0" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: darkorange;" text="quit">
+                  <Button fx:id="quitButton" minWidth="180.0" mnemonicParsing="false" onAction="#quitButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="quit">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -32,7 +32,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label fx:id="gameOverLabel" alignment="CENTER" text="Congratulations" textAlignment="CENTER" textFill="DARKORANGE">
+                  <Label fx:id="gameOverLabel" alignment="CENTER" stylesheets="@knifeFont.css" text="Congratulations" textAlignment="CENTER" textFill="DARKORANGE">
                      <font>
                         <Font name="Knife Princess" size="64.0" />
                      </font>
@@ -44,7 +44,7 @@
             </HBox>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="550.0">
                <children>
-                  <Label fx:id="reasonLabel" text="You have scoured the entire galaxy and there is nothing left to do than retire" textAlignment="CENTER" textFill="RED" wrapText="true">
+                  <Label fx:id="reasonLabel" stylesheets="@xirodFont.css" text="You have scoured the entire galaxy and there is nothing left to do than retire" textAlignment="CENTER" textFill="RED" wrapText="true">
                      <font>
                         <Font name="Xirod-Regular" size="16.0" />
                      </font>

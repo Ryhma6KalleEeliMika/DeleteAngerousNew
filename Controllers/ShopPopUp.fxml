@@ -18,13 +18,13 @@
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Region layoutX="108.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
-            <Label text="Shop" textFill="DARKORANGE">
+            <Label stylesheets="@xirodFont.css" text="Shop" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="24.0" />
                </font>
             </Label>
             <Region prefHeight="200.0" prefWidth="200.0" />
-            <Label text="tax" textFill="DARKORANGE">
+            <Label stylesheets="@xirodFont.css" text="tax" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="15.0" />
                </font>
@@ -34,7 +34,7 @@
             </Label>
             <HBox alignment="CENTER" fillHeight="false" style="-fx-border-color: darkorange;">
                <children>
-                  <Label fx:id="taxLabel" alignment="CENTER" text="23" textFill="DARKORANGE">
+                  <Label fx:id="taxLabel" alignment="CENTER" stylesheets="@xirodFont.css" text="23" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -65,7 +65,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="401.0">
                <children>
-                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" text="Exit" textAlignment="CENTER">
+                  <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Exit" textAlignment="CENTER">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
@@ -76,7 +76,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="91.0" prefWidth="389.0" style="-fx-border-color: darkorange;">
                      <children>
-                        <Label fx:id="moduleNameLabel" alignment="CENTER" textFill="DARKORANGE">
+                        <Label fx:id="moduleNameLabel" alignment="CENTER" stylesheets="@xirodFont.css" textFill="DARKORANGE">
                            <font>
                               <Font name="Xirod-Regular" size="18.0" />
                            </font>
@@ -92,32 +92,32 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="priceColumnLabel" alignment="BOTTOM_LEFT" contentDisplay="TOP" textFill="DARKORANGE" GridPane.halignment="CENTER">
+                              <Label fx:id="priceColumnLabel" alignment="BOTTOM_LEFT" contentDisplay="TOP" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.halignment="CENTER">
                                  <font>
                                     <Font name="Xirod-Regular" size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="spec1Label" layoutX="110.0" layoutY="18.0" textFill="DARKORANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                              <Label fx:id="spec1Label" layoutX="110.0" layoutY="18.0" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                  <font>
                                     <Font name="Xirod-Regular" size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="spec2Label" layoutX="110.0" layoutY="51.0" textFill="DARKORANGE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                              <Label fx:id="spec2Label" layoutX="110.0" layoutY="51.0" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                  <font>
                                     <Font name="Xirod-Regular" size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="priceLabel" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="51.0" textFill="DARKORANGE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="priceLabel" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="51.0" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Xirod-Regular" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="spec1" layoutX="110.0" layoutY="51.0" textFill="DARKORANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="spec1" layoutX="110.0" layoutY="51.0" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Xirod-Regular" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="spec2" layoutX="210.0" layoutY="51.0" textFill="DARKORANGE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                              <Label fx:id="spec2" layoutX="210.0" layoutY="51.0" stylesheets="@xirodFont.css" textFill="DARKORANGE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Xirod-Regular" size="18.0" />
                                  </font>
@@ -137,7 +137,7 @@
    <left>
       <VBox alignment="CENTER" prefHeight="247.0" prefWidth="500.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="114.0" layoutY="54.0" prefHeight="23.0" prefWidth="292.0" text="Weapons" textFill="DARKORANGE">
+            <Label alignment="CENTER" layoutX="114.0" layoutY="54.0" prefHeight="23.0" prefWidth="292.0" stylesheets="@xirodFont.css" text="Weapons" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="17.0" />
                </font>
@@ -153,24 +153,24 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="miningLaserButton" mnemonicParsing="false" onAction="#miningLaserButtonAction" style="-fx-background-color: darkorange;" text="Mining Laser" GridPane.rowIndex="1">
+                  <Button fx:id="miningLaserButton" mnemonicParsing="false" onAction="#miningLaserButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Mining Laser" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="pulseLaserButton" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#pulseLaserButtonAction" style="-fx-background-color: darkorange;" text="Pulse Laser" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="pulseLaserButton" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#pulseLaserButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Pulse Laser" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="multiCannonButton" layoutX="172.0" layoutY="11.0" mnemonicParsing="false" onAction="#multiCannonButtonAction" style="-fx-background-color: darkorange;" text="Multi-Cannon" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="multiCannonButton" layoutX="172.0" layoutY="11.0" mnemonicParsing="false" onAction="#multiCannonButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Multi-Cannon" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="12.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-            <Label alignment="CENTER" prefHeight="23.0" prefWidth="292.0" text="SHIP MODULES" textFill="DARKORANGE">
+            <Label alignment="CENTER" prefHeight="23.0" prefWidth="292.0" stylesheets="@xirodFont.css" text="SHIP MODULES" textFill="DARKORANGE">
                <font>
                   <Font name="Xirod-Regular" size="17.0" />
                </font>
@@ -189,84 +189,84 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Fuel cell" textFill="DARKORANGE">
+                  <Label stylesheets="@xirodFont.css" text="Fuel cell" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="mediumCellButton" mnemonicParsing="false" onAction="#mediumCellButtonAction" style="-fx-background-color: darkorange;" text="Medium" GridPane.columnIndex="1">
+                  <Button fx:id="mediumCellButton" mnemonicParsing="false" onAction="#mediumCellButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Medium" GridPane.columnIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="largeCellButton" mnemonicParsing="false" onAction="#largeCellButtonAction" style="-fx-background-color: darkorange;" text="Large" GridPane.columnIndex="2">
+                  <Button fx:id="largeCellButton" mnemonicParsing="false" onAction="#largeCellButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Large" GridPane.columnIndex="2">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="10.0" layoutY="14.0" text="Hull" textFill="DARKORANGE" GridPane.rowIndex="1">
+                  <Label layoutX="10.0" layoutY="14.0" stylesheets="@xirodFont.css" text="Hull" textFill="DARKORANGE" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="reinforcedHullButton" layoutX="172.0" layoutY="8.0" mnemonicParsing="false" onAction="#reinforcedHullButtonAction" style="-fx-background-color: darkorange;" text="Reinforced" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="reinforcedHullButton" layoutX="172.0" layoutY="8.0" mnemonicParsing="false" onAction="#reinforcedHullButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Reinforced" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="militaryHullButton" layoutX="333.0" layoutY="8.0" mnemonicParsing="false" onAction="#militaryHullButtonAction" style="-fx-background-color: darkorange;" text="Military" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="militaryHullButton" layoutX="333.0" layoutY="8.0" mnemonicParsing="false" onAction="#militaryHullButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Military" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="10.0" layoutY="44.0" text="Engine" textFill="DARKORANGE" GridPane.rowIndex="2">
+                  <Label layoutX="10.0" layoutY="44.0" stylesheets="@xirodFont.css" text="Engine" textFill="DARKORANGE" GridPane.rowIndex="2">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="advancedEngButton" layoutX="172.0" layoutY="41.0" mnemonicParsing="false" onAction="#advancedEngineButtonAction" style="-fx-background-color: darkorange;" text="Advanced" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="advancedEngButton" layoutX="172.0" layoutY="41.0" mnemonicParsing="false" onAction="#advancedEngineButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Advanced" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="eliteEngButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliteEngineButtonAction" style="-fx-background-color: darkorange;" text="Elite" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="eliteEngButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliteEngineButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Elite" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuelScoopButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#fuelScoopButtonAction" style="-fx-background-color: darkorange;" text="Fuel Scoop" GridPane.rowIndex="4">
+                  <Button fx:id="fuelScoopButton" layoutX="333.0" layoutY="41.0" mnemonicParsing="false" onAction="#fuelScoopButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="Fuel Scoop" GridPane.rowIndex="4">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuel1Button" layoutX="172.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel1ButtonAction" style="-fx-background-color: darkorange;" text="+1 fuel" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Button fx:id="fuel1Button" layoutX="172.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel1ButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="+1 fuel" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="fuel10Button" layoutX="333.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel10ButtonAction" style="-fx-background-color: darkorange;" text="+10 fuel" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <Button fx:id="fuel10Button" layoutX="333.0" layoutY="71.0" mnemonicParsing="false" onAction="#fuel10ButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="+10 fuel" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="10.0" layoutY="76.0" text="Repair" textFill="DARKORANGE" GridPane.rowIndex="3">
+                  <Label layoutX="10.0" layoutY="76.0" stylesheets="@xirodFont.css" text="Repair" textFill="DARKORANGE" GridPane.rowIndex="3">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="hull1Button" layoutX="175.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull1ButtonAction" style="-fx-background-color: darkorange;" text="+1 hull" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="hull1Button" layoutX="175.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull1ButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="+1 hull" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="hull10Button" layoutX="340.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull10ButtonAction" style="-fx-background-color: darkorange;" text="+10 hull" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="hull10Button" layoutX="340.0" layoutY="141.0" mnemonicParsing="false" onAction="#hull10ButtonAction" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="+10 hull" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <font>
                         <Font name="Xirod-Regular" size="14.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-            <Label fx:id="actionLabel" alignment="CENTER" text="Military grade alloys installed" textFill="DEEPSKYBLUE">
+            <Label fx:id="actionLabel" alignment="CENTER" stylesheets="@xirodFont.css" text="Military grade alloys installed" textFill="DEEPSKYBLUE">
                <font>
                   <Font name="Xirod-Regular" size="14.0" />
                </font>

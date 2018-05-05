@@ -87,7 +87,7 @@ public class main extends Application {
     //The universe.............................................................
     public static void worldGeneration() {
      
-        //Star generation Id number and name.
+        //Star generation Id number, name and is the star fuel scoopable.
         Star Sol = new Star(1, "Sol", true);
         Star Maxima = new Star(2, "Maxima", true);
         Star Ales = new Star(3, "Ales", false);
