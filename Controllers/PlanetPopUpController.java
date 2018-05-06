@@ -7,6 +7,7 @@ package Controllers;
  */
 
 import Main.main;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -53,6 +54,7 @@ public class PlanetPopUpController implements Initializable {
     
     @FXML
     private void exitButtonAction() throws IOException{
+        SoundEffects.Sound("Button.wav");
         gameOver();
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
@@ -61,14 +63,18 @@ public class PlanetPopUpController implements Initializable {
     @FXML   //Action depends on what kind of planet you are on.
     private void actionButtonAction() throws IOException {    
         
+       
+        
         int planetResources = main.getMyShip().getPlanet().getResources();    
         
         //In rock and lava planets you can mine.
         if (planetResources > 0 && actionButton.getText().equals("Mine")) {
             if (!main.myShip.getShipWeapon().getName().equals("Mining Laser")) {
                 setActionLabel("No mining laser.");
+                 SoundEffects.Sound("NoMoney.wav");
             }
             else {
+                 SoundEffects.Sound("Credit.wav");
                 main.myShip.gainCredits(planetResources);
                 main.getMyShip().getPlanet().setResources(0);
                 setActionLabel(planetResources + " credits mined.");
@@ -79,6 +85,7 @@ public class PlanetPopUpController implements Initializable {
         }
         //In terran planets there are shops.
         else if (actionButton.getText().equals("Shop")) {
+                SoundEffects.Sound("Button.wav");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ShopPopUp.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -90,6 +97,7 @@ public class PlanetPopUpController implements Initializable {
         
         //In gas, ring, water, ice planets and black holes you can explore.
         else if (actionButton.getText().equals("Explore")) {
+                SoundEffects.Sound("Button.wav");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ExplorePopUp.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();

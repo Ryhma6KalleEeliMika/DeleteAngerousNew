@@ -8,6 +8,7 @@ package Controllers;
 
 import Objects.Star;
 import Main.main;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -49,6 +50,7 @@ public class GalaxyMapController implements Initializable {
     
     @FXML //Button that takes you back to the main view.
     private void backButton(ActionEvent event) throws IOException {
+        SoundEffects.Sound("Button.wav");
         Parent normalView = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainView.fxml"));
         Scene normalScene = new Scene(normalView);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

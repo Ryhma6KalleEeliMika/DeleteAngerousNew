@@ -76,7 +76,7 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <Label stylesheets="@xirodFont.css" text="Fuel Buyed" textFill="DARKORANGE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Label stylesheets="@xirodFont.css" text="Total fuel gained" textFill="DARKORANGE" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font name="Xirod-Regular" size="18.0" />
                      </font>

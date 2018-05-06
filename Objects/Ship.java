@@ -103,9 +103,6 @@ public class Ship {
     public void gainCredits(int ammount) {
         setCredits(getCredits() + ammount);
         setAllCredits(getAllCredits() + ammount);
-        if(ammount > 6){
-            SoundEffects.Sound("Credit.wav");
-        }
     }
     
     //Lose credits method
@@ -122,6 +119,7 @@ public class Ship {
     //Method for traveling to between stars.
     public String starJump(Star destinationStar) {
       if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageJump()) { //If fuel is above the current engine's jump fuel usage.
+            SoundEffects.Sound("Accelerate.wav");
             setStar(destinationStar); //Ship's star is set to the new star.
             setCurrentStarName(destinationStar.getName());
             getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageJump());  //Ship loses fuel after the jump
@@ -142,6 +140,7 @@ public class Ship {
             return "Already orbiting " + getPlanetName();
         }
         else if (getShipFuelCell().getFuel() >= getShipEngine().getFuelUsageTravel()) { //Checks if there is enough fuel.
+                SoundEffects.Sound("LowButton.wav");
                 getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageTravel()); //Fuel depletes.
                 setPlanet(destinationPlanet); //Sets ships current planet as the new planet.
                 setPlanetName(destinationPlanet.getName()); //Sets ships current planet name as the new planet.
@@ -154,6 +153,7 @@ public class Ship {
     
     public String starScanner() {
         if(!currentStar.isScanned()) {
+            SoundEffects.Sound("StarPopUp.wav");
             main.starMap.put(currentStarName, true);
             currentStar.setScanned(true);
             starsScannedCounter();
@@ -171,6 +171,7 @@ public class Ship {
     
     public String planetScanner() {
         if(!currentPlanet.isScanned()) {
+            SoundEffects.Sound("PlanetPopUp.wav");
             main.planetMap.put(currentPlanetName, true);
             currentPlanet.setScanned(true);
             planetScannedCounter();

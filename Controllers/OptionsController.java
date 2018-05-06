@@ -6,6 +6,7 @@
 package Controllers;
 
 import static Sound.Sound.*;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,7 @@ public class OptionsController implements Initializable {
     
     @FXML
     private void optionOkButtonAction(ActionEvent event) throws IOException{
+        SoundEffects.Sound("Button.wav");
         Stage stage = (Stage) optionOkButton.getScene().getWindow();
         stage.close();
     }

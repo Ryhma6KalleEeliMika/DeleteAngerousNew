@@ -68,6 +68,7 @@ public class ShipPopUpController implements Initializable {
     
     @FXML
     private void shipExitButtonAction(ActionEvent event) throws IOException {
+        SoundEffects.Sound("Button.wav");
         Stage stage = (Stage) shipExitButton.getScene().getWindow();
         stage.close();
     }

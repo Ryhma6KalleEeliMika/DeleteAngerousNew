@@ -49,11 +49,12 @@ public class main extends Application {
     public static HashMap systemMap;
     
     //SoundFXpath
-    public static final String SOUNDPATH = "src/Sounds/";
-    public static boolean muteSound = true;
+    public static final String SOUNDPATH = "Sounds/";
+    public static boolean muteSound = false;
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
+        SoundEffects.Sound("Start.wav");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent mainMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainMenu.fxml"));
         Scene scene = new Scene(mainMenu);
@@ -69,13 +70,15 @@ public class main extends Application {
     
     public static void main(String[] args) {
         
+        
+        
         //hashmap creation.
         HashMap <String, Boolean> sMap = new HashMap();
         HashMap <String, Boolean> pMap = new HashMap();
         HashMap <String, Boolean> sysMap = new HashMap();
         setStarMap(sMap);
         setPlanetMap(pMap);
-        setSystemMap(sysMap);
+        setSystemMap(sysMap );
         
         //Creates stars, planets, etc.
         worldGeneration();

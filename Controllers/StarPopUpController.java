@@ -7,6 +7,7 @@ package Controllers;
  */
 
 import Main.main;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,6 +46,7 @@ public class StarPopUpController implements Initializable {
     
     @FXML
     private void exitButtonAction() throws IOException {
+        SoundEffects.Sound("Button.wav");
         gameOver();
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();

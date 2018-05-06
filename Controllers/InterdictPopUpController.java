@@ -8,6 +8,7 @@ package Controllers;
 
 import Main.main;
 import Objects.*;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,6 +48,7 @@ public class InterdictPopUpController implements Initializable {
     
     @FXML   //Exit button after exploration event has concluded.
     private void exitButtonAction() throws IOException {
+        SoundEffects.Sound("Button.wav");
         MainViewController.setOpenAlienEncounterPopUp(false);
         MainViewController.setAlienEncounter(false);
         gameOver();

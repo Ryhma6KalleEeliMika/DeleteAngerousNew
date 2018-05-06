@@ -80,6 +80,7 @@ public class MainViewController implements Initializable {
     
     @FXML //Button that opens the options pop up.
     private void optionsButtonAction(ActionEvent event) throws IOException {
+        SoundEffects.Sound("Button.wav");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/Options.fxml"));
         Parent root2 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -87,12 +88,13 @@ public class MainViewController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
         stage.setScene(new Scene(root2));
         stage.show();
-        SoundEffects.Sound("Button.wav");
+        
     }
     
     //Switches to the galaxy map view.
     @FXML
     private void gMapButtonAction(ActionEvent event) throws IOException {
+        SoundEffects.Sound("Button.wav");
         Parent gMap = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/GalaxyMap.fxml"));
         Scene gMapScene = new Scene(gMap);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -168,6 +170,7 @@ public class MainViewController implements Initializable {
     
     @FXML
     private void beaconButtonAction(ActionEvent event) throws IOException{
+        SoundEffects.Sound("Button.wav");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/BeaconPopUp.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -179,6 +182,7 @@ public class MainViewController implements Initializable {
 
     @FXML  //Opens the star pop up window.
     private void starButtonAction(ActionEvent event) throws IOException{
+        SoundEffects.Sound("Button.wav");
         if (main.getMyShip().getStar() != null) {
             setJumpLabel(main.myShip.starScanner()); //Prints the current planet name scanned message.
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/StarPopUp.fxml"));
@@ -193,6 +197,7 @@ public class MainViewController implements Initializable {
     
     @FXML  //Opens the planet pop up window.
     private void planetButtonAction(ActionEvent event) {
+        SoundEffects.Sound("Button.wav");
         if (main.getMyShip().getPlanet() != null) {
             try {
                 setJumpLabel(main.myShip.planetScanner()); //Prints the current planet name scanned message.
@@ -211,8 +216,9 @@ public class MainViewController implements Initializable {
     
     //Random chance to be interdicted by another ship when traveling from planet to planet
     private boolean interdiction() {
-        if(interdictRng()) {
+        if(interdictRng() && main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipEngine().getFuelUsageTravel()) {
             try {
+                SoundEffects.Sound("Interdiction.wav");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PursuerPopUp.fxml")); 
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -231,8 +237,9 @@ public class MainViewController implements Initializable {
         
     //Random chance to be interdicted by another ship when traveling from planet to planet
     private boolean alienInterdiction() {
-        if(alienEncounterRng()) {
+        if(alienEncounterRng() && main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipEngine().getFuelUsageJump()) {
             try {
+                SoundEffects.Sound("Alien.wav");
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/PursuerPopUp.fxml")); 
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -260,7 +267,7 @@ public class MainViewController implements Initializable {
         
     //One in hundred chance to be interdict when travelling between stars.
     private boolean alienEncounterRng() {
-        if(ThreadLocalRandom.current().nextInt(1, 100 + 1) == 1) {
+        if(ThreadLocalRandom.current().nextInt(1, 50 + 1) == 1) {
             setAlienEncounter(true);
             return true;
         }
@@ -376,12 +383,12 @@ public class MainViewController implements Initializable {
     }
     private void atokScanned(HashMap s, HashMap p){
         if (s.get("Atok").equals(true) && p.get("Lounov").equals(true) && p.get("Bosnera").equals(true) && p.get("Detrone").equals(true)) {
-            main.systemMap.put("Kriy", true);
+            main.systemMap.put("Atok", true);
         }
     }
     private void giolScanned(HashMap s, HashMap p){
         if (s.get("Giol").equals(true) && p.get("Strelek").equals(true) && p.get("Qonus").equals(true) && p.get("Poftro").equals(true) && p.get("Ieliv").equals(true)) {
-            main.systemMap.put("Kriy", true);
+            main.systemMap.put("Giol", true);
         }
     }
     private void tramoisScanned(HashMap s, HashMap p){
@@ -721,6 +728,7 @@ public class MainViewController implements Initializable {
         jumpLabel.setText(jumpResult);
         
         if (main.myShip.getShipFuelCell().getFuel() == 0) {
+            SoundEffects.Sound("FuelEmpty.wav");
             warningLabel.setText("Warning! Fuel depleted.");
             FadeTransition fader = createFader(warningLabel);
             SequentialTransition blinkThenFade = new SequentialTransition(fader);
@@ -728,6 +736,7 @@ public class MainViewController implements Initializable {
             createFader(warningLabel);
         }
         else if (main.myShip.getShipFuelCell().getFuel() < 21) {
+            SoundEffects.Sound("FuelLow.wav");
             warningLabel.setText("Warning! Fuel low.");
             FadeTransition fader = createFader(warningLabel);
             SequentialTransition blinkThenFade = new SequentialTransition(fader);
@@ -756,27 +765,32 @@ public class MainViewController implements Initializable {
             this.update = true;
         });
         
-        wpnTypeLabel.hoverProperty().addListener(l->{ //Weapon image. Stops ship image..
+        wpnTypeLabel.hoverProperty().addListener(l->{ //Weapon image. Stops ship image.
+            SoundEffects.Sound("ButtonHover.mp3");
             shipImage.setImage(main.myShip.getShipWeapon().getWeaponImage());
             this.update = false;
         });
         
-        fuelCellTypeLabel.hoverProperty().addListener(l->{ //Fuel cell image. Stops ship image..
+        fuelCellTypeLabel.hoverProperty().addListener(l->{ //Fuel cell image. Stops ship image.
+            SoundEffects.Sound("ButtonHover.mp3");
             shipImage.setImage(main.myShip.getShipFuelCell().getFuelImage());
             this.update = false;
         });
         
         hullTypeLabel.hoverProperty().addListener(l->{ //Hull image. Stops ship image.
+            SoundEffects.Sound("ButtonHover.mp3");
             shipImage.setImage(main.myShip.getShipHull().getHullImage());
             this.update = false;
         });
         
         engineTypeLabel.hoverProperty().addListener(l->{ //Engine image. Stops ship image.
+            SoundEffects.Sound("ButtonHover.mp3");
             shipImage.setImage(main.myShip.getShipEngine().getEngineImage());
             this.update = false;
         });
         
         fuelScoopLabel.hoverProperty().addListener(l->{ //Engine image. Stops ship image.
+            SoundEffects.Sound("ButtonHover.mp3");
             shipImage.setImage(main.myShip.getFuelScoopImage());
             this.update = false;
         });

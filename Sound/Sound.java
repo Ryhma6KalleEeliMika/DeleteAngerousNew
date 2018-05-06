@@ -28,7 +28,7 @@ private static MediaPlayer player;
 public Sound(String file) {
         this.file = file;
         this.sound = new Media(new File(file).toURI().toString());
-        this.player = new MediaPlayer(sound);
+        Sound.player = new MediaPlayer(sound);
     }
 
     public void play(){

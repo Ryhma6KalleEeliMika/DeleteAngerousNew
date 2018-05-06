@@ -73,6 +73,7 @@ public class ShopPopUpController implements Initializable {
     
     @FXML   //Exit button
     private void exitButtonAction(){
+        SoundEffects.Sound("Button.wav");
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
@@ -81,9 +82,11 @@ public class ShopPopUpController implements Initializable {
     private void miningLaserButtonAction() {
         if(main.myShip.getShipWeapon().getName().equals("Mining Laser")){
             setActionLabel("Weapon already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < miningLaserPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Weapon newWeapon = new Weapon("Mining Laser");
@@ -98,9 +101,11 @@ public class ShopPopUpController implements Initializable {
     private void pulseLaserButtonAction() {
         if(main.myShip.getShipWeapon().getName().equals("Pulse Laser")){
             setActionLabel("Weapon already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < pulseLaserPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Weapon newWeapon = new Weapon("Pulse Laser");
@@ -115,9 +120,11 @@ public class ShopPopUpController implements Initializable {
     private void multiCannonButtonAction() {
         if(main.myShip.getShipWeapon().getName().equals("Multi-cannon")){
             setActionLabel("Weapon already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < pulseLaserPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Weapon newWeapon = new Weapon("Multi-cannon");
@@ -132,9 +139,11 @@ public class ShopPopUpController implements Initializable {
     private void mediumCellButtonAction() {
         if(main.myShip.getShipFuelCell().getName().equals("Medium")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < medFuelCellPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             FuelCell medFuelCell = new FuelCell("Medium");
@@ -149,10 +158,12 @@ public class ShopPopUpController implements Initializable {
     private void largeCellButtonAction() {
         if(main.myShip.getShipFuelCell().getName().equals("Large")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         
         else if (main.myShip.getCredits() < largeFuelCellPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         
         else {
@@ -168,9 +179,11 @@ public class ShopPopUpController implements Initializable {
     private void reinforcedHullButtonAction() {
         if(main.myShip.getShipHull().getName().equals("Reinforced")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < reinforcedHullPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Hull reinforcedHull = new Hull("Reinforced");
@@ -185,9 +198,11 @@ public class ShopPopUpController implements Initializable {
     private void militaryHullButtonAction() {
         if(main.myShip.getShipHull().getName().equals("Military")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < militaryHullPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Hull militaryHull = new Hull("Military");
@@ -202,9 +217,11 @@ public class ShopPopUpController implements Initializable {
     private void advancedEngineButtonAction() {
         if(main.myShip.getShipEngine().getName().equals("Advanced")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < advancedEnginePrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Engine advancedEngine = new Engine("Advanced");
@@ -219,9 +236,11 @@ public class ShopPopUpController implements Initializable {
     private void eliteEngineButtonAction() {
         if(main.myShip.getShipEngine().getName().equals("Elite")){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < eliteEnginePrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             Engine eliteEngine = new Engine("Elite");
@@ -236,9 +255,11 @@ public class ShopPopUpController implements Initializable {
     private void fuelScoopButtonAction() {
         if(main.myShip.getFuelScoopInstalled()){
             setActionLabel("Module already installed.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < fuelScoopPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             main.myShip.setFuelScoopInstalled(true);
@@ -252,9 +273,11 @@ public class ShopPopUpController implements Initializable {
     private void fuel1ButtonAction() {
         if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()){
             setActionLabel("Fuel cell already full.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < fuelPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             main.myShip.getShipFuelCell().fuelGain(1);
@@ -269,6 +292,7 @@ public class ShopPopUpController implements Initializable {
         
         if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()){
             setActionLabel("Fuel cell already full.");
+            SoundEffects.Sound("Tick.wav");
         }
         
         else if(main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipFuelCell().getMaxFuel() - 9) {
@@ -280,6 +304,7 @@ public class ShopPopUpController implements Initializable {
     
         else if (main.myShip.getCredits() < (fuelPrice * 10)) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         
         else {
@@ -294,14 +319,17 @@ public class ShopPopUpController implements Initializable {
     private void hull1ButtonAction() {
         if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
             setActionLabel("Hull is already full.");
+            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < hullPrice) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             main.myShip.getShipHull().hullGain(1);
             main.myShip.loseCredits((int) hullPrice);
             setActionLabel("1 hull repaired.");
+            SoundEffects.Sound("LowButton.wav");
         }
     }
         
@@ -310,22 +338,26 @@ public class ShopPopUpController implements Initializable {
         
         if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
             setActionLabel("Hull already full.");
+            SoundEffects.Sound("Tick.wav");
         }
         
         else if(main.myShip.getShipHull().getHull() >= main.myShip.getShipHull().getMaxHull() - 9) {
             main.myShip.loseCredits((int) (hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull())));
             main.myShip.getShipHull().hullGain(10);
-            setActionLabel("hull refilled.");
+            setActionLabel("Hull fully repaired.");
+            SoundEffects.Sound("LowButton.wav");
         }
     
         else if (main.myShip.getCredits() < (hullPrice * 10)) {
             setActionLabel("Not enough credits.");
+            SoundEffects.Sound("NoMoney.wav");
         }
         
         else {
             main.myShip.getShipHull().hullGain(10);
             main.myShip.loseCredits((int) (hullPrice * 10));
             setActionLabel("10 hull refilled.");
+            SoundEffects.Sound("LowButton.wav");
         }
     }
     
@@ -383,6 +415,7 @@ public class ShopPopUpController implements Initializable {
         
         //Mouse hover action.
         miningLaserButton.hoverProperty().addListener(l->{ //Mining laser button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -395,6 +428,7 @@ public class ShopPopUpController implements Initializable {
         });
         
         pulseLaserButton.hoverProperty().addListener(l->{ //Pulse laser button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -407,6 +441,7 @@ public class ShopPopUpController implements Initializable {
         });
         
         multiCannonButton.hoverProperty().addListener(l->{ //Multi-cannon button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -419,6 +454,7 @@ public class ShopPopUpController implements Initializable {
         });
         
         mediumCellButton.hoverProperty().addListener(l->{ //Medium fuel cell button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -430,6 +466,7 @@ public class ShopPopUpController implements Initializable {
             spec1.setText(Integer.toString((int) f.getMediumMaxFuel()));
         });
         largeCellButton.hoverProperty().addListener(l->{ //Large fuel cell button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -441,6 +478,7 @@ public class ShopPopUpController implements Initializable {
             spec1.setText(Integer.toString((int) f.getLargeMaxFuel()));
         });
         reinforcedHullButton.hoverProperty().addListener(l->{ //Reinforced hull button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -453,6 +491,7 @@ public class ShopPopUpController implements Initializable {
 
         });
         militaryHullButton.hoverProperty().addListener(l->{ //Military hull button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             hideSpecs2();
@@ -464,6 +503,7 @@ public class ShopPopUpController implements Initializable {
             spec1.setText(Integer.toString((int) h.getMilitaryArmor()));
         });
         advancedEngButton.hoverProperty().addListener(l->{ //Advanced engine button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             setSpecs2Visibile();
@@ -477,6 +517,7 @@ public class ShopPopUpController implements Initializable {
             spec2.setText(Integer.toString(e.getAdvancedEngJump()));
         });
         eliteEngButton.hoverProperty().addListener(l->{ //Elite engine button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             setSpecs1Visible();
             setSpecs2Visibile();
@@ -490,6 +531,7 @@ public class ShopPopUpController implements Initializable {
             spec2.setText(Integer.toString(e.getEliteEngineJump()));
         });
         fuelScoopButton.hoverProperty().addListener(l->{ //Fuel scoop button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             moduleNameLabel.setText("Fuel scoop");
             Image image = new Image("Images/Modules/FuelScoop.png");
@@ -499,6 +541,7 @@ public class ShopPopUpController implements Initializable {
             hideSpecs2();
         });
         fuel1Button.hoverProperty().addListener(l->{ //Fuel 1 button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             moduleNameLabel.setText("Fuel + 1");
             Image image = new Image("Images/Modules/fuel1.png");
@@ -508,6 +551,7 @@ public class ShopPopUpController implements Initializable {
             hideSpecs2();
         });
         fuel10Button.hoverProperty().addListener(l->{ //Fuel 10 button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             moduleNameLabel.setText("Fuel + 10");
             Image image = new Image("Images/Modules/fuel10.png");
@@ -517,6 +561,7 @@ public class ShopPopUpController implements Initializable {
             hideSpecs2();
         });
         hull1Button.hoverProperty().addListener(l->{ //Fuel 1 button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             moduleNameLabel.setText("Hull + 1");
             Image image = new Image("Images/Modules/hull1.png");
@@ -526,6 +571,7 @@ public class ShopPopUpController implements Initializable {
             hideSpecs2();
         });
         hull10Button.hoverProperty().addListener(l->{ //Fuel 10 button mouse hover.
+            SoundEffects.Sound("ButtonHover.mp3");
             showPriceLabel();
             moduleNameLabel.setText("Hull + 10");
             Image image = new Image("Images/Modules/hull10.png");

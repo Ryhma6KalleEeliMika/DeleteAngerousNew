@@ -140,6 +140,7 @@ public class Story {
             //Black hole exploration
             case "Explore further":
                 enterBlackHole(story);
+                SoundEffects.Sound("BlackHole.wav");
                 break;
             
             //Find a stranded ship.
@@ -149,6 +150,7 @@ public class Story {
                 story.setBlueLabel("+50cr");
                 story.setRedLabel("-20 fuel");
                 story.setConclusion1("You gave them 20 fuel and they paid you 50cr.");
+                SoundEffects.Sound("FuelLoss.wav");
                 break;
                 
             //Pirate attacks you.
@@ -170,7 +172,6 @@ public class Story {
                     story.setBlueLabel("+50cr");
                     Image pirChase2 = new Image(IMGPATH + "explosion.png");
                     story.setImg(pirChase2);
-                    SoundEffects.Sound("Laser.wav");
                     SoundEffects.Sound("Explosion.wav");
                     break;
                 }
@@ -181,7 +182,7 @@ public class Story {
                     story.setRedLabel("Warning! Hull damage");
                     Image pirChase2 = new Image(IMGPATH + "narrowEscape.png");
                     story.setImg(pirChase2);
-                    SoundEffects.Sound("WarningHullDamage.mp3");
+                    SoundEffects.Sound("EscapeLaser.wav");
                     break;
                 }
                 
@@ -192,6 +193,7 @@ public class Story {
                     myShip.gainCredits(200);
                     Image conflictImg = new Image(IMGPATH + "conflictSuccess.png");
                     story.setImg(conflictImg);
+                    SoundEffects.Sound("PlayerLaser.wav");
                     story.setBlueLabel("+200cr");
                     break;
                 }
@@ -205,7 +207,7 @@ public class Story {
                             story.setImg(conflict2Img);
                             story.setBlueLabel("+40cr");
                             story.setRedLabel("Warning! Hull damage");
-                            SoundEffects.Sound("WarningHullDamage.mp3");
+                            SoundEffects.Sound("EscapeLaser.wav");
                             break;
 
                         default:
@@ -214,7 +216,7 @@ public class Story {
                             Image conflict3Img = new Image(IMGPATH + "conflictFail.png");
                             story.setImg(conflict3Img);
                             story.setRedLabel("Warning! Hull damage");
-                            SoundEffects.Sound("WarningHullDamage.mp3");
+                            SoundEffects.Sound("EscapeLaser.wav");
                             break;
                     }
                     break;
@@ -226,6 +228,7 @@ public class Story {
                 myShip.loseCredits(50);
                 story.setConclusion1("You gave them 50cr and they left you alone.");
                 story.setRedLabel("-50cr");
+                SoundEffects.Sound("Tick.wav");
                 break;
                 
             //pirate fleet escape. case give 50cr needs to be above this.........................................................
@@ -238,7 +241,7 @@ public class Story {
                         Image pirateImg = new Image(IMGPATH + "pirateAttack.png");
                         story.setImg(pirateImg);
                         story.setRedLabel("Warning! Hull damage");
-                        SoundEffects.Sound("WarningHullDamage.mp3");
+                        SoundEffects.Sound("EscapeLaser.wav");
                         break;
                     
                     case 2: //Took some damage.
@@ -248,7 +251,7 @@ public class Story {
                         Image pirate2Img = new Image(IMGPATH + "narrowEscape.png");
                         story.setImg(pirate2Img);
                         story.setRedLabel("Warning! Hull damage");
-                        SoundEffects.Sound("WarningHullDamage.mp3");
+                        SoundEffects.Sound("EscapeLaser.wav");
                         break;
                         
                     case 3: //No loss
@@ -269,7 +272,6 @@ public class Story {
                     story.setConclusion1("You found a fuelcell with some fuel left in it.");
                     myShip.getShipFuelCell().fuelGain(50.0);
                     story.setBlueLabel("+50 fuel");
-                    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
                     break;
                     
                     case 2: //A pirate attacks you.
@@ -279,18 +281,21 @@ public class Story {
                     myShip.getShipHull().hullLoss(20.0);
                     story.setRedLabel("Warning! Hull damage");
                     setTimesAttacked(getTimesAttacked() + 1);
+                    SoundEffects.Sound("EscapeLaser.wav");
                     break;
                     
                     case 3: //Found some credits in the debris.
                     story.setConclusion1("You found some credits in the debris.");
                     myShip.gainCredits(20);
                     story.setBlueLabel("+20cr");
+                    SoundEffects.Sound("Credit.wav");
                     break;
                 }
                 break;
 
             case "Don\'t explore":
                 story.setConclusion2("You left the scene.");
+                SoundEffects.Sound("Tick.wav");
                 if(main.myShip.getPlanetName().equals("Boothill")) {
                     Image leaveBholeImg = new Image(IMGPATH + "leaveBlackHole.png");
                     story.setImg(leaveBholeImg);
@@ -299,6 +304,7 @@ public class Story {
                 
             case "Don\'t help":
                 story.setConclusion2("You decided to leave.");
+                SoundEffects.Sound("Tick.wav");
                 break;
         }
     }
@@ -362,7 +368,7 @@ public class Story {
                 setBeaconFail("Critical damage!");
                 Image img = new Image("Images/Story/pirateAttack.png");
                 setBeaconImg(img);
-                ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
+                SoundEffects.Sound("EscapeLaser.wav");
                 return "A pirate ship picked up on your signal before anyone else";
                 
             default:
@@ -370,7 +376,6 @@ public class Story {
                 setBeaconReward("+20 fuel");
                 Image img2 = new Image("Images/Story/stranded.png");
                 setBeaconImg(img2);
-                ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
                 return "A fuel rat arrives and brings you some fuel";
         }
     }
@@ -383,6 +388,7 @@ public class Story {
             setBeaconReward("+50cr");
             Image img3 = new Image("Images/Story/explosion.png");
             setInterdictImg(img3);
+            SoundEffects.Sound("Explosion.wav");
             return "You were able to destroy your target without any problems.";
             
         }
@@ -392,7 +398,7 @@ public class Story {
             setBeaconFail("Warning! Hull damage");
             Image img = new Image("Images/Story/narrowEscape.png");
             setInterdictImg(img);
-            SoundEffects.Sound("WarningHullDamage.mp3");
+            SoundEffects.Sound("EscapeLaser.wav");
             return "The fight didn\'t go so well and you took some heavy damage.";
         }
     }
@@ -407,6 +413,7 @@ public class Story {
                 setBeaconFail("-5 fuel & Hull damage!");
                 Image img = new Image("Images/Story/narrowEscape.png");
                 setInterdictImg(img);
+                SoundEffects.Sound("EscapeLaser.wav");
                 return "You were able to escape, but took some heavy damage.";
             
             default: 
@@ -415,6 +422,7 @@ public class Story {
                 setBeaconFail("-5 fuel");
                 Image img2 = new Image("Images/Story/pirateEscape.png");
                 setInterdictImg(img2);
+                SoundEffects.Sound("Accelerate.wav");
                 return "You were able to escape your pursuer.";
         }
     }
@@ -429,12 +437,14 @@ public class Story {
             setBeaconReward("+400cr");
             Image img1 = new Image("Images/Story/explosion.png");
             setInterdictImg(img1);
+            SoundEffects.Sound("AlienExplosion.wav");
             return "You were able to destroy the alien ship and it left some rare minerals behind.";
           }
           else {
             setTimesAttacked(getTimesAttacked() + 1);
             Image img2 = new Image("Images/Stars/Empty/Empty.png");
             setInterdictImg(img2);
+            SoundEffects.Sound("AlienDis.wav");
             return "Your weapons weren't able to penetrate the alien armor and the alien ship disappeared.";   
           } 
         }
@@ -444,6 +454,7 @@ public class Story {
             setBeaconFail("Warning! Hull damage");
             Image img3 = new Image("Images/Story/alienAttack.png");
             setInterdictImg(img3);
+            SoundEffects.Sound("AlienLaser.wav");
             return "You attacked the alien ship, but the alien retaliates.";
         }
     }
@@ -457,11 +468,13 @@ public class Story {
                 setBeaconFail("Warning! Hull damage");
                 Image img1 = new Image("Images/Story/alienAttack.png");
                 setInterdictImg(img1);
+                SoundEffects.Sound("AlienLaser.wav");
                 return "You send a greeting to the alien ship, but it misinterprets your message and attacks you.";
             
             case 2:
                 Image img2 = new Image("Images/Stars/Empty/Empty.png");
                 setInterdictImg(img2);
+                SoundEffects.Sound("AlienDis.wav");
                 return "You send a greeting to the alien ship, but the alien ship disappeared.";   
                 
             default: 
@@ -469,6 +482,7 @@ public class Story {
                 setBeaconFail("-20 fuel");
                 Image img3 = new Image("Images/Story/alienAttack.png");
                 setInterdictImg(img3);
+                SoundEffects.Sound("FuelLoss.wav");
                 return "You send a greeting to the alien ship, but the alien siphons some fuel from you and leaves.";  
         }
     }

@@ -8,6 +8,7 @@ package Controllers;
 
 import Main.main;
 import Objects.Story;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +34,7 @@ public class GameOverController implements Initializable {
     
     @FXML //Close program
     private void quitButtonAction(ActionEvent event) throws IOException {
+        SoundEffects.Sound("Button.wav");
         System.exit(0);
     }
     
@@ -50,12 +52,14 @@ public class GameOverController implements Initializable {
     @Override   //Mouse hover action.
     public void initialize(URL url, ResourceBundle rb) {
         if (main.myShip.getShipHull().getHull() <= 0) {
+            SoundEffects.Sound("PlayerExplosion.wav");
             gameOverLabel.setText("Game Over");
             reasonLabel.setText("Your ship was destroyed");
             gameInformation();
         }
         else {
             gameOverLabel.setText("Exploration victory");
+            SoundEffects.Sound("Victory.wav");
             reasonLabel.setText("You have scoured the entire galaxy and there is nothing left to do than retire");
             reasonLabel.setTextFill(Color.web("DeepSkyBlue"));
             gameInformation();

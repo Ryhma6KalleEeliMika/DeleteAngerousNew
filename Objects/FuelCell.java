@@ -1,5 +1,6 @@
 package Objects;
 
+import Sound.SoundEffects;
 import javafx.scene.image.Image;
 
 /*
@@ -39,6 +40,7 @@ public class FuelCell {
     
     //Fuel gain method
     public void fuelGain(double fuelGain){
+        SoundEffects.Sound("FuelGain.wav");
         if(fuelGain + getFuel() >= getMaxFuel()){
             setFuel(getMaxFuel());
         }
@@ -49,7 +51,6 @@ public class FuelCell {
     
     //Constructor
     public FuelCell(String moduleName){
-        
         setName(moduleName);
         Image image = new Image("Images/Modules/" + moduleName + ".png");
         setFuelImage(image);
