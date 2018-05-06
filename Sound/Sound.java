@@ -38,6 +38,7 @@ public Sound(String file) {
     public void stop(){
         player.stop();
     }
+    
 
     public static void setVolume(double value){
         player.setVolume(value);

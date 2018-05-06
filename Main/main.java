@@ -50,6 +50,7 @@ public class main extends Application {
     
     //SoundFXpath
     public static final String SOUNDPATH = "src/Sounds/";
+    public static boolean muteSound = true;
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {

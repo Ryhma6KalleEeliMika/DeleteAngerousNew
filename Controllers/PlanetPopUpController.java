@@ -87,7 +87,8 @@ public class PlanetPopUpController implements Initializable {
                 stage.setScene(new Scene(root));
                 stage.show();
         }
-        //In gas, ring, water, ice planets you can explore.
+        
+        //In gas, ring, water, ice planets and black holes you can explore.
         else if (actionButton.getText().equals("Explore")) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/ExplorePopUp.fxml"));
                 Parent root = (Parent) fxmlLoader.load();

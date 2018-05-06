@@ -14,7 +14,10 @@ import Main.main;
 public class SoundEffects {
 
 public static void Sound(String file){
-        Sound Sound = new Sound(main.SOUNDPATH+file);
-        Sound.play();
+    
+        if (!main.muteSound) {
+            Sound Sound = new Sound(main.SOUNDPATH+file);
+            Sound.play();
+        }
     }
 }

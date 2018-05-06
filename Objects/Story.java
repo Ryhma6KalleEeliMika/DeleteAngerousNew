@@ -30,6 +30,20 @@ public class Story {
     
     private static int timesAttacked = 0;
     
+    public Story(String blackHole) {
+        setStoryType("Black Hole");
+        
+        setStory("You see light bending around this massive object that you cannot see.");
+        
+        setOption1("Explore further");
+        
+        setOption2("Don\'t explore");
+
+        Image bHoleImg = new Image(IMGPATH + "blackHole.png");
+        setImg(bHoleImg);
+        
+    }
+    
     public Story(){
         switch (rng()) {
             //Stranded ship
@@ -122,6 +136,11 @@ public class Story {
     public void explorationConclusion(String action, Story story){
         Ship myShip = main.getMyShip();
         switch(action){
+            
+            //Black hole exploration
+            case "Explore further":
+                enterBlackHole(story);
+                break;
             
             //Find a stranded ship.
             case "Give them 20 fuel":
@@ -272,11 +291,34 @@ public class Story {
 
             case "Don\'t explore":
                 story.setConclusion2("You left the scene.");
+                if(main.myShip.getPlanetName().equals("Boothill")) {
+                    Image leaveBholeImg = new Image(IMGPATH + "leaveBlackHole.png");
+                    story.setImg(leaveBholeImg);
+                }
                 break;
                 
             case "Don\'t help":
                 story.setConclusion2("You decided to leave.");
                 break;
+        }
+    }
+    
+    //Black hole conclusion
+    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
+    public void enterBlackHole(Story story) {
+        story.setRedLabel("Warniiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+        main.myShip.getShipHull().setHull(-999);
+        Image blackImg = new Image(IMGPATH + "Empty.png");
+        story.setImg(blackImg);
+        switch (subRng()) {
+            case 1:
+                story.setConclusion1("\"Black holes are where God divide by zero.\" -Albert Einstein ");
+            
+            case 2:
+                story.setConclusion1("\"The universe doesn't allow perfection.\". -Stephen Hawking");   
+                
+            default:
+                story.setConclusion1("\"I would like to die on Mars. Just not on impact.\" -Elon Musk.");  
         }
     }
     
@@ -308,6 +350,7 @@ public class Story {
         return "";
     }
     
+    
     //Distress Beacon encounter
     public static String beaconEncounter() {
         setBeaconFail("");
@@ -336,11 +379,11 @@ public class Story {
     public static String interdictFight() {
         if (weaponIntRng()) {
             setTimesAttacked(getTimesAttacked() + 1);
-          main.myShip.gainCredits(50);
-          setBeaconReward("+50cr");
-          Image img3 = new Image("Images/Story/explosion.png");
-          setInterdictImg(img3);
-          return "You were able to destroy your target without any problems.";
+            main.myShip.gainCredits(50);
+            setBeaconReward("+50cr");
+            Image img3 = new Image("Images/Story/explosion.png");
+            setInterdictImg(img3);
+            return "You were able to destroy your target without any problems.";
             
         }
         else {
@@ -429,6 +472,9 @@ public class Story {
                 return "You send a greeting to the alien ship, but the alien siphons some fuel from you and leaves.";  
         }
     }
+    
+    
+    
     
     //rng coinflip
     private static int coinFlip() {

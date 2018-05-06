@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -47,7 +48,10 @@ public class ExplorePopUpController implements Initializable {
     @FXML   //Exit button after exploration event has concluded.
     private void exitButtonAction() throws IOException {
         gameOver();
-        main.myShip.getPlanet().setExplored(true);
+        //If planet isnt a black hole it cannot be explored again.
+        if(!main.myShip.getPlanet().getType().equals("black hole")) {
+                   main.myShip.getPlanet().setExplored(true);
+        }
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
@@ -124,6 +128,13 @@ public class ExplorePopUpController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //If planet is a black hole.
+        if(main.myShip.getPlanet().getType().equals("black hole")) {
+            Image bHoleImg = new Image("Images/Story/blackHole.png");
+            main.myShip.getPlanet().getStory().setImg(bHoleImg);
+        }
+        
         storyStart();    
     }
 }

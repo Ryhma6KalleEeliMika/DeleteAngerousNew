@@ -107,7 +107,7 @@ public class ShipPopUpController implements Initializable {
             startHullLabel.setText("100");
             startEngineLabel.setText("Basic");
             shipNameLabel.setText("Eagle MkII");
-            SoundEffects.Sound("ButtonHover.wav");
+            SoundEffects.Sound("ButtonHover.mp3");
         });
         
         haulerButton.hoverProperty().addListener(l->{ //Hauler button mouse hover.
@@ -120,7 +120,7 @@ public class ShipPopUpController implements Initializable {
             startHullLabel.setText("200");
             startEngineLabel.setText("Basic");
             shipNameLabel.setText("Hauler");
-            SoundEffects.Sound("ButtonHover.wav");
+            SoundEffects.Sound("ButtonHover.mp3");
         });
         
         adderButton.hoverProperty().addListener(l->{ //Adder button mouseHover.
@@ -133,7 +133,7 @@ public class ShipPopUpController implements Initializable {
             startHullLabel.setText("100");
             startEngineLabel.setText("Basic");
             shipNameLabel.setText("Adder");
-            SoundEffects.Sound("ButtonHover.wav");
+            SoundEffects.Sound("ButtonHover.mp3");
         });
     }
 }

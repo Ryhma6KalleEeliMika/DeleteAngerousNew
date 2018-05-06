@@ -10,6 +10,7 @@ import Main.main;
 import Objects.Star;
 import Objects.Ship;
 import Objects.Planet;
+import Sound.SoundEffects;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -75,6 +76,19 @@ public class MainViewController implements Initializable {
     //Alien encounter emptyImage
     public static boolean alienEncounter = false;
     private static boolean openAlienEncounterPopUp = false;
+    
+    
+    @FXML //Button that opens the options pop up.
+    private void optionsButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("Controllers/Options.fxml"));
+        Parent root2 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT); //Removes the x-button and top bar.
+        stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
+        stage.setScene(new Scene(root2));
+        stage.show();
+        SoundEffects.Sound("Button.wav");
+    }
     
     //Switches to the galaxy map view.
     @FXML

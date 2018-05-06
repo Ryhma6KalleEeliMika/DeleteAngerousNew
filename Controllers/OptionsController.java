@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import Sound.Sound;
+import static Sound.Sound.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,39 +27,37 @@ public class OptionsController implements Initializable {
     private Button optionOkButton;
     
     @FXML
-    private static CheckBox muteMusicCheck, muteSoundCheck;
+    private CheckBox muteMusicCheck, muteSoundCheck;
     
     @FXML
     private void optionOkButtonAction(ActionEvent event) throws IOException{
         Stage stage = (Stage) optionOkButton.getScene().getWindow();
         stage.close();
     }
-    /*
-    @FXML
-    private void muteMusicCheckAction() {
-        muteMusicCheck.setOnAction((event) -> {
-            boolean selected = muteMusicCheck.isSelected();
-            if(selected){
-                
-            }
-            else{
-                
-            }
-    });
-    }
     
     @FXML
-    private void muteSoundCheckAction() {
-        muteSoundCheck.setOnAction((event) -> {
-            boolean selected = muteSoundCheck.isSelected();
-            if(selected){
-                Sound.setVolume(0.0);
-            }
-            else{
-                Sound.setVolume(1.0);
-            }
-    });
-    }*/
+    private void muteMusicCheckAction(ActionEvent e) {
+ 
+        boolean selected = muteMusicCheck.isSelected();
+        if(selected){
+
+        }
+        else{
+
+        }  
+    }
+    
+    @FXML //Mutes sound effects.
+    private void muteSoundCheckAction(ActionEvent e) {
+        if(muteSoundCheck.isSelected()){
+            Main.main.muteSound = true;
+            
+        }
+        else{
+            Main.main.muteSound = false;
+        }
+    }
+   
     
     /**
      * Initializes the controller class.
@@ -67,5 +65,6 @@ public class OptionsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        muteSoundCheck.setSelected(Main.main.muteSound);
     }
 }

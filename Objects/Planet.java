@@ -64,7 +64,9 @@ public class Planet {
             }
             
             else if (type.equals("black hole")) {
-                
+                Story story = new Story("Black hole");
+                setStory(story);
+                setExplored(false);
             }
             
             else {

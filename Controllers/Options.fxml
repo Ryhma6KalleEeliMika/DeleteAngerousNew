@@ -8,21 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: black; -fx-border-color: darkorange; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.OptionsController">
    <center>
       <VBox prefHeight="250.0" prefWidth="400.0">
          <children>
             <VBox alignment="CENTER_LEFT" prefHeight="124.0" prefWidth="400.0" stylesheets="@xirodFont.css">
                <children>
-                  <CheckBox fx:id="muteMusicCheck" mnemonicParsing="false" onAction="#muteMusicCheckAction" stylesheets="@xirodFont.css" text="Mute Music" textFill="DARKORANGE">
-                     <font>
-                        <Font name="Xirod-Regular" size="19.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </CheckBox>
                   <CheckBox fx:id="muteSoundCheck" mnemonicParsing="false" onAction="#muteSoundCheckAction" stylesheets="@xirodFont.css" text="Mute Sound Effects" textFill="DARKORANGE">
                      <font>
                         <Font name="Xirod-Regular" size="19.0" />
@@ -50,7 +41,7 @@
    <bottom>
       <VBox alignment="CENTER" prefHeight="80.0" prefWidth="400.0" stylesheets="@xirodFont.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="optionOkButton" mnemonicParsing="false" onAction="#optionOkButtonAction" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="OK">
+            <Button fx:id="optionOkButton" mnemonicParsing="false" onAction="#optionOkButtonAction" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: darkorange;" stylesheets="@xirodFont.css" text="exit">
                <font>
                   <Font name="Xirod-Regular" size="20.0" />
                </font>
