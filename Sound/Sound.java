@@ -23,7 +23,7 @@ public class Sound {
 
 String file;
 Media sound;
-MediaPlayer player;
+private static MediaPlayer player;
 
 public Sound(String file) {
         this.file = file;
@@ -39,7 +39,7 @@ public Sound(String file) {
         player.stop();
     }
 
-    public void setVolume(double value){
+    public static void setVolume(double value){
         player.setVolume(value);
     }
 

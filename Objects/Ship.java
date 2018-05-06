@@ -115,7 +115,6 @@ public class Ship {
     
     //Prints the name of the current currentStar system.
     public String currentStarName() {
-        setAllJumps(getAllJumps() + 1);
         Star currentStar = getStar();
         return currentStar.getName();
     }
@@ -127,6 +126,7 @@ public class Ship {
             setCurrentStarName(destinationStar.getName());
             getShipFuelCell().fuelLoss(getShipEngine().getFuelUsageJump());  //Ship loses fuel after the jump
             setPlanet(null); //Ship is not orbiting any planet after jump.
+            setAllJumps(getAllJumps() + 1);
             setPlanetName("");
             return "Jump succesful";        
         }
