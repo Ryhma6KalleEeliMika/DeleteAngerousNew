@@ -45,7 +45,7 @@ public class GameOverController implements Initializable {
         planetStarNumber.setText(Integer.toString(main.myShip.getStarsScanned()) + "/" + Integer.toString(main.myShip.getPlanetsScanned()));
         hullLostNumber.setText(Double.toString(main.myShip.getShipHull().getHullLost()));
         hullGainedNumber.setText(Double.toString(main.myShip.getShipHull().getHullGained()));
-        fuelBuyedNumber.setText(Double.toString(main.myShip.getShipFuelCell().getFuelBuyed()));
+        fuelBuyedNumber.setText(Double.toString(main.myShip.getShipFuelCell().getFuelGained()));
         attackNumber.setText(Integer.toString(Story.getTimesAttacked()));
     }
     

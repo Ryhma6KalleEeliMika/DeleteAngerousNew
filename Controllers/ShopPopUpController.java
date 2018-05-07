@@ -122,7 +122,7 @@ public class ShopPopUpController implements Initializable {
             setActionLabel("Weapon already installed.");
             SoundEffects.Sound("Tick.wav");
         }
-        else if (main.myShip.getCredits() < pulseLaserPrice) {
+        else if (main.myShip.getCredits() < multiCannonPrice) {
             setActionLabel("Not enough credits.");
             SoundEffects.Sound("NoMoney.wav");
         }
@@ -273,16 +273,13 @@ public class ShopPopUpController implements Initializable {
     private void fuel1ButtonAction() {
         if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()){
             setActionLabel("Fuel cell already full.");
-            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < fuelPrice) {
             setActionLabel("Not enough credits.");
-            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             main.myShip.getShipFuelCell().fuelGain(1);
             main.myShip.loseCredits((int) fuelPrice);
-            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + 1);
             setActionLabel("1 fuel refilled.");
         }
     }
@@ -292,25 +289,26 @@ public class ShopPopUpController implements Initializable {
         
         if(main.myShip.getShipFuelCell().getFuel() == main.myShip.getShipFuelCell().getMaxFuel()){
             setActionLabel("Fuel cell already full.");
-            SoundEffects.Sound("Tick.wav");
         }
         
         else if(main.myShip.getShipFuelCell().getFuel() >= main.myShip.getShipFuelCell().getMaxFuel() - 9) {
-            main.myShip.loseCredits((int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
-            main.myShip.getShipFuelCell().fuelGain(10);
-            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + (int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
-            setActionLabel("fuel refilled.");
+            if (main.myShip.getCredits() >= (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel()))) {
+                main.myShip.loseCredits((int) (fuelPrice * (main.myShip.getShipFuelCell().getMaxFuel() - main.myShip.getShipFuelCell().getFuel())));
+                main.myShip.getShipFuelCell().fuelGain(10);
+                setActionLabel("fuel refilled.");
+            }
+            else {
+                setActionLabel("Not enough credits.");
+            }
         }
     
         else if (main.myShip.getCredits() < (fuelPrice * 10)) {
             setActionLabel("Not enough credits.");
-            SoundEffects.Sound("NoMoney.wav");
         }
         
         else {
             main.myShip.getShipFuelCell().fuelGain(10);
             main.myShip.loseCredits((int) (fuelPrice * 10));
-            main.myShip.getShipFuelCell().setFuelBuyed(main.myShip.getShipFuelCell().getFuelBuyed() + 10);
             setActionLabel("10 fuel refilled.");
         }
     }
@@ -319,17 +317,14 @@ public class ShopPopUpController implements Initializable {
     private void hull1ButtonAction() {
         if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
             setActionLabel("Hull is already full.");
-            SoundEffects.Sound("Tick.wav");
         }
         else if (main.myShip.getCredits() < hullPrice) {
             setActionLabel("Not enough credits.");
-            SoundEffects.Sound("NoMoney.wav");
         }
         else {
             main.myShip.getShipHull().hullGain(1);
             main.myShip.loseCredits((int) hullPrice);
             setActionLabel("1 hull repaired.");
-            SoundEffects.Sound("LowButton.wav");
         }
     }
         
@@ -338,26 +333,27 @@ public class ShopPopUpController implements Initializable {
         
         if(main.myShip.getShipHull().getHull() == main.myShip.getShipHull().getMaxHull()){
             setActionLabel("Hull already full.");
-            SoundEffects.Sound("Tick.wav");
         }
         
         else if(main.myShip.getShipHull().getHull() >= main.myShip.getShipHull().getMaxHull() - 9) {
-            main.myShip.loseCredits((int) (hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull())));
-            main.myShip.getShipHull().hullGain(10);
-            setActionLabel("Hull fully repaired.");
-            SoundEffects.Sound("LowButton.wav");
+            if (main.myShip.getCredits() >= (hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull()))) {
+                main.myShip.loseCredits((int) (hullPrice * (main.myShip.getShipHull().getMaxHull() - main.myShip.getShipHull().getHull())));
+                main.myShip.getShipHull().hullGain(10);
+                setActionLabel("hull refilled.");
+            }
+            else{
+                setActionLabel("Not enough credits.");
+            }
         }
     
         else if (main.myShip.getCredits() < (hullPrice * 10)) {
             setActionLabel("Not enough credits.");
-            SoundEffects.Sound("NoMoney.wav");
         }
         
         else {
             main.myShip.getShipHull().hullGain(10);
             main.myShip.loseCredits((int) (hullPrice * 10));
             setActionLabel("10 hull refilled.");
-            SoundEffects.Sound("LowButton.wav");
         }
     }
     

@@ -193,7 +193,7 @@ public class Story {
                     myShip.gainCredits(200);
                     Image conflictImg = new Image(IMGPATH + "conflictSuccess.png");
                     story.setImg(conflictImg);
-                    SoundEffects.Sound("PlayerLaser.wav");
+                    SoundEffects.Sound("EmpireLaser.wav");
                     story.setBlueLabel("+200cr");
                     break;
                 }
@@ -228,7 +228,7 @@ public class Story {
                 myShip.loseCredits(50);
                 story.setConclusion1("You gave them 50cr and they left you alone.");
                 story.setRedLabel("-50cr");
-                SoundEffects.Sound("Tick.wav");
+                SoundEffects.Sound("FuelLoss.wav");
                 break;
                 
             //pirate fleet escape. case give 50cr needs to be above this.........................................................
@@ -295,7 +295,7 @@ public class Story {
 
             case "Don\'t explore":
                 story.setConclusion2("You left the scene.");
-                SoundEffects.Sound("Tick.wav");
+                SoundEffects.Sound("Button.wav");
                 if(main.myShip.getPlanetName().equals("Boothill")) {
                     Image leaveBholeImg = new Image(IMGPATH + "leaveBlackHole.png");
                     story.setImg(leaveBholeImg);
@@ -304,13 +304,12 @@ public class Story {
                 
             case "Don\'t help":
                 story.setConclusion2("You decided to leave.");
-                SoundEffects.Sound("Tick.wav");
+                SoundEffects.Sound("Button.wav");
                 break;
         }
     }
     
     //Black hole conclusion
-    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
     public void enterBlackHole(Story story) {
         story.setRedLabel("Warniiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
         main.myShip.getShipHull().setHull(-999);
@@ -428,7 +427,6 @@ public class Story {
     }
     
     //Alien fight
-    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
     public static String alienFight() {
         if (weaponIntRng()) {
           if (coinFlip() == 1) {
@@ -442,7 +440,7 @@ public class Story {
           }
           else {
             setTimesAttacked(getTimesAttacked() + 1);
-            Image img2 = new Image("Images/Stars/Empty/Empty.png");
+            Image img2 = new Image("Images/Story/Empty.png");
             setInterdictImg(img2);
             SoundEffects.Sound("AlienDis.wav");
             return "Your weapons weren't able to penetrate the alien armor and the alien ship disappeared.";   
@@ -460,7 +458,6 @@ public class Story {
     }
     
     //Alien communication
-    ////////////////////////////////////////////////////////////SOUND!//////////////////////////////////////////////////////////////////////////
     public static String alienCommunication() {
         switch (intSubRng()) {
             case 1:
@@ -472,7 +469,7 @@ public class Story {
                 return "You send a greeting to the alien ship, but it misinterprets your message and attacks you.";
             
             case 2:
-                Image img2 = new Image("Images/Stars/Empty/Empty.png");
+                Image img2 = new Image("Images/Story/Empty.png");
                 setInterdictImg(img2);
                 SoundEffects.Sound("AlienDis.wav");
                 return "You send a greeting to the alien ship, but the alien ship disappeared.";   

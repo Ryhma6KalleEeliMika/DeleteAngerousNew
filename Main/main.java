@@ -54,7 +54,7 @@ public class main extends Application {
     
     @Override //Gui's first window.
     public void start(Stage stage) throws Exception {
-        SoundEffects.Sound("Start.wav");
+        SoundEffects.Sound("LowButton.wav");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent mainMenu = FXMLLoader.load(getClass().getClassLoader().getResource("Controllers/MainMenu.fxml"));
         Scene scene = new Scene(mainMenu);

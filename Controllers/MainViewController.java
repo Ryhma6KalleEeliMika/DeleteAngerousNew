@@ -265,7 +265,7 @@ public class MainViewController implements Initializable {
         return false;
     }
         
-    //One in hundred chance to be interdict when travelling between stars.
+    //One in fifty chance to be interdict when travelling between stars.
     private boolean alienEncounterRng() {
         if(ThreadLocalRandom.current().nextInt(1, 50 + 1) == 1) {
             setAlienEncounter(true);
@@ -518,7 +518,7 @@ public class MainViewController implements Initializable {
     }
     private void xaarScanned(HashMap s, HashMap p){
         if (s.get("Xaar").equals(true) && p.get("Ramor").equals(true)) {
-            main.systemMap.put("Oxuatri", true);
+            main.systemMap.put("Xaar", true);
         }
     }
     

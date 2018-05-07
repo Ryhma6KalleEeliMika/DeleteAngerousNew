@@ -30,7 +30,7 @@ public class FuelCell {
     
     private double fuelUsed = 0;
     
-    private double fuelBuyed = 0;
+    private double fuelGained = 0;
     
     //Fuel loss method
     public void fuelLoss(double fuelLoss){
@@ -42,10 +42,12 @@ public class FuelCell {
     public void fuelGain(double fuelGain){
         SoundEffects.Sound("FuelGain.wav");
         if(fuelGain + getFuel() >= getMaxFuel()){
+            setFuelGained(getFuelGained() + (getMaxFuel() - getFuel()));
             setFuel(getMaxFuel());
         }
         else{
             setFuel(getFuel() + fuelGain);
+            setFuelGained(getFuelGained() + fuelGain);
         }
     }
     
@@ -127,12 +129,12 @@ public class FuelCell {
         this.fuelUsed = fuelUsed;
     }
 
-    public double getFuelBuyed() {
-        return fuelBuyed;
+    public double getFuelGained() {
+        return fuelGained;
     }
 
-    public void setFuelBuyed(double fuelBuyed) {
-        this.fuelBuyed = fuelBuyed;
+    public void setFuelGained(double fuelGained) {
+        this.fuelGained = fuelGained;
     }
     
 }
