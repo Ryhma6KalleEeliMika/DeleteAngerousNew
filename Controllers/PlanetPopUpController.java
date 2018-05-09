@@ -93,6 +93,7 @@ public class PlanetPopUpController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
                 stage.setScene(new Scene(root));
                 stage.show();
+                stage.setAlwaysOnTop(true);
         }
         
         //In gas, ring, water, ice planets and black holes you can explore.
@@ -105,6 +106,7 @@ public class PlanetPopUpController implements Initializable {
                 stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
                 stage.setScene(new Scene(root));
                 stage.show();
+                stage.setAlwaysOnTop(true);
         }
     }
     
@@ -119,6 +121,7 @@ public class PlanetPopUpController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL); //Makes the window so that it has to be closed before going back to the main view.
             stage.setScene(new Scene(root1));
             stage.show();
+            stage.setAlwaysOnTop(true);
         }
     }
     

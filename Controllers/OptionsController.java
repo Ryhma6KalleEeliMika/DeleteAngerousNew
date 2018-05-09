@@ -28,7 +28,7 @@ public class OptionsController implements Initializable {
     private Button optionOkButton;
     
     @FXML
-    private CheckBox muteMusicCheck, muteSoundCheck;
+    private CheckBox muteSoundCheck;
     
     @FXML
     private void optionOkButtonAction(ActionEvent event) throws IOException{
@@ -37,17 +37,6 @@ public class OptionsController implements Initializable {
         stage.close();
     }
     
-    @FXML
-    private void muteMusicCheckAction(ActionEvent e) {
- 
-        boolean selected = muteMusicCheck.isSelected();
-        if(selected){
-
-        }
-        else{
-
-        }  
-    }
     
     @FXML //Mutes sound effects.
     private void muteSoundCheckAction(ActionEvent e) {
